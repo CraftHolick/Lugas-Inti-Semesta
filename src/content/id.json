@@ -1,0 +1,230 @@
+{
+  "nav": { "home": "Beranda", "about": "Tentang Kami", "services": "Layanan", "projects": "Proyek", "insight": "Insight", "contact": "Kontak", "careers": "Karir", "cta": "Konsultasi Sekarang", "search": "Cari..." },
+  "hero": {
+    "headline": "MEMBERIKAN SOLUSI PERTAMBANGAN TERPERCAYA UNTUK INDONESIA",
+    "subheadline": "Konsultan geologi, geoteknik, dan manajemen tambang batubara berizin resmi dengan pengalaman operasional lapangan di seluruh Kalimantan.",
+    "cta_primary": "Konsultasi Sekarang",
+    "cta_secondary": "Unduh Company Profile",
+    "badge": "IUJP RESMI NO. 738/1/IUJP/PMDN/2021",
+    "satisfied_clients": "Klien Puas",
+    "completed_projects": "Proyek Eksplorasi & Manajemen Selesai"
+  },
+  "trust_bar": [
+    { "value": "2014", "label": "Tahun Berdiri" },
+    { "value": "70+", "label": "Proyek Selesai" },
+    { "value": "8", "label": "Provinsi Terjangkau" },
+    { "value": "IUJP 738/1", "label": "Status Legalitas Resmi" }
+  ],
+  "services": {
+    "heading": "Layanan Konsultasi & Pertambangan",
+    "subheading": "Solusi pertambangan komprehensif mulai dari eksplorasi awal, kajian teknis, perizinan, hingga manajemen operasional.",
+    "learn_detail": "Pelajari Detail & Cakupan Kerja",
+    "back": "Kembali ke Layanan",
+    "scope_desc": "Berikut adalah rincian layanan spesifik dan aktivitas teknis yang kami sediakan dalam bidang ini:",
+    "cta_heading": "Siap Memulai Proyek Anda Bersama Kami?",
+    "cta_subheading": "Hubungi tim teknis kami hari ini untuk konsultasi awal, penawaran harga, dan pembahasan teknis lebih lanjut.",
+    "cta_button": "Konsultasi Gratis Sekarang",
+    "related_portfolio": "PORTOFOLIO TERKAIT",
+    "case_studies": "Studi Kasus & Proyek",
+    "items": [
+      { "title": "Konsultasi Geologi", "description": "Perencanaan eksplorasi, pemetaan geologi, topografi, geofisika, hingga estimasi & audit sumber daya standar KCMI/JORC.", "icon": "Mountain" },
+      { "title": "Konsultasi Geoteknik, Hidrologi & Hidrogeologi", "description": "Pengawasan pengeboran geoteknik, pumping test, slug test, hingga pengukuran debit sungai dan mata air.", "icon": "Droplets" },
+      { "title": "Konsultasi Lingkungan & Sosial", "description": "Penyusunan RIPPM, Rencana Reklamasi, Rencana Pascatambang, AMDAL, RKL, dan RPL.", "icon": "Leaf" },
+      { "title": "Konsultasi & Kontraktor Pertambangan", "description": "Studi kelayakan (FS), RKAB, manajemen tambang, pemasangan tanda batas WIUP, hingga jasa kontraktor pertambangan.", "icon": "Pickaxe" }
+    ]
+  },
+  "featured_projects": {
+    "heading": "Proyek Unggulan",
+    "subheading": "Beberapa proyek terpilih yang telah kami kerjakan di berbagai wilayah Indonesia.",
+    "view_all": "Lihat Semua Proyek"
+  },
+  "project_map": {
+    "badge": "Jaringan Eksplorasi & Operasi Nusantara",
+    "heading": "SEBARAN PROYEK & OPERASI NUSANTARA",
+    "subheading": "Menembus batas tradisional. Kami beroperasi secara aktif di 8 provinsi Indonesia dengan konektivitas eksplorasi dan kolaborasi geologi dari kantor pusat Jakarta ke seluruh nusantara.",
+    "subheading_projects": "Menghubungkan kantor pusat kami di Jakarta dengan berbagai lokasi operasional proyek eksplorasi, geoteknik, dan konsultasi manajemen di 8 provinsi Indonesia.",
+    "view_full_map": "Lihat Peta Proyek & Eksplorasi Lengkap",
+    "footer_hq": "Pusat Eksplorasi LUISE (Nusantara)",
+    "footer_global": "8 Provinsi Wilayah Operasi Aktif",
+    "footer_realtime": "Jaringan Dotted Map Real-Time Aktif",
+    "grid_title": "Wilayah Operasi Resmi di 8 Provinsi Indonesia",
+    "hq_label": "HQ Jakarta",
+    "kalteng_label": "Kalteng Hub",
+    "kaltim_label": "Kaltim Hub",
+    "kalsel_label": "Kalsel Hub",
+    "kalut_label": "Kalut",
+    "sumsel_label": "Sumsel",
+    "sulteng_label": "Sulteng Hub",
+    "bengkulu_label": "Bengkulu",
+    "ntt_label": "NTT",
+    "provinces": {
+      "kalteng": "Pusat Eksplorasi & Manajemen Batubara",
+      "kaltim": "Operasi Geoteknik & Pemetaan",
+      "kalsel": "Konsultasi Manajemen Tambang",
+      "kalut": "Eksplorasi Sumber Daya Mineral",
+      "sumsel": "Pengawasan Geologi & Pengeboran",
+      "bengkulu": "Analisis Geoteknik Lereng",
+      "sulteng": "Eksplorasi Nikel & Mineral Logam",
+      "ntt": "Survei Geologi & Pemetaan Awal"
+    },
+    "prov_names": {
+      "kalteng": "Kalimantan Tengah",
+      "kaltim": "Kalimantan Timur",
+      "kalsel": "Kalimantan Selatan",
+      "kalut": "Kalimantan Utara",
+      "sumsel": "Sumatera Selatan",
+      "bengkulu": "Bengkulu",
+      "sulteng": "Sulawesi Tengah",
+      "ntt": "Nusa Tenggara Timur"
+    }
+  },
+  "projects all": "Semua",
+  "projects geologi": "Konsultasi Geologi",
+  "projects geoteknik": "Geoteknik & Hidrogeologi",
+  "projects lingkungan": "Lingkungan & Sosial",
+  "projects manajemen": "Kontraktor & Manajemen Tambang",
+  "projects_page": {
+    "heading": "Proyek Kami",
+    "subheading": "Jelajahi rekam jejak portofolio eksplorasi dan manajemen pertambangan kami di seluruh Indonesia.",
+    "no_results": "Tidak ada proyek yang ditemukan untuk kategori ini.",
+    "view_details": "Lihat Detail Proyek"
+  },
+  "project_detail": {
+    "back": "Kembali ke Proyek",
+    "overview": "Ikhtisar Proyek",
+    "gallery": "Galeri Proyek",
+    "scope": "Cakupan Kerja (Scope of Work)",
+    "need_similar": "Butuh Layanan Serupa?",
+    "consult_need": "Konsultasikan kebutuhan eksplorasi dan manajemen tambang perusahaan Anda dengan tim ahli kami.",
+    "consult_now": "Konsultasi Sekarang"
+  },
+  "client_logos": {
+    "heading": "Dipercaya Oleh"
+  },
+  "whyChooseUs": {
+    "eyebrow": "MENGAPA MEMILIH KAMI",
+    "heading": "Keunggulan Kompetitif Kami",
+    "items": [
+      { "title": "Tenaga Ahli Berpengalaman", "description": "Lebih dari 15 tahun pengalaman solid di industri pertambangan Indonesia dengan sertifikasi resmi CPI." },
+      { "title": "Keselamatan & K3 Utama", "description": "Komitmen tanpa kompromi terhadap keselamatan kerja (Zero Accident) dan perlindungan lingkungan hidup." },
+      { "title": "Teknologi Eksplorasi Modern", "description": "Mengoperasikan perangkat lunak pemetaan geologi dan instrumen geoteknik berstandar internasional terkini." },
+      { "title": "Praktik Berkelanjutan", "description": "Berkomitmen penuh pada kaidah penambangan yang baik (Good Mining Practice) dan ramah lingkungan." }
+    ]
+  },
+  "stats_bar": {
+    "about_label": "TENTANG KAMI",
+    "learn_more": "Pelajari Selengkapnya",
+    "statement": "KOMITMEN KAMI DALAM KONSULTASI GEOLOGI & MANAJEMEN TAMBANG MEMBERIKAN SOLUSI NYATA BAGI KEMAJUAN INDUSTRI PERTAMBANGAN INDONESIA",
+    "exp_title": "Tahun Pengalaman Ahli",
+    "exp_desc": "Tim tenaga ahli bersertifikat CPI dengan rekam jejak panjang di industri pertambangan Indonesia.",
+    "support_title": "Dukungan Teknis & Pengawasan",
+    "support_desc": "Kesiapan tim lapangan untuk pemantauan dan kontrol operasional tambang secara intensif.",
+    "val_title": "Nilai Proyek (USD)",
+    "val_desc": "Total valuasi dan evaluasi kelayakan proyek pertambangan yang telah sukses ditangani."
+  },
+  "testimonials": {
+    "eyebrow": "TESTIMONI KLIEN",
+    "heading": "Apa Kata Klien & Mitra Kami"
+  },
+  "team": {
+    "eyebrow": "TENAGA AHLI KAMI",
+    "heading": "Tim Ahli & CPI Bersertifikat",
+    "view_all": "Lihat Semua Tim"
+  },
+  "contactCTA": {
+    "heading": "Konsultasikan Kebutuhan Proyek Anda",
+    "form": {
+      "name": "Nama Lengkap",
+      "email": "Alamat Email",
+      "phone": "Nomor WhatsApp / Telepon",
+      "message": "Pesan atau Detail Kebutuhan",
+      "submit": "Kirim Konsultasi",
+      "success": "Pesan berhasil terkirim! Tim kami akan segera menghubungi Anda."
+    }
+  },
+  "finalCTA": {
+    "heading": "Siap Mengoptimalkan Proyek Pertambangan Anda?",
+    "subheading": "Bekerja sama dengan konsultan terpercaya berizin resmi IUJP untuk hasil yang akurat, efektif, dan berkelanjutan.",
+    "cta": "Mulai Konsultasi Sekarang"
+  },
+  "closing_cta": {
+    "heading": "Punya proyek pertambangan yang butuh dukungan teknis?",
+    "description": "Konsultasikan kebutuhan eksplorasi, geoteknik, hingga manajemen tambang Anda dengan tim ahli kami.",
+    "cta": "Hubungi via WhatsApp"
+  },
+  "about": {
+    "eyebrow": "TENTANG KAMI",
+    "heading": "Mitra Terpercaya Solusi Pertambangan",
+    "description": "Sejak 2014, PT Lugas Inti Semesta berdedikasi dalam menyediakan layanan konsultasi geologi, geoteknik, dan manajemen pertambangan batubara dan mineral.",
+    "description2": "Dengan dukungan tenaga ahli bersertifikat Competent Person Indonesia (CPI) dan izin resmi IUJP No. 738/1/IUJP/PMDN/2021, kami siap memberikan solusi terbaik.",
+    "cta": "Unduh Profil Perusahaan",
+    "page_title": "Tentang PT Lugas Inti Semesta",
+    "background_heading": "Latar Belakang",
+    "background_text": "PT Lugas Inti Semesta didirikan untuk menyediakan jasa pelayanan di bidang geologi, eksplorasi, pendampingan manajemen tambang, jasa kontraktor pertambangan, geoteknik, hidrologi dan hidrogeologi, serta keahlian lingkungan dan sosial termasuk pemetaan sosial, penyusunan dokumen, dan dukungan konsultasi publik.",
+    "vision_heading": "Visi",
+    "vision_text": "Menjadi mitra terpercaya, memberi solusi tepat dan efektif dalam industri pertambangan.",
+    "mission_heading": "Misi",
+    "mission_text": "Memberikan pelayanan profesional terbaik kepada perusahaan tambang dalam berbagai aspek operasional.",
+    "legality_heading": "Legalitas Perusahaan",
+    "legality_iujp": "IUJP No. 738/1/IUJP/PMDN/2021",
+    "legality_class": "Klasifikasi Konsultan Teknis dan Manajemen Industri Pertambangan Batubara dan Mineral",
+    "legality_founded": "Berdiri sejak 2014 di Bekasi",
+    "legality_cpi": "Tenaga ahli bersertifikat Competent Person Indonesia (CPI)",
+    "team_heading": "Tim Ahli Kami",
+    "team_placeholder": "Data tim ahli akan segera ditampilkan."
+  },
+  "contact": {
+    "page_title": "Hubungi Kami",
+    "form_name": "Nama",
+    "form_company": "Perusahaan",
+    "form_position": "Jabatan",
+    "form_service": "Layanan yang Diminati",
+    "form_message": "Pesan",
+    "form_submit": "Kirim Pesan",
+    "address_heading": "Alamat Kantor",
+    "address": "Plaza Summarecon Bekasi Lt. 7, Jl. Bulevar Ahmad Yani Kav. K.01, Harapan Mulya, Medan Satria, Kota Bekasi, Jawa Barat 17143",
+    "phone1_label": "Wawan Gunawan (WA)",
+    "phone1": "0817-0045-831",
+    "phone2_label": "Sudaryat (WA/Telp)",
+    "phone2": "0811-5965-436",
+    "office_phone": "021-86907097",
+    "email": "luise.lugas@gmail.com",
+    "hours": "Senin–Jumat, 08.00–17.00 WIB",
+    "select_service": "Pilih Layanan",
+    "phone_heading": "Telepon",
+    "email_heading": "Email",
+    "hours_heading": "Jam Operasional",
+    "whatsapp_cta": "Hubungi via WhatsApp",
+    "hours_note": "TODO: confirm with client"
+  },
+  "insight": {
+    "page_title": "Insight",
+    "subheading": "Artikel dan wawasan seputar industri pertambangan Indonesia.",
+    "categories": "Kategori",
+    "popular": "Artikel Populer",
+    "read_more": "Baca Selengkapnya",
+    "share": "Bagikan Artikel",
+    "artikel": "Artikel",
+    "regulasi": "Regulasi",
+    "company_update": "Company Update",
+    "mining_knowledge": "Mining Knowledge"
+  },
+  "footer": {
+    "description": "Konsultan Eksplorasi & Manajemen Pertambangan. Mitra terpercaya untuk solusi pertambangan di Indonesia sejak 2014.",
+    "quick_links": "Tautan Cepat",
+    "contact_us": "Hubungi Kami",
+    "contact_title": "Hubungi Kami",
+    "career": "Karir",
+    "copyright": "© 2026 PT Lugas Inti Semesta. Hak cipta dilindungi.",
+    "language_choice": "Pilihan Bahasa:",
+    "office_phone_prefix": "Kantor:",
+    "sitemap": "Peta Situs (Sitemap Lengkap)",
+    "main_menu": "Menu Utama"
+  },
+  "projects_tab": {
+    "daftar_proyek": "Daftar Proyek",
+    "interactive_map": "Interactive Map",
+    "studi_kasus": "Studi Kasus",
+    "dokumentasi": "Dokumentasi"
+  }
+}

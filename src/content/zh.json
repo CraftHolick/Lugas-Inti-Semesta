@@ -1,0 +1,231 @@
+{
+  "_note": "Chinese translations need native review before launch",
+  "nav": { "home": "首页", "about": "关于我们", "services": "服务", "projects": "项目", "insight": "洞察", "contact": "联系我们", "careers": "招聘", "cta": "立即咨询", "search": "搜索..." },
+  "hero": {
+    "headline": "印度尼西亚值得信赖的采矿勘探与矿山管理顾问",
+    "subheadline": "正式成立于2014年 · 拥有IUJP许可号 738/1/IUJP/PMDN/2021 · 由认证的印尼合资格人士（CPI）专家支持",
+    "cta_primary": "立即咨询",
+    "cta_secondary": "下载公司简介",
+    "badge": "官方 IUJP 许可证 738/1/IUJP/PMDN/2021",
+    "satisfied_clients": "满意客户",
+    "completed_projects": "已完成勘探与管理项目"
+  },
+  "trust_bar": [
+    { "value": "2014", "label": "成立年份" },
+    { "value": "70+", "label": "完成项目" },
+    { "value": "8", "label": "覆盖省份" },
+    { "value": "IUJP 738/1", "label": "官方合法地位" }
+  ],
+  "services": {
+    "heading": "采矿与地质咨询服务",
+    "subheading": "提供从前期勘探、技术可行性研究、许可审批到矿山营运管理的全面采矿解决方案。",
+    "learn_detail": "了解详情与工作范围",
+    "back": "返回服务中心",
+    "scope_desc": "以下是我们在此领域提供的具体服务和技术活动细则：",
+    "cta_heading": "准备好与我们共创项目了吗？",
+    "cta_subheading": "立即联系我们的技术团队，获取初步咨询、报价和进一步的技术探讨。",
+    "cta_button": "立即免费咨询",
+    "related_portfolio": "相关案例",
+    "case_studies": "案例研究与项目",
+    "items": [
+      { "title": "地质咨询", "description": "勘探规划、地质测绘、地形、地球物理，直至符合KCMI/JORC标准的资源估算和审计。", "icon": "Mountain" },
+      { "title": "岩土工程、水文学和水文地质学", "description": "岩土钻探监督、抽水试验、微水试验，直至河流和泉水流量测量。", "icon": "Droplets" },
+      { "title": "环境与社会咨询", "description": "编制RIPPM、复垦计划、矿山闭坑计划、AMDAL、RKL和RPL。", "icon": "Leaf" },
+      { "title": "采矿咨询与承包", "description": "可行性研究（FS）、RKAB、矿山管理、WIUP边界标志安装，直至采矿承包商服务。", "icon": "Pickaxe" }
+    ]
+  },
+  "featured_projects": {
+    "heading": "特色项目",
+    "subheading": "我们在印度尼西亚各矿区完成的精选项目。",
+    "view_all": "查看所有项目"
+  },
+  "project_map": {
+    "badge": "群岛勘探与运营网络",
+    "heading": "项目分布与群岛运营",
+    "subheading": "突破传统界限。我们在印度尼西亚8个省份积极开展业务，通过雅加达总部建立覆盖整个群岛的地质勘探与合作联系。",
+    "subheading_projects": "连接我们在雅加达的总部与印尼8个省份的各类地质勘探、岩土工程和管理咨询项目运营据点。",
+    "view_full_map": "查看完整项目与勘探地图",
+    "footer_hq": "LUISE 勘探中心 (印尼群岛)",
+    "footer_global": "8个活跃运营省份",
+    "footer_realtime": "实时点阵地图网络已激活",
+    "grid_title": "印尼8个省份的官方运营区域",
+    "hq_label": "雅加达总部",
+    "kalteng_label": "中加里曼丹中心",
+    "kaltim_label": "东加里曼丹中心",
+    "kalsel_label": "南加里曼丹中心",
+    "kalut_label": "北加里曼丹",
+    "sumsel_label": "南苏门答腊",
+    "sulteng_label": "中苏拉威西中心",
+    "bengkulu_label": "明古鲁",
+    "ntt_label": "东努沙登加拉",
+    "provinces": {
+      "kalteng": "煤炭勘探与管理中心",
+      "kaltim": "岩土工程与测绘业务",
+      "kalsel": "矿业管理咨询",
+      "kalut": "矿产资源勘探",
+      "sumsel": "地质监督与钻探",
+      "bengkulu": "边坡岩土分析",
+      "sulteng": "镍矿与金属矿产勘探",
+      "ntt": "地质调查与初步测绘"
+    },
+    "prov_names": {
+      "kalteng": "中加里曼丹省",
+      "kaltim": "东加里曼丹省",
+      "kalsel": "南加里曼丹省",
+      "kalut": "北加里曼丹省",
+      "sumsel": "南苏门答腊省",
+      "bengkulu": "明古鲁省",
+      "sulteng": "中苏拉威西省",
+      "ntt": "东努沙登加拉省"
+    }
+  },
+  "projects all": "全部项目",
+  "projects geologi": "地质咨询",
+  "projects geoteknik": "岩土工程与水文地质",
+  "projects lingkungan": "环境与社会评估",
+  "projects manajemen": "采矿承包与管理",
+  "projects_page": {
+    "heading": "我们的项目",
+    "subheading": "探索我们在印度尼西亚各地勘探和矿山管理项目的业绩记录。",
+    "no_results": "在该分类下未找到任何项目。",
+    "view_details": "查看项目详情"
+  },
+  "project_detail": {
+    "back": "返回项目列表",
+    "overview": "项目概述",
+    "gallery": "项目图库",
+    "scope": "工作范围 (Scope of Work)",
+    "need_similar": "需要类似的服务吗？",
+    "consult_need": "与我们的专家团队咨询您公司的勘探和矿山管理需求。",
+    "consult_now": "立即咨询"
+  },
+  "client_logos": {
+    "heading": "信任我们的客户"
+  },
+  "whyChooseUs": {
+    "eyebrow": "为什么选择我们",
+    "heading": "我们的核心竞争优势",
+    "items": [
+      { "title": "资深行业专家", "description": "在印尼采矿界拥有超过15年的深厚经验，拥有官方认证的印尼合格人员 (CPI) 团队。" },
+      { "title": "安全第一承诺", "description": "对职业健康安全（零事故）和环境保护实施零妥协的高标准管理。" },
+      { "title": "现代勘探技术", "description": "采用最新国际标准的专业地质测绘软件和高精度岩土工程仪器。" },
+      { "title": "可持续发展实践", "description": "全面致力于优良采矿规范 (Good Mining Practice) 和环保的矿山营运。" }
+    ]
+  },
+  "stats_bar": {
+    "about_label": "关于我们",
+    "learn_more": "了解更多",
+    "statement": "我们在地质咨询和矿山管理方面的承诺，为印尼采矿业的进步提供了切实的解决方案",
+    "exp_title": "专家丰富经验",
+    "exp_desc": "在印尼采矿界拥有悠久业绩记录的认证 CPI 专家团队。",
+    "support_title": "24/7 技术支持与监督",
+    "support_desc": "现场团队随时准备对矿山运营进行密集监控和管理。",
+    "val_title": "项目估值 (美元)",
+    "val_desc": "成功处理的采矿项目的总估值和可行性评估。"
+  },
+  "testimonials": {
+    "eyebrow": "客户评价",
+    "heading": "客户与合作伙伴的感言"
+  },
+  "team": {
+    "eyebrow": "专家团队",
+    "heading": "认证 CPI 与技术专家",
+    "view_all": "查看完整团队"
+  },
+  "contactCTA": {
+    "heading": "咨询您的项目需求",
+    "form": {
+      "name": "全名",
+      "email": "电子邮箱",
+      "phone": "WhatsApp / 电话号码",
+      "message": "留言或项目需求详情",
+      "submit": "提交咨询",
+      "success": "信息发送成功！我们的团队将尽快与您联系。"
+    }
+  },
+  "finalCTA": {
+    "heading": "准备好优化您的采矿项目了吗？",
+    "subheading": "与拥有官方 IUJP 执照的值得信赖的采矿顾问合作，以获得准确、高效和可持续的成果。",
+    "cta": "立即开始咨询"
+  },
+  "closing_cta": {
+    "heading": "有需要技术支持的采矿项目吗？",
+    "description": "与我们的专家团队咨询您的勘探、岩土工程和矿山管理需求。",
+    "cta": "通过WhatsApp联系"
+  },
+  "about": {
+    "eyebrow": "关于我们",
+    "heading": "您值得信赖的采矿解决方案合作伙伴",
+    "description": "自2014年以来，PT Lugas Inti Semesta 一直致力于提供地质、岩土工程以及煤炭和矿物开采管理咨询服务。",
+    "description2": "在认证的印尼合资格人士（CPI）专家和官方 IUJP 许可证 738/1/IUJP/PMDN/2021 的支持下，我们为您提供最佳解决方案。",
+    "cta": "下载公司简介",
+    "page_title": "关于 PT Lugas Inti Semesta",
+    "background_heading": "背景",
+    "background_text": "PT Lugas Inti Semesta 成立旨在提供地质、勘探、矿山管理协助、采矿承包商服务、岩土工程、水文学和水文地质学以及环境和社会专业知识（包括社会制图、文件编制和公众咨询支持）方面的服务。",
+    "vision_heading": "愿景",
+    "vision_text": "成为值得信赖的合作伙伴，在采矿业提供适当和有效的解决方案。",
+    "mission_heading": "使命",
+    "mission_text": "在各种运营方面向采矿公司提供最佳的专业服务。",
+    "legality_heading": "公司合法性",
+    "legality_iujp": "IUJP 编号 738/1/IUJP/PMDN/2021",
+    "legality_class": "煤炭和矿物开采业的技术和管理咨询分类",
+    "legality_founded": "2014年成立于勿加泗",
+    "legality_cpi": "由认证的印尼合资格人士（CPI）专家支持",
+    "team_heading": "我们的专家团队",
+    "team_placeholder": "专家团队数据即将显示。"
+  },
+  "contact": {
+    "page_title": "联系我们",
+    "form_name": "姓名",
+    "form_company": "公司",
+    "form_position": "职位",
+    "form_service": "感兴趣的服务",
+    "form_message": "留言",
+    "form_submit": "发送信息",
+    "address_heading": "办公地址",
+    "address": "Plaza Summarecon Bekasi Lt. 7, Jl. Bulevar Ahmad Yani Kav. K.01, Harapan Mulya, Medan Satria, Kota Bekasi, Jawa Barat 17143",
+    "phone1_label": "Wawan Gunawan (WA)",
+    "phone1": "0817-0045-831",
+    "phone2_label": "Sudaryat (WA/电话)",
+    "phone2": "0811-5965-436",
+    "office_phone": "021-86907097",
+    "email": "luise.lugas@gmail.com",
+    "hours": "周一至周五，08:00–17:00 WIB",
+    "select_service": "选择服务",
+    "phone_heading": "电话",
+    "email_heading": "电子邮箱",
+    "hours_heading": "营业时间",
+    "whatsapp_cta": "通过 WhatsApp 联系",
+    "hours_note": "TODO: confirm with client"
+  },
+  "insight": {
+    "page_title": "洞察",
+    "subheading": "关于印度尼西亚采矿业的文章和见解。",
+    "categories": "分类",
+    "popular": "热门文章",
+    "read_more": "阅读更多",
+    "share": "分享文章",
+    "artikel": "文章",
+    "regulasi": "法规",
+    "company_update": "公司动态",
+    "mining_knowledge": "采矿知识"
+  },
+  "footer": {
+    "description": "勘探与矿山管理顾问。自2014年以来，印尼采矿解决方案值得信赖的合作伙伴。",
+    "quick_links": "快速链接",
+    "contact_us": "联系我们",
+    "contact_title": "联系我们",
+    "career": "职业",
+    "copyright": "© 2026 PT Lugas Inti Semesta。保留所有权利。",
+    "language_choice": "选择语言:",
+    "office_phone_prefix": "办公电话:",
+    "sitemap": "网站地图 (完整 Sitemap)",
+    "main_menu": "主菜单"
+  },
+  "projects_tab": {
+    "daftar_proyek": "项目列表",
+    "interactive_map": "交互式地图",
+    "studi_kasus": "案例研究",
+    "dokumentasi": "文档"
+  }
+}

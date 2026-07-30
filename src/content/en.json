@@ -1,0 +1,230 @@
+{
+  "nav": { "home": "Home", "about": "About Us", "services": "Services", "projects": "Projects", "insight": "Insight", "contact": "Contact", "careers": "Careers", "cta": "Consult Now", "search": "Search..." },
+  "hero": {
+    "headline": "TRUSTED MINING SOLUTIONS & CONSULTING FOR INDONESIA",
+    "subheadline": "Officially licensed geological, geotechnical, and coal mine management consultants with field operational experience across Borneo.",
+    "cta_primary": "Consult Now",
+    "cta_secondary": "Download Company Profile",
+    "badge": "OFFICIAL IUJP NO. 738/1/IUJP/PMDN/2021",
+    "satisfied_clients": "Satisfied Clients",
+    "completed_projects": "Completed Exploration & Management Projects"
+  },
+  "trust_bar": [
+    { "value": "2014", "label": "Year Established" },
+    { "value": "70+", "label": "Completed Projects" },
+    { "value": "8", "label": "Provinces Covered" },
+    { "value": "IUJP 738/1", "label": "Official Legal Status" }
+  ],
+  "services": {
+    "heading": "Mining & Geological Consulting Services",
+    "subheading": "Comprehensive mining solutions from initial exploration, technical feasibility, licensing, to operational mine management.",
+    "learn_detail": "Learn Details & Scope of Work",
+    "back": "Back to Services",
+    "scope_desc": "Below are the specific services and technical activities we provide in this field:",
+    "cta_heading": "Ready to Start Your Project With Us?",
+    "cta_subheading": "Contact our technical team today for initial consultation, pricing quotes, and further technical discussions.",
+    "cta_button": "Free Consultation Now",
+    "related_portfolio": "RELATED PORTFOLIO",
+    "case_studies": "Case Studies & Projects",
+    "items": [
+      { "title": "Geological Consulting", "description": "Exploration planning, geological mapping, topography, geophysics, to resource estimation & audit with KCMI/JORC standards.", "icon": "Mountain" },
+      { "title": "Geotechnical, Hydrology & Hydrogeology", "description": "Supervision of geotechnical drilling, pumping test, slug test, to river and spring discharge measurement.", "icon": "Droplets" },
+      { "title": "Environmental & Social Consulting", "description": "Preparation of RIPPM, Reclamation Plan, Mine Closure Plan, AMDAL, RKL, and RPL.", "icon": "Leaf" },
+      { "title": "Mining Consulting & Contracting", "description": "Feasibility study (FS), RKAB, mine management, WIUP boundary marking installation, to mining contractor services.", "icon": "Pickaxe" }
+    ]
+  },
+  "featured_projects": {
+    "heading": "Featured Projects",
+    "subheading": "Selected projects we have completed in various mining regions across Indonesia.",
+    "view_all": "View All Projects"
+  },
+  "project_map": {
+    "badge": "Archipelago Exploration & Operations Network",
+    "heading": "PROJECT DISTRIBUTION & ARCHIPELAGO OPERATIONS",
+    "subheading": "Breaking traditional boundaries. We actively operate across 8 Indonesian provinces with geological exploration and consulting connectivity from our Jakarta headquarters across the archipelago.",
+    "subheading_projects": "Connecting our headquarters in Jakarta with various operational locations of exploration, geotechnical, and management consulting projects across 8 Indonesian provinces.",
+    "view_full_map": "View Full Project & Exploration Map",
+    "footer_hq": "LUISE Exploration Hubs (Archipelago)",
+    "footer_global": "8 Active Operational Provinces",
+    "footer_realtime": "Real-Time Dotted Map Network Active",
+    "grid_title": "Official Operating Regions Across 8 Indonesian Provinces",
+    "hq_label": "Jakarta HQ",
+    "kalteng_label": "C. Kalimantan Hub",
+    "kaltim_label": "E. Kalimantan Hub",
+    "kalsel_label": "S. Kalimantan Hub",
+    "kalut_label": "N. Kalimantan",
+    "sumsel_label": "S. Sumatra",
+    "sulteng_label": "C. Sulawesi Hub",
+    "bengkulu_label": "Bengkulu",
+    "ntt_label": "E. Nusa Tenggara",
+    "provinces": {
+      "kalteng": "Coal Exploration & Management Center",
+      "kaltim": "Geotechnical & Mapping Operations",
+      "kalsel": "Mine Management Consulting",
+      "kalut": "Mineral Resource Exploration",
+      "sumsel": "Geological Supervision & Drilling",
+      "bengkulu": "Slope Geotechnical Analysis",
+      "sulteng": "Nickel & Metallic Mineral Exploration",
+      "ntt": "Geological Survey & Preliminary Mapping"
+    },
+    "prov_names": {
+      "kalteng": "Central Kalimantan",
+      "kaltim": "East Kalimantan",
+      "kalsel": "South Kalimantan",
+      "kalut": "North Kalimantan",
+      "sumsel": "South Sumatra",
+      "bengkulu": "Bengkulu",
+      "sulteng": "Central Sulawesi",
+      "ntt": "East Nusa Tenggara"
+    }
+  },
+  "projects all": "All Projects",
+  "projects geologi": "Geological Consulting",
+  "projects geoteknik": "Geotechnical & Hydrogeology",
+  "projects lingkungan": "Environmental & Social",
+  "projects manajemen": "Contractor & Mine Management",
+  "projects_page": {
+    "heading": "Our Projects",
+    "subheading": "Explore our track record of exploration and mine management portfolios across Indonesia.",
+    "no_results": "No projects found for this category.",
+    "view_details": "View Project Details"
+  },
+  "project_detail": {
+    "back": "Back to Projects",
+    "overview": "Project Overview",
+    "gallery": "Project Gallery",
+    "scope": "Scope of Work",
+    "need_similar": "Need Similar Services?",
+    "consult_need": "Consult your company's exploration and mining management needs with our expert team.",
+    "consult_now": "Consult Now"
+  },
+  "client_logos": {
+    "heading": "Trusted By"
+  },
+  "whyChooseUs": {
+    "eyebrow": "WHY CHOOSE US",
+    "heading": "Our Competitive Advantage",
+    "items": [
+      { "title": "Experienced Industry Experts", "description": "Over 15 years of solid experience in the Indonesian mining sector with official CPI certified experts." },
+      { "title": "Safety First Commitment", "description": "Zero compromise on occupational health and safety (Zero Accident) and environmental protection." },
+      { "title": "Modern Exploration Technology", "description": "Deploying latest international standard geological mapping software and geotechnical instruments." },
+      { "title": "Sustainable Practices", "description": "Fully committed to Good Mining Practice and environmentally responsible operations." }
+    ]
+  },
+  "stats_bar": {
+    "about_label": "ABOUT US",
+    "learn_more": "Learn More",
+    "statement": "OUR COMMITMENT IN GEOLOGICAL CONSULTING & MINE MANAGEMENT DELIVERS REAL SOLUTIONS FOR INDONESIA'S MINING ADVANCEMENT",
+    "exp_title": "Years of Expert Experience",
+    "exp_desc": "Certified CPI experts with an extensive track record across the Indonesian mining sector.",
+    "support_title": "24/7 Technical Support & Oversight",
+    "support_desc": "Intensive field team readiness for monitoring and controlling mine operations.",
+    "val_title": "Project Valuation (USD)",
+    "val_desc": "Total valuation and feasibility evaluations of mining projects successfully handled."
+  },
+  "testimonials": {
+    "eyebrow": "CLIENT TESTIMONIALS",
+    "heading": "What Our Clients & Partners Say"
+  },
+  "team": {
+    "eyebrow": "OUR EXPERT TEAM",
+    "heading": "Certified CPI & Technical Experts",
+    "view_all": "View All Team Members"
+  },
+  "contactCTA": {
+    "heading": "Consult Your Project Needs",
+    "form": {
+      "name": "Full Name",
+      "email": "Email Address",
+      "phone": "WhatsApp / Phone Number",
+      "message": "Message or Project Requirements",
+      "submit": "Submit Consultation",
+      "success": "Message sent successfully! Our team will contact you shortly."
+    }
+  },
+  "finalCTA": {
+    "heading": "Ready to Optimize Your Mining Project?",
+    "subheading": "Partner with an official IUJP licensed mining consultant for accurate, efficient, and sustainable results.",
+    "cta": "Start Consultation Now"
+  },
+  "closing_cta": {
+    "heading": "Have a mining project that needs technical support?",
+    "description": "Consult your exploration, geotechnical, and mine management needs with our team of experts.",
+    "cta": "Contact via WhatsApp"
+  },
+  "about": {
+    "eyebrow": "ABOUT US",
+    "heading": "Your Trusted Mining Solution Partner",
+    "description": "Since 2014, PT Lugas Inti Semesta has been dedicated to providing geological, geotechnical, and coal & mineral mine management consulting services.",
+    "description2": "Supported by certified Competent Person Indonesia (CPI) experts and official IUJP license No. 738/1/IUJP/PMDN/2021, we deliver optimal solutions.",
+    "cta": "Download Company Profile",
+    "page_title": "About PT Lugas Inti Semesta",
+    "background_heading": "Background",
+    "background_text": "PT Lugas Inti Semesta was established to provide services in geology, exploration, mine management assistance, mining contractor services, geotechnics, hydrology and hydrogeology, as well as environmental and social expertise including social mapping, document preparation, and public consultation support.",
+    "vision_heading": "Vision",
+    "vision_text": "To be a trusted partner, providing appropriate and effective solutions in the mining industry.",
+    "mission_heading": "Mission",
+    "mission_text": "To provide the best professional services to mining companies in various operational aspects.",
+    "legality_heading": "Company Legality",
+    "legality_iujp": "IUJP No. 738/1/IUJP/PMDN/2021",
+    "legality_class": "Technical and Management Consulting Classification for Coal and Mineral Mining Industry",
+    "legality_founded": "Established in 2014 in Bekasi",
+    "legality_cpi": "Supported by certified Competent Person Indonesia (CPI) experts",
+    "team_heading": "Our Expert Team",
+    "team_placeholder": "Expert team data will be displayed soon."
+  },
+  "contact": {
+    "page_title": "Contact Us",
+    "form_name": "Name",
+    "form_company": "Company",
+    "form_position": "Position",
+    "form_service": "Service of Interest",
+    "form_message": "Message",
+    "form_submit": "Send Message",
+    "address_heading": "Office Address",
+    "address": "Plaza Summarecon Bekasi Lt. 7, Jl. Bulevar Ahmad Yani Kav. K.01, Harapan Mulya, Medan Satria, Kota Bekasi, Jawa Barat 17143",
+    "phone1_label": "Wawan Gunawan (WA)",
+    "phone1": "0817-0045-831",
+    "phone2_label": "Sudaryat (WA/Call)",
+    "phone2": "0811-5965-436",
+    "office_phone": "021-86907097",
+    "email": "luise.lugas@gmail.com",
+    "hours": "Monday–Friday, 08:00–17:00 WIB",
+    "select_service": "Select Service",
+    "phone_heading": "Phone",
+    "email_heading": "Email",
+    "hours_heading": "Operating Hours",
+    "whatsapp_cta": "Contact via WhatsApp",
+    "hours_note": "TODO: confirm with client"
+  },
+  "insight": {
+    "page_title": "Insight",
+    "subheading": "Articles and insights about the Indonesian mining industry.",
+    "categories": "Categories",
+    "popular": "Popular Articles",
+    "read_more": "Read More",
+    "share": "Share Article",
+    "artikel": "Articles",
+    "regulasi": "Regulations",
+    "company_update": "Company Updates",
+    "mining_knowledge": "Mining Knowledge"
+  },
+  "footer": {
+    "description": "Exploration & Mine Management Consultant. Trusted partner for mining solutions in Indonesia since 2014.",
+    "quick_links": "Quick Links",
+    "contact_us": "Contact Us",
+    "contact_title": "Contact Us",
+    "career": "Career",
+    "copyright": "© 2026 PT Lugas Inti Semesta. All rights reserved.",
+    "language_choice": "Language Choice:",
+    "office_phone_prefix": "Office:",
+    "sitemap": "Sitemap (Full Sitemap)",
+    "main_menu": "Main Menu"
+  },
+  "projects_tab": {
+    "daftar_proyek": "Project List",
+    "interactive_map": "Interactive Map",
+    "studi_kasus": "Case Studies",
+    "dokumentasi": "Documentation"
+  }
+}
