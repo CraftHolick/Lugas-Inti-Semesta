@@ -1,7 +1,5 @@
 -- 001_initial_schema.sql
 
--- Enable UUID extension
-CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 -- 1. PROFILES (Extends auth.users)
 CREATE TABLE public.profiles (
@@ -52,16 +50,12 @@ SECURITY DEFINER
 SET search_path = ''
 AS $$
 BEGIN
-  IF TG_OP = 'INSERT' THEN
-    INSERT INTO public.public_author_profiles (id, display_name, avatar_url)
-    VALUES (NEW.id, NEW.full_name, NEW.avatar_url);
-  ELSIF TG_OP = 'UPDATE' THEN
-    UPDATE public.public_author_profiles
-    SET display_name = NEW.full_name,
-        avatar_url = NEW.avatar_url,
-        updated_at = now()
-    WHERE id = NEW.id;
-  END IF;
+  INSERT INTO public.public_author_profiles (id, display_name, avatar_url, updated_at)
+  VALUES (NEW.id, NEW.full_name, NEW.avatar_url, now())
+  ON CONFLICT (id) DO UPDATE
+  SET display_name = EXCLUDED.display_name,
+      avatar_url = EXCLUDED.avatar_url,
+      updated_at = EXCLUDED.updated_at;
   RETURN NEW;
 END;
 $$;
@@ -91,7 +85,7 @@ CREATE TRIGGER on_auth_user_created
 
 -- 2. ARTICLE CATEGORIES & TAGS
 CREATE TABLE public.article_categories (
-  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   name TEXT NOT NULL UNIQUE,
   slug TEXT NOT NULL UNIQUE,
   description TEXT,
@@ -100,7 +94,7 @@ CREATE TABLE public.article_categories (
 );
 
 CREATE TABLE public.article_tags (
-  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   name TEXT NOT NULL UNIQUE,
   slug TEXT NOT NULL UNIQUE,
   created_at TIMESTAMPTZ NOT NULL DEFAULT now()
@@ -109,7 +103,7 @@ CREATE TABLE public.article_tags (
 
 -- 3. ARTICLES
 CREATE TABLE public.articles (
-  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   status TEXT NOT NULL DEFAULT 'draft' CHECK (status IN ('draft', 'published', 'archived')),
   featured BOOLEAN NOT NULL DEFAULT false,
   author_id UUID NOT NULL REFERENCES public.profiles(id),
@@ -124,7 +118,7 @@ CREATE TABLE public.articles (
 
 -- Article Translations
 CREATE TABLE public.article_translations (
-  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   article_id UUID NOT NULL REFERENCES public.articles(id) ON DELETE CASCADE,
   locale TEXT NOT NULL CHECK (locale IN ('id', 'en', 'zh')),
   title TEXT NOT NULL,
@@ -141,7 +135,7 @@ CREATE TABLE public.article_translations (
 
 -- Article-Tag Relations
 CREATE TABLE public.article_tag_relations (
-  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   article_id UUID NOT NULL REFERENCES public.articles(id) ON DELETE CASCADE,
   tag_id UUID NOT NULL REFERENCES public.article_tags(id) ON DELETE CASCADE,
   UNIQUE(article_id, tag_id)
@@ -150,7 +144,7 @@ CREATE TABLE public.article_tag_relations (
 
 -- 4. SERVICES & PROJECTS
 CREATE TABLE public.services (
-  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   name TEXT NOT NULL,
   slug TEXT NOT NULL UNIQUE,
   description TEXT,
@@ -160,7 +154,7 @@ CREATE TABLE public.services (
 );
 
 CREATE TABLE public.projects (
-  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   service_id UUID REFERENCES public.services(id) ON DELETE SET NULL,
   client_name TEXT,
   province_code TEXT,
@@ -179,7 +173,7 @@ CREATE TABLE public.projects (
 
 -- Project Translations
 CREATE TABLE public.project_translations (
-  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   project_id UUID NOT NULL REFERENCES public.projects(id) ON DELETE CASCADE,
   locale TEXT NOT NULL CHECK (locale IN ('id', 'en', 'zh')),
   title TEXT NOT NULL,
@@ -200,7 +194,7 @@ CREATE TABLE public.project_translations (
 
 -- Project Gallery Images
 CREATE TABLE public.project_images (
-  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   project_id UUID NOT NULL REFERENCES public.projects(id) ON DELETE CASCADE,
   image_url TEXT NOT NULL,
   caption TEXT,
@@ -225,7 +219,6 @@ CREATE INDEX idx_project_images_project ON public.project_images(project_id);
 CREATE OR REPLACE FUNCTION public.update_updated_at()
 RETURNS TRIGGER
 LANGUAGE plpgsql
-SECURITY DEFINER
 SET search_path = ''
 AS $$
 BEGIN
@@ -239,3 +232,11 @@ CREATE TRIGGER article_translations_updated_at BEFORE UPDATE ON public.article_t
 CREATE TRIGGER projects_updated_at BEFORE UPDATE ON public.projects FOR EACH ROW EXECUTE FUNCTION public.update_updated_at();
 CREATE TRIGGER project_translations_updated_at BEFORE UPDATE ON public.project_translations FOR EACH ROW EXECUTE FUNCTION public.update_updated_at();
 CREATE TRIGGER profiles_updated_at BEFORE UPDATE ON public.profiles FOR EACH ROW EXECUTE FUNCTION public.update_updated_at();
+
+-- 6. FUNCTION EXECUTION PERMISSIONS
+REVOKE ALL ON FUNCTION public.update_own_profile(TEXT, TEXT) FROM PUBLIC;
+GRANT EXECUTE ON FUNCTION public.update_own_profile(TEXT, TEXT) TO authenticated;
+
+REVOKE ALL ON FUNCTION public.sync_public_author_profile() FROM PUBLIC;
+REVOKE ALL ON FUNCTION public.handle_new_user() FROM PUBLIC;
+REVOKE ALL ON FUNCTION public.update_updated_at() FROM PUBLIC;

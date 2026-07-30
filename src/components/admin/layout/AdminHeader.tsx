@@ -4,7 +4,7 @@ import { User } from '@supabase/supabase-js';
 import { createClient } from '@/lib/supabase/client';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
-import { LogOut, Menu } from 'lucide-react';
+import { LogOut, Menu, ExternalLink } from 'lucide-react';
 import Link from 'next/link';
 
 interface AdminHeaderProps {
@@ -37,9 +37,10 @@ export default function AdminHeader({ user, userRole }: AdminHeaderProps) {
         <Link 
           href="/" 
           target="_blank" 
-          className="text-sm text-accent hover:underline hidden sm:inline-block"
+          rel="noopener noreferrer"
+          className="text-sm text-accent hover:underline hidden sm:flex items-center gap-1 font-medium"
         >
-          Lihat Website &nearr;
+          Lihat Website <ExternalLink className="w-3.5 h-3.5" />
         </Link>
         
         <div className="h-6 w-px bg-gray-200 hidden sm:block"></div>

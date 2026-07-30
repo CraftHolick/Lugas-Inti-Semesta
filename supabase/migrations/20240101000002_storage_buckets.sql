@@ -4,10 +4,8 @@
 INSERT INTO storage.buckets (id, name, public, file_size_limit, allowed_mime_types)
 VALUES 
   ('article-images', 'article-images', true, 5242880, ARRAY['image/jpeg', 'image/png', 'image/webp']),
-  ('project-images', 'project-images', true, 10485760, ARRAY['image/jpeg', 'image/png', 'image/webp']);
-
--- Enable RLS on storage.objects
-ALTER TABLE storage.objects ENABLE ROW LEVEL SECURITY;
+  ('project-images', 'project-images', true, 10485760, ARRAY['image/jpeg', 'image/png', 'image/webp'])
+ON CONFLICT (id) DO NOTHING;
 
 -- Helper function to check role since storage operations don't easily join to profiles
 CREATE OR REPLACE FUNCTION public.get_storage_user_role()

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Manrope } from "next/font/google";
 import "./globals.css";
-import { ClientProviders } from "@/components/layout/ClientProviders";
 
 const inter = Inter({
   variable: "--font-sans",
@@ -58,7 +57,7 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col bg-white text-text-dark">
-        <ClientProviders>{children}</ClientProviders>
+        {children}
       </body>
     </html>
   );

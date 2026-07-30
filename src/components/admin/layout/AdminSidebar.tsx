@@ -24,10 +24,6 @@ export default function AdminSidebar({ userRole }: AdminSidebarProps) {
     { href: '/admin', label: 'Dashboard', icon: LayoutDashboard, roles: ['admin', 'editor'] },
     { href: '/admin/articles', label: 'Artikel Blog', icon: FileText, roles: ['admin', 'editor'] },
     { href: '/admin/projects', label: 'Proyek', icon: FolderGit2, roles: ['admin', 'editor'] },
-    { href: '/admin/categories', label: 'Kategori', icon: Tags, roles: ['admin', 'editor'] },
-    { href: '/admin/media', label: 'Media', icon: ImageIcon, roles: ['admin', 'editor'] },
-    { href: '/admin/users', label: 'Pengguna', icon: Users, roles: ['admin'] },
-    { href: '/admin/settings', label: 'Pengaturan', icon: Settings, roles: ['admin'] },
   ];
 
   const visibleNavItems = navItems.filter(item => item.roles.includes(userRole));
