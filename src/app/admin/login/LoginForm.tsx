@@ -11,7 +11,7 @@ interface LoginFormProps {
   error?: string;
 }
 
-export default function LoginForm({ redirectedFrom = '/admin', error: urlError }: LoginFormProps) {
+export default function LoginForm({ redirectedFrom = '/admin/articles', error: urlError }: LoginFormProps) {
   const router = useRouter();
 
   const [email, setEmail] = useState('');

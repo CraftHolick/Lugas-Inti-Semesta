@@ -6,34 +6,90 @@ import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import Image from 'next/image';
-import { insights } from '@/data/insights';
+import { getArticleImageUrl } from '@/lib/supabase/storage-url';
 
-export default function InsightPageClient() {
+interface InsightArticle {
+  id: string;
+  slug: string;
+  title: string;
+  excerpt: string;
+  type: string;
+  typeSlug: string;
+  topic: string | null;
+  topicSlug: string | null;
+  date: string;
+  image?: string | null;
+  author: string;
+  source?: 'cms' | 'legacy';
+}
+
+interface Category {
+  name: string;
+  slug: string;
+}
+
+export default function InsightPageClient({ 
+  initialArticles, 
+  initialTypes,
+  initialTopics 
+}: { 
+  initialArticles: InsightArticle[], 
+  initialTypes: Category[],
+  initialTopics: Category[] 
+}) {
   const { t } = useTranslation();
-  const [activeCategory, setActiveCategory] = useState<string>('all');
+  const [activeType, setActiveType] = useState<string>('all');
+  const [activeTopic, setActiveTopic] = useState<string>('all');
 
-  const categories = useMemo(() => [
-    { label: 'Semua', value: 'all' },
-    { label: 'Artikel', value: 'Artikel' },
-    { label: 'Regulasi', value: 'Regulasi' },
-    { label: 'Company Update', value: 'Company Update' },
-    { label: 'Mining Knowledge', value: 'Mining Knowledge' },
-  ], []);
+  const types = useMemo(() => {
+    return [
+      { label: 'Semua', value: 'all' },
+      ...initialTypes.map(c => ({ label: c.name, value: c.slug }))
+    ];
+  }, [initialTypes]);
 
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    const catParam = searchParams.get('cat');
-    if (catParam) {
-      const cat = categories.find(c => c.value.toLowerCase().replace(' ', '_') === catParam.toLowerCase());
-      if (cat) setActiveCategory(cat.value);
+    const typeParam = searchParams.get('type');
+    if (typeParam) {
+      const type = types.find(t => t.value.toLowerCase().replace(' ', '_') === typeParam.toLowerCase());
+      if (type) setActiveType(type.value);
     }
-  }, [searchParams, categories]);
+  }, [searchParams, types]);
+
+  // Reset topic when type changes
+  useEffect(() => {
+    setActiveTopic('all');
+  }, [activeType]);
+
+  const availableTopics = useMemo(() => {
+    if (activeType === 'all') return [];
+    
+    // Find articles for this type
+    const articlesForType = initialArticles.filter(a => a.typeSlug === activeType);
+    const usedTopicSlugs = new Set(articlesForType.map(a => a.topicSlug).filter(Boolean));
+    
+    if (usedTopicSlugs.size === 0) return [];
+    
+    const usedTopics = initialTopics.filter(t => usedTopicSlugs.has(t.slug));
+    
+    return [
+      { label: 'Semua Topik', value: 'all' },
+      ...usedTopics.map(t => ({ label: t.name, value: t.slug }))
+    ];
+  }, [activeType, initialArticles, initialTopics]);
 
   const filteredInsights = useMemo(() => {
-    if (activeCategory === 'all') return insights;
-    return insights.filter(item => item.category.toLowerCase() === activeCategory.toLowerCase());
-  }, [activeCategory]);
+    let result = initialArticles;
+    if (activeType !== 'all') {
+      result = result.filter(item => item.typeSlug === activeType);
+    }
+    if (activeTopic !== 'all') {
+      result = result.filter(item => item.topicSlug === activeTopic);
+    }
+    return result;
+  }, [activeType, activeTopic, initialArticles]);
 
   return (
     <main className="min-h-screen bg-bg-light pb-24 text-text-dark">
@@ -62,25 +118,57 @@ export default function InsightPageClient() {
       {/* Blog Grid with Category Filters */}
       <section className="py-16 section-padding">
         <div className="container-custom">
-          {/* Category Tabs */}
-          <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 mb-12">
-            {categories.map((cat) => (
-              <button
-                key={cat.value}
-                onClick={() => setActiveCategory(cat.value)}
-                className={cn(
-                  "px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 outline-none shadow-sm",
-                  activeCategory === cat.value
-                    ? "bg-accent text-white shadow-md scale-105"
-                    : "bg-white text-text-muted hover:text-text-dark hover:bg-gray-100 border border-border-light"
-                )}
-              >
-                {cat.label}
-              </button>
-            ))}
+          <div className="flex flex-col items-center mb-12">
+            {/* Content Type Tabs */}
+            <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3">
+              {types.map((type) => (
+                <button
+                  key={type.value}
+                  onClick={() => setActiveType(type.value)}
+                  className={cn(
+                    "px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 outline-none shadow-sm",
+                    activeType === type.value
+                      ? "bg-accent text-white shadow-md scale-105"
+                      : "bg-white text-text-muted hover:text-text-dark hover:bg-gray-100 border border-border-light"
+                  )}
+                >
+                  {type.label}
+                </button>
+              ))}
+            </div>
+
+            {/* Secondary Topic Tabs */}
+            {availableTopics.length > 2 && (
+              <div className="mt-5 flex flex-col items-center animate-in fade-in slide-in-from-top-2 duration-300">
+                <span className="text-[11px] font-medium text-gray-400 uppercase tracking-wider mb-2">
+                  Filter berdasarkan topik:
+                </span>
+                <div className="flex flex-wrap items-center justify-center gap-2">
+                  {availableTopics.map((topic) => (
+                    <button
+                      key={topic.value}
+                      onClick={() => setActiveTopic(topic.value)}
+                      className={cn(
+                        "px-3 py-1.5 rounded-full text-[11px] sm:text-xs font-medium transition-all duration-200 outline-none",
+                        activeTopic === topic.value
+                          ? "bg-navy-800 text-white shadow-sm"
+                          : "bg-gray-100 text-gray-500 hover:text-gray-800 hover:bg-gray-200"
+                      )}
+                    >
+                      {topic.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredInsights.length === 0 && (
+              <div className="col-span-full text-center py-12 text-text-muted">
+                Belum ada artikel di kategori ini.
+              </div>
+            )}
             {filteredInsights.map((article, idx) => (
               <motion.div
                 key={article.id}
@@ -91,7 +179,7 @@ export default function InsightPageClient() {
               >
                 <Link href={`/insight/${article.slug}`} className="relative h-52 w-full bg-bg-light overflow-hidden block">
                   <Image 
-                    src={article.image || "https://images.unsplash.com/photo-1579547621706-1a9c79d5c9f1?w=800&q=80"}
+                    src={getArticleImageUrl(article.image) || "https://images.unsplash.com/photo-1579547621706-1a9c79d5c9f1?w=800&q=80"}
                     alt={article.title}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
@@ -100,7 +188,10 @@ export default function InsightPageClient() {
                 <div className="p-6 flex flex-col flex-grow justify-between">
                   <div>
                     <div className="flex items-center justify-between text-xs font-semibold mb-3">
-                      <span className="text-accent uppercase tracking-wider">{article.category}</span>
+                      <div className="flex flex-col">
+                        <span className="text-accent uppercase tracking-wider font-bold">{article.type}</span>
+                        {article.topic && <span className="text-gray-500 font-medium text-[10px] uppercase tracking-wider">{article.topic}</span>}
+                      </div>
                       <span className="text-text-muted">{article.date}</span>
                     </div>
                     <Link href={`/insight/${article.slug}`}>

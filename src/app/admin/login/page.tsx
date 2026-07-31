@@ -5,7 +5,7 @@ export default async function LoginPage(props: {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }) {
   const searchParams = await props.searchParams;
-  const redirectedFrom = typeof searchParams.redirectedFrom === 'string' ? searchParams.redirectedFrom : '/admin';
+  const redirectedFrom = typeof searchParams.redirectedFrom === 'string' ? searchParams.redirectedFrom : '/admin/articles';
   const error = typeof searchParams.error === 'string' ? searchParams.error : undefined;
 
   return (
@@ -16,9 +16,9 @@ export default async function LoginPage(props: {
             <Image
               src="/luise-logo.png"
               alt="LUISE Logo"
-              width={150}
-              height={50}
-              className="h-12 w-auto object-contain"
+              width={260}
+              height={90}
+              className="h-24 w-auto object-contain"
             />
           </div>
           

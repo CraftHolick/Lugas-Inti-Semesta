@@ -29,7 +29,7 @@ export default function AdminHeader({ user, userRole }: AdminHeaderProps) {
           <Menu className="w-6 h-6" />
         </button>
         <div className="font-medium text-gray-900 truncate max-w-[200px] sm:max-w-xs">
-          CMS Dashboard
+          CMS Artikel
         </div>
       </div>
       

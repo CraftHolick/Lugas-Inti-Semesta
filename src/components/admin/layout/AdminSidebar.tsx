@@ -1,16 +1,11 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { 
-  LayoutDashboard, 
-  FileText, 
-  FolderGit2, 
-  Tags, 
-  Image as ImageIcon, 
-  Users, 
-  Settings 
+  FileText
 } from 'lucide-react';
 
 interface AdminSidebarProps {
@@ -21,26 +16,30 @@ export default function AdminSidebar({ userRole }: AdminSidebarProps) {
   const pathname = usePathname();
 
   const navItems = [
-    { href: '/admin', label: 'Dashboard', icon: LayoutDashboard, roles: ['admin', 'editor'] },
     { href: '/admin/articles', label: 'Artikel Blog', icon: FileText, roles: ['admin', 'editor'] },
-    { href: '/admin/projects', label: 'Proyek', icon: FolderGit2, roles: ['admin', 'editor'] },
   ];
 
   const visibleNavItems = navItems.filter(item => item.roles.includes(userRole));
 
   return (
     <aside className="w-64 bg-navy-950 border-r border-navy-900 text-gray-300 hidden md:flex flex-col">
-      <div className="h-16 flex items-center px-6 border-b border-navy-900 shrink-0">
-        <span className="font-heading font-bold text-xl text-white tracking-wide">
-          LUISE <span className="text-accent">CMS</span>
-        </span>
+      <div className="h-24 flex items-center justify-start px-6 border-b border-navy-900 shrink-0">
+        <Link href="/admin/articles" className="flex items-center justify-start w-full">
+          <Image 
+            src="/luise-logo.png" 
+            alt="LUISE Logo" 
+            width={220} 
+            height={80} 
+            className="h-16 w-auto object-contain origin-left scale-110"
+          />
+        </Link>
       </div>
       
       <div className="flex-1 py-6 overflow-y-auto">
         <nav className="space-y-1 px-3">
           {visibleNavItems.map((item) => {
             const Icon = item.icon;
-            const isActive = pathname === item.href || pathname.startsWith(`${item.href}/`);
+            const isActive = pathname.startsWith(item.href);
             
             return (
               <Link
