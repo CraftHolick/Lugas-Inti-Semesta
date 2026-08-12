@@ -1,11 +1,10 @@
-import { createClient } from '@/lib/supabase/server';
 import ArticleForm from '@/components/admin/articles/ArticleForm';
 import { ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 
 export const metadata = { title: 'Buat Artikel Baru | CMS LUISE' };
 
-export default async function CreateArticlePage() {
+export default function CreateArticlePage() {
   return (
     <div className="space-y-6">
       <div className="flex items-center gap-4 mb-6">

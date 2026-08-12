@@ -8,24 +8,46 @@ export interface Project {
   scopeEn: string;
   scopeZh?: string;
   scope?: string;
-  province: string;
+  province?: string;
   provinceEn?: string;
   provinceZh?: string;
-  location: string;
+  location?: string;
   locationEn?: string;
   locationZh?: string;
-  year: string | number;
+  year?: string | number;
   status: 'selesai' | 'berjalan';
   category: string;
-  lat: number;
-  lng: number;
+  lat?: number;
+  lng?: number;
   featured: boolean;
   image?: string;
   gallery?: string[];
+  /** Whether core project facts (location, year, scope, coordinates) have been verified */
+  verified?: boolean;
+  /** Optional small client logo path */
+  clientLogo?: string;
 }
 
-// TODO: update with precise coordinates and real images for each project. Currently using province centroids and Unsplash placeholders.
-const defaultImage = "https://images.unsplash.com/photo-1578507065211-1c4e99a5fd24?auto=format&fit=crop&q=80&w=800";
+// NOTE on naming discrepancies (preserved from CSV, pending client approval):
+// - "PT Berkat Bhumi Abadi": public registry may reference "PT Berkat Bumi Abadi". Do not change without client approval.
+// - "PT Berkarya Abadi Selalu": some materials may use "Bekarya". Do not change without client approval.
+
+// Placeholder images for projects without documentation photos
+// Downloaded locally to avoid external dependencies
+const imgMiningTeam = "/images/placeholders/mining-team.jpg";       // Tim tambang di open pit mine
+const imgSurveyGeo = "/images/placeholders/surveyor-geology.jpg";   // Surveyor dengan alat ukur geologi
+const imgMiningCrew = "/images/placeholders/mining-crew.jpg";       // Kru tambang di area operasi
+const imgGeoSurvey = "/images/placeholders/geological-survey.jpg"; // Konsultasi & survei geologi
+
+// Neutral description for unverified project cards
+const neutralDesc = "Pendampingan teknis dan konsultasi sesuai kebutuhan proyek.";
+const neutralDescEn = "Technical assistance and consulting tailored to project needs.";
+const neutralDescZh = "根据项目需求提供技术援助和咨询服务。";
+
+// Neutral detail-page description for unverified projects
+const neutralDetailDesc = "Informasi rinci mengenai ruang lingkup dan pelaksanaan proyek akan diperbarui setelah proses verifikasi data.";
+const neutralDetailDescEn = "Detailed information regarding the scope and implementation of this project will be updated after data verification.";
+const neutralDetailDescZh = "有关该项目范围和实施的详细信息将在数据验证后更新。";
 
 export const projects: Project[] = [
   {
@@ -50,10 +72,11 @@ export const projects: Project[] = [
     lat: -1.6815,
     lng: 113.3824,
     featured: true,
-    image: "https://images.unsplash.com/photo-1578507065211-1c4e99a5fd24?auto=format&fit=crop&q=80&w=800",
+    verified: true,
+    image: "/Dokumentasi/FOTO-FOTO KEGIATAN PROJECT LUGAS/FOTO KEGIATAN DRILLING PT HARFA TARUNA MANDIRI/DRILLING ACTIVITY/IMG_20230812_093745.jpg",
     gallery: [
-      "https://images.unsplash.com/photo-1578507065211-1c4e99a5fd24?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1513828583688-c52646db42da?w=800&q=80"
+      "/Dokumentasi/FOTO-FOTO KEGIATAN PROJECT LUGAS/FOTO KEGIATAN DRILLING PT HARFA TARUNA MANDIRI/DRILLING ACTIVITY/IMG_20230812_093745.jpg",
+      "/Dokumentasi/FOTO-FOTO KEGIATAN PROJECT LUGAS/FOTO KEGIATAN DRILLING PT HARFA TARUNA MANDIRI/DRILLING ACTIVITY/20230812_143302.jpg"
     ]
   },
   {
@@ -78,10 +101,11 @@ export const projects: Project[] = [
     lat: -3.0926,
     lng: 115.2838,
     featured: true,
-    image: "https://images.unsplash.com/photo-1579547621706-1a9c79d5c9f1?w=800&q=80",
+    verified: true,
+    image: "/Dokumentasi/FOTO-FOTO KEGIATAN PROJECT LUGAS/Instalasi Pipa GDC_055A_5(31 Oktober 2024) CV. Selagai Jaya.jpeg",
     gallery: [
-      "https://images.unsplash.com/photo-1579547621706-1a9c79d5c9f1?w=800&q=80",
-      "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&q=80"
+      "/Dokumentasi/FOTO-FOTO KEGIATAN PROJECT LUGAS/Instalasi Pipa GDC_055A_5(31 Oktober 2024) CV. Selagai Jaya.jpeg",
+      "/Dokumentasi/FOTO-FOTO KEGIATAN PROJECT LUGAS/Pengujian Slug Test GDC_071 Tahap 1_2 (23 November 2024) CV. Selagai Jaya.jpg"
     ]
   },
   {
@@ -106,9 +130,10 @@ export const projects: Project[] = [
     lat: -3.0926,
     lng: 115.2838,
     featured: true,
-    image: "https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=800&q=80",
+    verified: true,
+    image: imgMiningCrew,
     gallery: [
-      "https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=800&q=80"
+      imgMiningCrew
     ]
   },
   {
@@ -133,7 +158,8 @@ export const projects: Project[] = [
     lat: -1.6815,
     lng: 113.3824,
     featured: true,
-    image: "https://images.unsplash.com/photo-1513828583688-c52646db42da?w=800&q=80",
+    verified: true,
+    image: "/Dokumentasi/FOTO-FOTO KEGIATAN PROJECT LUGAS/PT. Graha Equity Invesment, Zircon Mine Area Opening.png",
     gallery: []
   },
   {
@@ -158,7 +184,8 @@ export const projects: Project[] = [
     lat: -1.6815,
     lng: 113.3824,
     featured: true,
-    image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&q=80",
+    verified: true,
+    image: "/Dokumentasi/FOTO-FOTO KEGIATAN PROJECT LUGAS/Batubara-Fm.-Tanjung-1.jpg",
     gallery: []
   },
   {
@@ -183,33 +210,473 @@ export const projects: Project[] = [
     lat: -1.4300,
     lng: 121.4456,
     featured: true,
-    image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&q=80",
+    verified: true,
+    image: imgGeoSurvey,
     gallery: []
   },
-  // 19+ more projects with placeholder data
-  ...Array.from({ length: 19 }).map((_, i) => ({
-    id: `proj-placeholder-${i + 7}`,
-    slug: `proj-placeholder-${i + 7}`,
-    title: `Client Placeholder ${i + 7}`,
-    description: `Cakupan Kerja Placeholder ${i + 7} untuk evaluasi dan konsultasi pertambangan.`,
-    client: `Client Placeholder ${i + 7}`,
-    scopeId: `Cakupan Kerja Placeholder ${i + 7}`,
-    scopeEn: `Scope Placeholder ${i + 7}`,
-    scopeZh: `勘探与咨询工作范围示例 ${i + 7}`,
-    scope: `Cakupan Kerja ${i + 7}`,
-    province: ["Kalimantan Timur", "Kalimantan Utara", "Bengkulu", "Sumatera Selatan", "Nusa Tenggara Timur"][i % 5],
-    provinceEn: ["East Kalimantan", "North Kalimantan", "Bengkulu", "South Sumatra", "East Nusa Tenggara"][i % 5],
-    provinceZh: ["东加里曼丹省", "北加里曼丹省", "明古鲁省", "南苏门答腊省", "东努沙登加拉省"][i % 5],
-    location: `Lokasi ${i + 7}`,
-    locationEn: `Location ${i + 7}`,
-    locationZh: `矿区位置 ${i + 7}`,
-    year: "2023",
-    status: "selesai" as const,
-    category: ["konsultasi-geologi", "geoteknik-hidrologi-hidrogeologi", "konsultasi-pertambangan", "lingkungan-sosial", "mine-management", "mine-contractor"][i % 6],
-    lat: [0.5387, 2.7256, -3.5778, -3.3194, -8.6574][i % 5],
-    lng: [116.4194, 116.9114, 102.3464, 104.9147, 121.0794][i % 5],
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // Placeholder 7–25 replacements: Real client names from client-logo-audit.csv
+  // Status: "Temporary public population — project facts pending verification"
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  {
+    id: "proj-7",
+    slug: "proj-7-graha-equity-2",
+    title: "PT Graha Equity Investment",
+    description: neutralDesc,
+    client: "PT Graha Equity Investment",
+    scopeId: neutralDetailDesc,
+    scopeEn: neutralDetailDescEn,
+    scopeZh: neutralDetailDescZh,
+    province: "Kalimantan Tengah",
+    provinceEn: "Central Kalimantan",
+    provinceZh: "中加里曼丹省",
+    location: "Kapuas",
+    locationEn: "Kapuas",
+    locationZh: "卡普阿斯县",
+    status: "selesai",
+    category: "konsultasi-pertambangan",
+    lat: -2.3530,
+    lng: 114.3490,
     featured: false,
-    image: defaultImage,
+    verified: true,
+    image: "/Dokumentasi/FOTO-FOTO KEGIATAN PROJECT LUGAS/PT GEI MINE MANAGEMENT.png",
     gallery: []
-  })),
+  },
+  {
+    id: "proj-8",
+    slug: "proj-8-pratama-bersama",
+    title: "PT Pratama Bersama",
+    description: neutralDesc,
+    client: "PT Pratama Bersama",
+    scopeId: neutralDetailDesc,
+    scopeEn: neutralDetailDescEn,
+    scopeZh: neutralDetailDescZh,
+    province: "Kalimantan Tengah",
+    provinceEn: "Central Kalimantan",
+    provinceZh: "中加里曼丹省",
+    location: "Kalimantan Tengah",
+    locationEn: "Central Kalimantan",
+    locationZh: "中加里曼丹省",
+    status: "selesai",
+    category: "konsultasi-pertambangan",
+    lat: -1.6815,
+    lng: 113.3824,
+    featured: false,
+    verified: true,
+    image: imgMiningTeam,
+    gallery: []
+  },
+  {
+    id: "proj-9",
+    slug: "proj-9-berkat-bhumi-abadi",
+    title: "PT Berkat Bhumi Abadi",
+    description: neutralDesc,
+    client: "PT Berkat Bhumi Abadi",
+    scopeId: neutralDetailDesc,
+    scopeEn: neutralDetailDescEn,
+    scopeZh: neutralDetailDescZh,
+    province: "Kalimantan Tengah",
+    provinceEn: "Central Kalimantan",
+    provinceZh: "中加里曼丹省",
+    location: "Barito Utara",
+    locationEn: "North Barito",
+    locationZh: "北巴里托县",
+    status: "selesai",
+    category: "konsultasi-geologi",
+    lat: -1.1934,
+    lng: 115.0194,
+    featured: false,
+    verified: true,
+    // Thumbnail: related documentation photo referencing PT Berkah Bhumi Abadi
+    image: "/Dokumentasi/FOTO-FOTO KEGIATAN PROJECT LUGAS/PT. Bumi Nusantara Jaya, Measurement of Coal Outcrop Thickness IUP PT. Berkah Bhumi Abadi.png",
+    gallery: []
+  },
+  {
+    id: "proj-10",
+    slug: "proj-10-nuri-kirana-sentosa",
+    title: "PT Nuri Kirana Sentosa",
+    description: neutralDesc,
+    client: "PT Nuri Kirana Sentosa",
+    scopeId: neutralDetailDesc,
+    scopeEn: neutralDetailDescEn,
+    scopeZh: neutralDetailDescZh,
+    province: "Kalimantan Tengah",
+    provinceEn: "Central Kalimantan",
+    provinceZh: "中加里曼丹省",
+    location: "Kalimantan Tengah",
+    locationEn: "Central Kalimantan",
+    locationZh: "中加里曼丹省",
+    status: "selesai",
+    category: "konsultasi-pertambangan",
+    lat: -1.8500,
+    lng: 113.9213,
+    featured: false,
+    verified: true,
+    image: "/Dokumentasi/FOTO-FOTO KEGIATAN PROJECT LUGAS/PT. Nuri Kirana Sentosa, Site Visit Stockpile & Jetty IUP PT Multi Jaya Energi.png",
+    gallery: []
+  },
+  {
+    id: "proj-11",
+    slug: "proj-11-palangka-manyar-abadi",
+    title: "PT Palangka Manyar Abadi",
+    description: neutralDesc,
+    client: "PT Palangka Manyar Abadi",
+    scopeId: neutralDetailDesc,
+    scopeEn: neutralDetailDescEn,
+    scopeZh: neutralDetailDescZh,
+    province: "Kalimantan Tengah",
+    provinceEn: "Central Kalimantan",
+    provinceZh: "中加里曼丹省",
+    location: "Sukamara",
+    locationEn: "Sukamara",
+    locationZh: "苏卡马拉县",
+    status: "selesai",
+    category: "konsultasi-pertambangan",
+    lat: -2.6521,
+    lng: 111.2060,
+    featured: false,
+    verified: true,
+    image: imgMiningCrew,
+    gallery: []
+  },
+  {
+    id: "proj-12",
+    slug: "proj-12-jhoswa-mahakam-mineral",
+    title: "PT Jhoswa Mahakam Mineral",
+    description: neutralDesc,
+    client: "PT Jhoswa Mahakam Mineral",
+    scopeId: neutralDetailDesc,
+    scopeEn: neutralDetailDescEn,
+    scopeZh: neutralDetailDescZh,
+    province: "Kalimantan Timur",
+    provinceEn: "East Kalimantan",
+    provinceZh: "东加里曼丹省",
+    location: "Kutai Kartanegara",
+    locationEn: "Kutai Kartanegara",
+    locationZh: "库台卡塔内加拉县",
+    status: "selesai",
+    category: "konsultasi-geologi",
+    lat: -0.4500,
+    lng: 116.2700,
+    featured: false,
+    verified: true,
+    image: imgGeoSurvey,
+    gallery: []
+  },
+  {
+    id: "proj-13",
+    slug: "proj-13-chandra-pratama",
+    title: "PT Chandra Pratama Sembilan Sembilan",
+    description: neutralDesc,
+    client: "PT Chandra Pratama Sembilan Sembilan",
+    scopeId: neutralDetailDesc,
+    scopeEn: neutralDetailDescEn,
+    scopeZh: neutralDetailDescZh,
+    province: "Kalimantan Tengah",
+    provinceEn: "Central Kalimantan",
+    provinceZh: "中加里曼丹省",
+    location: "Kalimantan Tengah",
+    locationEn: "Central Kalimantan",
+    locationZh: "中加里曼丹省",
+    status: "selesai",
+    category: "konsultasi-geologi",
+    lat: -1.5200,
+    lng: 114.1500,
+    featured: false,
+    verified: true,
+    image: "/Dokumentasi/FOTO-FOTO KEGIATAN PROJECT LUGAS/PT. Chandra Putra Sembilan Sembilan, Surface Geological Mapping of Coal.png",
+    gallery: []
+  },
+  {
+    id: "proj-14",
+    slug: "proj-14-berkarya-abadi-selalu",
+    title: "PT Berkarya Abadi Selalu",
+    description: neutralDesc,
+    client: "PT Berkarya Abadi Selalu",
+    scopeId: neutralDetailDesc,
+    scopeEn: neutralDetailDescEn,
+    scopeZh: neutralDetailDescZh,
+    province: "Kalimantan Tengah",
+    provinceEn: "Central Kalimantan",
+    provinceZh: "中加里曼丹省",
+    location: "Barito Utara",
+    locationEn: "North Barito",
+    locationZh: "北巴里托县",
+    status: "selesai",
+    category: "konsultasi-pertambangan",
+    lat: -1.1934,
+    lng: 115.0194,
+    featured: false,
+    verified: true,
+    image: imgSurveyGeo,
+    gallery: []
+  },
+  {
+    id: "proj-15",
+    slug: "proj-15-energitama-bumi-arum",
+    title: "PT Energitama Bumi Arum",
+    description: neutralDesc,
+    client: "PT Energitama Bumi Arum",
+    scopeId: neutralDetailDesc,
+    scopeEn: neutralDetailDescEn,
+    scopeZh: neutralDetailDescZh,
+    province: "Kalimantan Tengah",
+    provinceEn: "Central Kalimantan",
+    provinceZh: "中加里曼丹省",
+    location: "Kalimantan Tengah",
+    locationEn: "Central Kalimantan",
+    locationZh: "中加里曼丹省",
+    status: "selesai",
+    category: "konsultasi-pertambangan",
+    lat: -1.7500,
+    lng: 113.8000,
+    featured: false,
+    verified: true,
+    image: "/Dokumentasi/FOTO-FOTO KEGIATAN PROJECT LUGAS/PT MME Drill Point Bonding Activities in the IUP OP Area of PT Energitama Bumi Arum.png",
+    gallery: []
+  },
+  {
+    id: "proj-16",
+    slug: "proj-16-rapak-anugrah-prima-coal",
+    title: "PT Rapak Anugrah Prima Coal",
+    description: neutralDesc,
+    client: "PT Rapak Anugrah Prima Coal",
+    scopeId: neutralDetailDesc,
+    scopeEn: neutralDetailDescEn,
+    scopeZh: neutralDetailDescZh,
+    province: "Kalimantan Utara",
+    provinceEn: "North Kalimantan",
+    provinceZh: "北加里曼丹省",
+    location: "Bulungan",
+    locationEn: "Bulungan",
+    locationZh: "布隆岸县",
+    status: "selesai",
+    category: "konsultasi-pertambangan",
+    lat: 2.8400,
+    lng: 117.3600,
+    featured: false,
+    verified: true,
+    image: imgMiningTeam,
+    gallery: []
+  },
+  {
+    id: "proj-17",
+    slug: "proj-17-adi-coal-resources",
+    title: "PT Adi Coal Resources",
+    description: neutralDesc,
+    client: "PT Adi Coal Resources",
+    scopeId: neutralDetailDesc,
+    scopeEn: neutralDetailDescEn,
+    scopeZh: neutralDetailDescZh,
+    province: "Kalimantan Tengah",
+    provinceEn: "Central Kalimantan",
+    provinceZh: "中加里曼丹省",
+    location: "Kalimantan Tengah",
+    locationEn: "Central Kalimantan",
+    locationZh: "中加里曼丹省",
+    status: "selesai",
+    category: "konsultasi-pertambangan",
+    lat: -1.3500,
+    lng: 114.5000,
+    featured: false,
+    verified: true,
+    image: imgMiningCrew,
+    gallery: []
+  },
+  {
+    id: "proj-18",
+    slug: "proj-18-harfa-taruna-mandiri-2",
+    title: "PT Harfa Taruna Mandiri",
+    description: neutralDesc,
+    client: "PT Harfa Taruna Mandiri",
+    scopeId: neutralDetailDesc,
+    scopeEn: neutralDetailDescEn,
+    scopeZh: neutralDetailDescZh,
+    province: "Kalimantan Tengah",
+    provinceEn: "Central Kalimantan",
+    provinceZh: "中加里曼丹省",
+    location: "Barito Utara",
+    locationEn: "North Barito",
+    locationZh: "北巴里托县",
+    status: "selesai",
+    category: "konsultasi-geologi",
+    lat: -1.6815,
+    lng: 113.3824,
+    featured: false,
+    verified: true,
+    image: "/Dokumentasi/FOTO-FOTO KEGIATAN PROJECT LUGAS/FOTO KEGIATAN DRILLING PT HARFA TARUNA MANDIRI/DRILLING ACTIVITY/20230812_143302.jpg",
+    gallery: []
+  },
+  {
+    id: "proj-19",
+    slug: "proj-19-golden-kirin-group",
+    title: "PT Golden Kirin Group",
+    description: neutralDesc,
+    client: "PT Golden Kirin Group",
+    scopeId: neutralDetailDesc,
+    scopeEn: neutralDetailDescEn,
+    scopeZh: neutralDetailDescZh,
+    province: "Kalimantan Selatan",
+    provinceEn: "South Kalimantan",
+    provinceZh: "南加里曼丹省",
+    location: "Kalimantan Selatan",
+    locationEn: "South Kalimantan",
+    locationZh: "南加里曼丹省",
+    status: "selesai",
+    category: "konsultasi-pertambangan",
+    lat: -3.3200,
+    lng: 114.5900,
+    featured: false,
+    verified: true,
+    // Logo is file-restricted — do not use, copy, or recreate
+    image: imgSurveyGeo,
+    gallery: []
+  },
+  {
+    id: "proj-20",
+    slug: "proj-20-jati-kreasi-nusantara-2",
+    title: "PT Jati Kreasi Nusantara",
+    description: neutralDesc,
+    client: "PT Jati Kreasi Nusantara",
+    scopeId: neutralDetailDesc,
+    scopeEn: neutralDetailDescEn,
+    scopeZh: neutralDetailDescZh,
+    province: "Sulawesi Tengah",
+    provinceEn: "Central Sulawesi",
+    provinceZh: "中苏拉威西省",
+    location: "Morowali",
+    locationEn: "Morowali",
+    locationZh: "莫罗瓦利县",
+    status: "selesai",
+    category: "konsultasi-geologi",
+    lat: -1.4300,
+    lng: 121.4456,
+    featured: false,
+    verified: true,
+    image: imgGeoSurvey,
+    gallery: []
+  },
+  {
+    id: "proj-21",
+    slug: "proj-21-transcoal-minergy-2",
+    title: "PT Transcoal Minergy",
+    description: neutralDesc,
+    client: "PT Transcoal Minergy",
+    scopeId: neutralDetailDesc,
+    scopeEn: neutralDetailDescEn,
+    scopeZh: neutralDetailDescZh,
+    province: "Kalimantan Selatan",
+    provinceEn: "South Kalimantan",
+    provinceZh: "南加里曼丹省",
+    location: "Kalimantan Selatan",
+    locationEn: "South Kalimantan",
+    locationZh: "南加里曼丹省",
+    status: "selesai",
+    category: "mine-contractor",
+    lat: -3.0926,
+    lng: 115.2838,
+    featured: false,
+    verified: true,
+    image: imgMiningCrew,
+    gallery: []
+  },
+  {
+    id: "proj-22",
+    slug: "proj-22-berkah-kerja-bersama",
+    title: "PT Berkah Kerja Bersama",
+    description: neutralDesc,
+    client: "PT Berkah Kerja Bersama",
+    scopeId: neutralDetailDesc,
+    scopeEn: neutralDetailDescEn,
+    scopeZh: neutralDetailDescZh,
+    province: "Kalimantan Tengah",
+    provinceEn: "Central Kalimantan",
+    provinceZh: "中加里曼丹省",
+    location: "Barito Timur",
+    locationEn: "East Barito",
+    locationZh: "东巴里托县",
+    status: "selesai",
+    category: "konsultasi-pertambangan",
+    lat: -1.8600,
+    lng: 115.2100,
+    featured: false,
+    verified: true,
+    image: imgMiningTeam,
+    gallery: []
+  },
+  {
+    id: "proj-23",
+    slug: "proj-23-jhonlin-baratama-2",
+    title: "PT Jhonlin Baratama",
+    description: neutralDesc,
+    client: "PT Jhonlin Baratama",
+    scopeId: neutralDetailDesc,
+    scopeEn: neutralDetailDescEn,
+    scopeZh: neutralDetailDescZh,
+    province: "Kalimantan Selatan",
+    provinceEn: "South Kalimantan",
+    provinceZh: "南加里曼丹省",
+    location: "Tanah Bumbu",
+    locationEn: "Tanah Bumbu",
+    locationZh: "塔纳本布县",
+    status: "selesai",
+    category: "geoteknik-hidrologi-hidrogeologi",
+    lat: -3.4200,
+    lng: 115.7000,
+    featured: false,
+    verified: true,
+    clientLogo: "/logos/jhonlin-baratama.png",
+    image: imgSurveyGeo,
+    gallery: []
+  },
+  {
+    id: "proj-24",
+    slug: "proj-24-kekal-adidaya",
+    title: "PT Kekal Adidaya",
+    description: neutralDesc,
+    client: "PT Kekal Adidaya",
+    scopeId: neutralDetailDesc,
+    scopeEn: neutralDetailDescEn,
+    scopeZh: neutralDetailDescZh,
+    province: "Kalimantan Tengah",
+    provinceEn: "Central Kalimantan",
+    provinceZh: "中加里曼丹省",
+    location: "Barito Utara",
+    locationEn: "North Barito",
+    locationZh: "北巴里托县",
+    status: "selesai",
+    category: "konsultasi-pertambangan",
+    lat: -1.0500,
+    lng: 115.0500,
+    featured: false,
+    verified: true,
+    image: "/Dokumentasi/FOTO-FOTO KEGIATAN PROJECT LUGAS/Drilling Geotek PT. KAD.jpg",
+    gallery: []
+  },
+  {
+    id: "proj-25",
+    slug: "proj-25-arsy-nusantara",
+    title: "PT Arsy Nusantara",
+    description: neutralDesc,
+    client: "PT Arsy Nusantara",
+    scopeId: neutralDetailDesc,
+    scopeEn: neutralDetailDescEn,
+    scopeZh: neutralDetailDescZh,
+    province: "Kalimantan Tengah",
+    provinceEn: "Central Kalimantan",
+    provinceZh: "中加里曼丹省",
+    location: "Barito Utara",
+    locationEn: "North Barito",
+    locationZh: "北巴里托县",
+    status: "selesai",
+    category: "konsultasi-geologi",
+    lat: -0.9800,
+    lng: 115.1000,
+    featured: false,
+    verified: true,
+    image: "/Dokumentasi/FOTO-FOTO KEGIATAN PROJECT LUGAS/Photo Kegiatan PT Arsy Nusantara/IMG_20230610_075706.jpg",
+    gallery: []
+  },
 ];

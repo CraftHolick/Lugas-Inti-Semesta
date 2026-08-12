@@ -1,5 +1,15 @@
 {
-  "nav": { "home": "Home", "about": "About Us", "services": "Services", "projects": "Projects", "insight": "Insight", "contact": "Contact", "careers": "Careers", "cta": "Consult Now", "search": "Search..." },
+  "nav": {
+    "home": "Home",
+    "about": "About Us",
+    "services": "Services",
+    "projects": "Projects",
+    "insight": "Insight",
+    "contact": "Contact",
+    "careers": "Careers",
+    "cta": "Consult Now",
+    "search": "Search..."
+  },
   "hero": {
     "headline": "TRUSTED MINING SOLUTIONS & CONSULTING FOR INDONESIA",
     "subheadline": "Officially licensed geological, geotechnical, and coal mine management consultants with field operational experience across Borneo.",
@@ -10,28 +20,83 @@
     "completed_projects": "Completed Exploration & Management Projects"
   },
   "trust_bar": [
-    { "value": "2014", "label": "Year Established" },
-    { "value": "70+", "label": "Completed Projects" },
-    { "value": "8", "label": "Provinces Covered" },
-    { "value": "IUJP 738/1", "label": "Official Legal Status" }
+    {
+      "value": "2014",
+      "label": "Year Established"
+    },
+    {
+      "value": "70+",
+      "label": "Completed Projects"
+    },
+    {
+      "value": "8",
+      "label": "Provinces Covered"
+    },
+    {
+      "value": "IUJP 738/1",
+      "label": "Official Legal Status"
+    }
   ],
   "services": {
     "heading": "Mining & Geological Consulting Services",
-    "subheading": "Comprehensive mining solutions from initial exploration, technical feasibility, licensing, to operational mine management.",
+    "subheading": "PT Lugas Inti Semesta provides specialist technical services to assist companies in exploration, development, operations, as well as environmental management and post-mining. Each service is tailored to the project's conditions, commodities, technical requirements, available data, and client targets.",
     "learn_detail": "Learn Details & Scope of Work",
     "back": "Back to Services",
     "scope_desc": "Below are the specific services and technical activities we provide in this field:",
-    "cta_heading": "Ready to Start Your Project With Us?",
-    "cta_subheading": "Contact our technical team today for initial consultation, pricing quotes, and further technical discussions.",
-    "cta_button": "Free Consultation Now",
+    "cta_heading": "Find the Right Solution for Your Project",
+    "cta_subheading": "Share your project requirements, location, commodity type, and work targets with our team to get the appropriate service scope recommendations.",
+    "cta_button": "Discuss Scope of Work",
     "related_portfolio": "RELATED PORTFOLIO",
     "case_studies": "Case Studies & Projects",
+    "page_hero_heading": "Mining Consultant Services",
+    "page_hero_desc": "PT Lugas Inti Semesta provides technical consulting services for the mineral and coal industry, covering geology & exploration, geotechnics, hydrology & hydrogeology, mining consulting, and environmental & social. Each service is tailored to project conditions, technical requirements, and operational objectives.",
+    "page_hero_tagline": "From field investigations to technical study preparation and recommendations.",
+    "page_cta_heading": "Discuss Your Project Requirements",
+    "page_cta_desc": "Share your project location, commodity, technical requirements, or scope of work with the PT Lugas Inti Semesta team to get appropriate service guidance.",
+    "page_cta_primary": "Consult Now",
+    "page_cta_secondary": "View Our Projects",
+    "trust_heading": "Why PT Lugas Inti Semesta",
+    "trust_subheading": "Field experience, business legality, and multidisciplinary competence are the foundation of PT Lugas Inti Semesta in providing technical services for the mining industry.",
+    "trust_1_title": "Experienced Since 2014",
+    "trust_1_desc": "Experienced in supporting various mineral and coal mining activities across various regions of Indonesia.",
+    "trust_2_title": "IUJP Licensed",
+    "trust_2_desc": "Holds Mining Services Business License No. 738/1/IUJP/PMDN/2021 as the legal basis for mining service delivery.",
+    "trust_3_title": "Multidisciplinary Expert Team",
+    "trust_3_desc": "Supported by Competent Person Indonesia (CPI) experts, geologists, mining engineers, and related technical fields.",
+    "approach_heading": "Our Approach",
+    "approach_p1": "Every mining project has different geological conditions, technical requirements, operational targets, and challenges. PT Lugas Inti Semesta begins every project by understanding client needs, evaluating initial data, and determining the scope of work appropriate to the project's conditions.",
+    "approach_p2": "In exploration and geology activities, this approach may include mapping, drilling, field supervision, data collection, resource interpretation and evaluation. For geotechnical and hydrogeological needs, investigations are conducted to obtain technical parameters supporting project planning and risk management.",
+    "approach_p3": "PT Lugas Inti Semesta also supports companies in mining consulting needs such as feasibility studies, RKAB, E-RKAB, mine management, and environmental & social needs including AMDAL, reclamation, post-mining, and community development. Work results are prepared to provide data, studies, and technical recommendations that can be used as a basis for company decision-making.",
+    "related_services": "Related Services",
+    "deliverables_heading": "Deliverables",
+    "cta_label_geologi": "Learn Geological Consulting",
+    "cta_label_geoteknik": "Learn Geotechnics & Hydrogeology",
+    "cta_label_pertambangan": "Learn Mining Consulting",
+    "cta_label_lingkungan": "Learn Environment & Social",
     "items": [
-      { "title": "Geological Consulting", "description": "Exploration planning, geological mapping, topography, geophysics, to resource estimation & audit with KCMI/JORC standards.", "icon": "Mountain" },
-      { "title": "Geotechnical, Hydrology & Hydrogeology", "description": "Supervision of geotechnical drilling, pumping test, slug test, to river and spring discharge measurement.", "icon": "Droplets" },
-      { "title": "Environmental & Social Consulting", "description": "Preparation of RIPPM, Reclamation Plan, Mine Closure Plan, AMDAL, RKL, and RPL.", "icon": "Leaf" },
-      { "title": "Mining Consulting & Contracting", "description": "Feasibility study (FS), RKAB, mine management, WIUP boundary marking installation, to mining contractor services.", "icon": "Pickaxe" }
-    ]
+      {
+        "title": "Geological Consulting",
+        "description": "Exploration planning, geological mapping, topography, geophysics, to resource estimation & audit with KCMI/JORC standards.",
+        "icon": "Mountain"
+      },
+      {
+        "title": "Geotechnical, Hydrology & Hydrogeology",
+        "description": "Supervision of geotechnical drilling, pumping test, slug test, to river and spring discharge measurement.",
+        "icon": "Droplets"
+      },
+      {
+        "title": "Environmental & Social Consulting",
+        "description": "Preparation of RIPPM, Reclamation Plan, Mine Closure Plan, AMDAL, RKL, and RPL.",
+        "icon": "Leaf"
+      },
+      {
+        "title": "Mining Consulting & Contracting",
+        "description": "Feasibility study (FS), RKAB, mine management, WIUP boundary marking installation, to mining contractor services.",
+        "icon": "Pickaxe"
+      }
+    ],
+    "seo_title": "Mining & Geological Consulting Services",
+    "meta_desc": "Comprehensive mining solutions from initial exploration, technical feasibility, licensing, to operational mine management."
   },
   "featured_projects": {
     "heading": "Featured Projects",
@@ -105,10 +170,22 @@
     "eyebrow": "WHY CHOOSE US",
     "heading": "Our Competitive Advantage",
     "items": [
-      { "title": "Experienced Industry Experts", "description": "Over 15 years of solid experience in the Indonesian mining sector with official CPI certified experts." },
-      { "title": "Safety First Commitment", "description": "Zero compromise on occupational health and safety (Zero Accident) and environmental protection." },
-      { "title": "Modern Exploration Technology", "description": "Deploying latest international standard geological mapping software and geotechnical instruments." },
-      { "title": "Sustainable Practices", "description": "Fully committed to Good Mining Practice and environmentally responsible operations." }
+      {
+        "title": "Experienced Industry Experts",
+        "description": "Over 15 years of solid experience in the Indonesian mining sector with official CPI certified experts."
+      },
+      {
+        "title": "Safety First Commitment",
+        "description": "Zero compromise on occupational health and safety (Zero Accident) and environmental protection."
+      },
+      {
+        "title": "Modern Exploration Technology",
+        "description": "Deploying latest international standard geological mapping software and geotechnical instruments."
+      },
+      {
+        "title": "Sustainable Practices",
+        "description": "Fully committed to Good Mining Practice and environmentally responsible operations."
+      }
     ]
   },
   "stats_bar": {
@@ -171,7 +248,33 @@
     "legality_founded": "Established in 2014 in Bekasi",
     "legality_cpi": "Supported by certified Competent Person Indonesia (CPI) experts",
     "team_heading": "Our Expert Team",
-    "team_placeholder": "Expert team data will be displayed soon."
+    "team_placeholder": "Expert team data will be displayed soon.",
+    "seo_title": "About PT Lugas Inti Semesta",
+    "meta_desc": "Since 2014, PT Lugas Inti Semesta has been dedicated to providing geological, geotechnical, and coal & mineral mine management consulting services.",
+    "h1": "Your Trusted Mining Solution Partner",
+    "intro_p1": "PT Lugas Inti Semesta is a mining consulting company that provides technical and management services for the mineral and coal industry.",
+    "intro_p2": "Established in 2014 in Bekasi, West Java, our company holds a Mining Services Business License Number 738/1/IUJP/PMDN/2021 and is supported by Competent Person Indonesia experts, geologists, and experienced mining professionals in various project stages.",
+    "intro_p3": "We help mining companies obtain data, studies, and technical recommendations that can be used as a basis for planning, decision-making, fulfilling operational needs, and preparing mining documents.",
+    "pengalaman_heading": "Field Experience and Multidisciplinary Expertise",
+    "pengalaman_p1": "The scope of services of PT Lugas Inti Semesta includes geological and exploration consulting, geotechnics, hydrology, hydrogeology, mining consulting, as well as environmental and social consulting.",
+    "pengalaman_p2": "These experiences include geological mapping, UAV topographic mapping, exploration and geotechnical drilling, geophysical logging, wellsite geology, slug test and pumping test, resource and reserve estimation, RKAB preparation, feasibility studies, mine management, to the preparation of environmental and social documents.",
+    "pengalaman_p3": "We have been involved in coal and various mineral commodity projects in several regions of Indonesia, including Sumatra, Kalimantan, Sulawesi, Nusa Tenggara, and other areas.",
+    "legalitas_heading": "Legality and Professionalism",
+    "legalitas_intro": "As an IUJP-licensed mining services company, PT Lugas Inti Semesta carries out its work prioritizing:",
+    "legalitas_items": [
+      "Accuracy and integrity of technical data.",
+      "Safety in field activities.",
+      "Compliance with the scope of work.",
+      "Transparent communication with clients.",
+      "Applicable recommendations.",
+      "Long-term cooperation sustainability."
+    ],
+    "legalitas_outro": "Every project is handled through coordination between experts, field teams, and client representatives so that the work results match actual conditions and project needs.",
+    "expertise_heading": "Mining & Geological Consulting Services",
+    "cta_heading": "Consult Your Project Needs",
+    "cta_subheading": "Discuss your project condition, scope of work, and targeted goals with the PT Lugas Inti Semesta team.",
+    "cta_primary": "Consult Project",
+    "cta_secondary": "View Project Experience"
   },
   "contact": {
     "page_title": "Contact Us",
@@ -207,7 +310,20 @@
     "artikel": "Articles",
     "regulasi": "Regulations",
     "company_update": "Company Updates",
-    "mining_knowledge": "Mining Knowledge"
+    "mining_knowledge": "Mining Knowledge",
+    "hidrologi_dan_hidrogeologi": "Hydrology and Hydrogeology",
+    "wawasan_pertambangan": "Mining Insight",
+    "geologi": "Geology",
+    "geoteknik": "Geotechnics",
+    "all_filter": "All",
+    "all_topics": "All Topics",
+    "filter_by_topic": "Filter by topic:",
+    "no_articles": "No articles in this category yet.",
+    "back_to_insight": "Back to Insight",
+    "date": "Date",
+    "author": "Author",
+    "share_article": "Share Article:",
+    "consult": "Consult Project"
   },
   "footer": {
     "description": "Exploration & Mine Management Consultant. Trusted partner for mining solutions in Indonesia since 2014.",
@@ -226,5 +342,51 @@
     "interactive_map": "Interactive Map",
     "studi_kasus": "Case Studies",
     "dokumentasi": "Documentation"
+  },
+  "company_legality": {
+    "heading": "Company Legality",
+    "description": "PT Lugas Inti Semesta conducts mining services supported by business legality and licensing in accordance with the company's field of activity.",
+    "trust_statement": "Legality and licensing are part of PT Lugas Inti Semesta's commitment to conducting mining services professionally and responsibly. For company verification needs or other legal documents, please contact our team.",
+    "view_document": "View Document",
+    "modal_title": "Legality Document",
+    "modal_close": "Close",
+    "modal_preview_unavailable": "Document Preview Unavailable",
+    "modal_preview_desc": "Public documents are being prepared or reviewed to ensure the security of the company's administrative data.",
+    "nib_title": "Business Identification Number",
+    "nib_desc": "The official identity of the PT Lugas Inti Semesta business entity in the business licensing system.",
+    "iujp_title": "Mining Services Business License",
+    "iujp_desc": "Mining services business license supporting technical consulting and management activities of PT Lugas Inti Semesta in the mineral and coal industry."
+  },
+  "documentation": {
+    "title": "Documentation Gallery",
+    "description": "Documentation of our exploration and operational activities in the field.",
+    "case_study_wip": "Case study content is currently under development.",
+    "categories": {
+      "DRILLING ACTIVITY": "DRILLING ACTIVITY",
+      "Instalasi Slug Test": "Slug Test Installation",
+      "Pengukuran Slug Test": "Slug Test Measurement",
+      "PENGUKURAN SINGKAPAN": "OUTCROP MEASUREMENT",
+      "WELLSITE ACTIVITY": "WELLSITE ACTIVITY",
+      "FOTO PERALATAN": "EQUIPMENT PHOTOS",
+      "Photo Kegiatan PT Arsy Nusantara": "PT Arsy Nusantara Activity Photos",
+      "Umum": "General"
+    },
+    "images": {
+      "instal pipa screen slug test 1": "slug test screen pipe installation 1",
+      "instal pipa screen slug test": "slug test screen pipe installation",
+      "Camera Pocket": "Pocket Camera",
+      "GPS (Global Positioning System)": "GPS (Global Positioning System)",
+      "Laptop": "Laptop",
+      "palu geologi": "geological hammer",
+      "Pompa Submersible": "Submersible Pump",
+      "Pressure Probe": "Pressure Probe",
+      "RIG CSD 1300L": "RIG CSD 1300L",
+      "RIG Jacro 175": "RIG Jacro 175",
+      "RIG Jacro 200": "RIG Jacro 200",
+      "RIG Jacro 400": "RIG Jacro 400",
+      "RTK": "RTK",
+      "TDS Meter": "TDS Meter",
+      "Water Level": "Water Level"
+    }
   }
 }

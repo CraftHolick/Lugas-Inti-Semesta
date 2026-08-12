@@ -10,6 +10,7 @@ import {
   MoreVertical, Image as ImageIcon, Loader2, AlertCircle
 } from 'lucide-react';
 import { publishArticle, moveArticleToDraft, deleteArticle } from './actions';
+import { triggerSiteRebuild } from '@/lib/triggerSiteRebuild';
 
 interface ArticleData {
   id: string;
@@ -44,6 +45,11 @@ export default function ArticleListClient({ initialArticles }: { initialArticles
         return;
       }
       setArticles(articles.map(a => a.id === id ? { ...a, status: 'published', published_at: new Date().toISOString() } : a));
+      // Trigger rebuild AFTER successful DB mutation (non-blocking)
+      const rebuild = await triggerSiteRebuild('article-published');
+      if (!rebuild.ok) {
+        alert(`Artikel berhasil dipublikasikan.\n\nPeringatan: Gagal memicu rebuild otomatis — ${rebuild.error}\nAnda dapat memicu ulang secara manual dari GitHub Actions.`);
+      }
     });
   };
 
@@ -55,6 +61,11 @@ export default function ArticleListClient({ initialArticles }: { initialArticles
         return;
       }
       setArticles(articles.map(a => a.id === id ? { ...a, status: 'draft', published_at: null } : a));
+      // Trigger rebuild AFTER successful DB mutation (article removed from public)
+      const rebuild = await triggerSiteRebuild('article-unpublished');
+      if (!rebuild.ok) {
+        alert(`Artikel berhasil dikembalikan ke draf.\n\nPeringatan: Gagal memicu rebuild otomatis — ${rebuild.error}\nAnda dapat memicu ulang secara manual dari GitHub Actions.`);
+      }
     });
   };
 
@@ -66,10 +77,16 @@ export default function ArticleListClient({ initialArticles }: { initialArticles
       const res = await deleteArticle(id);
       if (res?.error) {
         alert(res.error);
-      } else {
-        setArticles(articles.filter(a => a.id !== id));
+        setDeletingId(null);
+        return;
       }
+      setArticles(articles.filter(a => a.id !== id));
       setDeletingId(null);
+      // Trigger rebuild AFTER successful delete (removes stale static page)
+      const rebuild = await triggerSiteRebuild('article-deleted');
+      if (!rebuild.ok) {
+        alert(`Artikel berhasil dihapus.\n\nPeringatan: Gagal memicu rebuild otomatis — ${rebuild.error}\nAnda dapat memicu ulang secara manual dari GitHub Actions.`);
+      }
     });
   };
 
@@ -178,7 +195,7 @@ export default function ArticleListClient({ initialArticles }: { initialArticles
                             <Clock className="w-4 h-4" />
                           </button>
                         )}
-                        <Link href={`/admin/articles/${article.id}/edit`}>
+                        <Link href={`/admin/articles/edit?id=${article.id}`}>
                           <button className="p-1.5 text-blue-600 hover:bg-blue-50 rounded" title="Edit">
                             <Edit className="w-4 h-4" />
                           </button>

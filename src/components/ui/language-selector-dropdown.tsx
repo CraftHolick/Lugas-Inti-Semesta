@@ -41,7 +41,7 @@ export function LanguageSelectorDropdown({ direction = "down" }: LanguageSelecto
         aria-label="Select language"
       >
         <FlagIcon locale={locale} className="w-5 h-3.5 rounded-[2px] shadow-sm shrink-0 border border-white/20" />
-        <span className="hidden sm:inline font-semibold">{localeLabels[locale]}</span>
+        <span className="hidden sm:inline font-semibold whitespace-nowrap">{localeLabels[locale]}</span>
         <ChevronIcon className="h-3.5 w-3.5 opacity-80" />
       </button>
 

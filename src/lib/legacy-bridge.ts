@@ -23,7 +23,11 @@ export interface UnifiedArticle {
   id: string;
   slug: string;
   title: string;
+  titleEn?: string;
+  titleZh?: string;
   excerpt: string;
+  excerptEn?: string;
+  excerptZh?: string;
   type: string;
   typeSlug: string;
   topic: string | null;
@@ -35,6 +39,8 @@ export interface UnifiedArticle {
   contentJson?: any;
   /** Only set for legacy articles — plain text content */
   legacyContent?: string;
+  legacyContentEn?: string;
+  legacyContentZh?: string;
   /** Only set for CMS articles */
   authorId?: string;
   /** Thumbnail already resolved to a full URL */
@@ -100,8 +106,12 @@ function mapLegacyArticle(insight: Insight): UnifiedArticle {
   return {
     id: insight.id,
     slug: insight.slug,
-    title: insight.title,
-    excerpt: insight.excerpt,
+    title: insight.titleId || insight.title,
+    titleEn: insight.titleEn,
+    titleZh: insight.titleZh,
+    excerpt: insight.excerptId || insight.excerpt,
+    excerptEn: insight.excerptEn,
+    excerptZh: insight.excerptZh,
     type: insight.category,
     typeSlug: insight.category
       .toLowerCase()
@@ -113,6 +123,8 @@ function mapLegacyArticle(insight: Insight): UnifiedArticle {
     image: insight.image ?? null,
     source: 'legacy',
     legacyContent: insight.content,
+    legacyContentEn: insight.contentEn,
+    legacyContentZh: insight.contentZh,
     resolvedImageUrl: insight.image ?? null,
   };
 }

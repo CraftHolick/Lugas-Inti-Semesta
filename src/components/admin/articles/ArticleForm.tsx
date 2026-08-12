@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Loader2, ChevronDown, ChevronUp, Image as ImageIcon, Eye } from 'lucide-react';
 import TiptapEditor from './TiptapEditor';
 import { createArticle, updateArticle } from '@/app/admin/(protected)/articles/actions';
+import { triggerSiteRebuild } from '@/lib/triggerSiteRebuild';
 import { getArticleImageUrl } from '@/lib/supabase/storage-url';
 import { EditorContent, useEditor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
@@ -246,6 +247,23 @@ export default function ArticleForm({ initialData, articleId }: ArticleFormProps
 
         if (thumbnailPreview) URL.revokeObjectURL(thumbnailPreview);
         inlineFiles.forEach(item => URL.revokeObjectURL(item.url));
+
+        // Trigger rebuild if article is published (non-blocking, failure is non-fatal)
+        // Draft saves do NOT trigger a rebuild — no public content changed.
+        if (status === 'published') {
+          const reason = articleId ? 'article-updated-published' : 'article-created-published';
+          const rebuild = await triggerSiteRebuild(reason);
+          if (!rebuild.ok) {
+            // Navigate first so the user sees the success, then show rebuild warning
+            router.push('/admin/articles');
+            // Note: alert after navigation may not show in all browsers.
+            // The article mutation succeeded — only the auto-deploy failed.
+            setTimeout(() => {
+              alert(`Artikel berhasil disimpan.\n\nPeringatan: Gagal memicu rebuild otomatis — ${rebuild.error}\nAnda dapat memicu ulang secara manual dari GitHub Actions.`);
+            }, 500);
+            return;
+          }
+        }
 
         router.push('/admin/articles');
       } catch (err: any) {

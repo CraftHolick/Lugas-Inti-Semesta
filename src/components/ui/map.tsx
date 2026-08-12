@@ -131,10 +131,13 @@ export function WorldMap({
   const fullCycleDuration = totalAnimationTime + pauseTime;
 
   return (
-    <div className="w-full aspect-[2/1] md:aspect-[2.5/1] lg:aspect-[2.2/1] dark:bg-black bg-white rounded-lg relative font-sans overflow-hidden">
+    <div 
+      className="w-full bg-transparent relative font-sans"
+      style={{ aspectRatio: `${map.image.width} / ${map.image.height}` }}
+    >
       <Image
         src={`data:image/svg+xml;utf8,${encodeURIComponent(svgMap)}`}
-        className="h-full w-full [mask-image:linear-gradient(to_bottom,transparent,white_10%,white_90%,transparent)] pointer-events-none select-none object-contain"
+        className="h-full w-full pointer-events-none select-none object-contain"
         alt="Indonesia map"
         height={map.image.height}
         width={map.image.width}

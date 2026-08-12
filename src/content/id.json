@@ -1,37 +1,102 @@
 {
-  "nav": { "home": "Beranda", "about": "Tentang Kami", "services": "Layanan", "projects": "Proyek", "insight": "Insight", "contact": "Kontak", "careers": "Karir", "cta": "Konsultasi Sekarang", "search": "Cari..." },
+  "nav": {
+    "home": "Beranda",
+    "about": "Tentang Kami",
+    "services": "Layanan",
+    "projects": "Proyek",
+    "insight": "Insight",
+    "contact": "Kontak",
+    "careers": "Karir",
+    "cta": "Konsultasi Sekarang",
+    "search": "Cari..."
+  },
   "hero": {
-    "headline": "MEMBERIKAN SOLUSI PERTAMBANGAN TERPERCAYA UNTUK INDONESIA",
+    "headline": "PT LUGAS INTI SEMESTA",
     "subheadline": "Konsultan geologi, geoteknik, dan manajemen tambang batubara berizin resmi dengan pengalaman operasional lapangan di seluruh Kalimantan.",
     "cta_primary": "Konsultasi Sekarang",
     "cta_secondary": "Unduh Company Profile",
-    "badge": "IUJP RESMI NO. 738/1/IUJP/PMDN/2021",
+    "badge": "KONSULTAN PERTAMBANGAN INDONESIA",
     "satisfied_clients": "Klien Puas",
     "completed_projects": "Proyek Eksplorasi & Manajemen Selesai"
   },
   "trust_bar": [
-    { "value": "2014", "label": "Tahun Berdiri" },
-    { "value": "70+", "label": "Proyek Selesai" },
-    { "value": "8", "label": "Provinsi Terjangkau" },
-    { "value": "IUJP 738/1", "label": "Status Legalitas Resmi" }
+    {
+      "value": "2014",
+      "label": "Tahun Berdiri"
+    },
+    {
+      "value": "70+",
+      "label": "Proyek Selesai"
+    },
+    {
+      "value": "8",
+      "label": "Provinsi Terjangkau"
+    },
+    {
+      "value": "IUJP 738/1",
+      "label": "Status Legalitas Resmi"
+    }
   ],
   "services": {
-    "heading": "Layanan Konsultasi & Pertambangan",
-    "subheading": "Solusi pertambangan komprehensif mulai dari eksplorasi awal, kajian teknis, perizinan, hingga manajemen operasional.",
+    "heading": "Layanan Konsultan Pertambangan Mineral dan Batubara",
+    "subheading": "PT Lugas Inti Semesta menyediakan layanan teknis spesialis untuk membantu perusahaan dalam tahap eksplorasi, pengembangan, operasional, hingga pengelolaan lingkungan dan pascatambang. Setiap layanan disesuaikan dengan kondisi proyek, komoditas, kebutuhan teknis, data yang tersedia, serta target pekerjaan klien.",
     "learn_detail": "Pelajari Detail & Cakupan Kerja",
     "back": "Kembali ke Layanan",
     "scope_desc": "Berikut adalah rincian layanan spesifik dan aktivitas teknis yang kami sediakan dalam bidang ini:",
-    "cta_heading": "Siap Memulai Proyek Anda Bersama Kami?",
-    "cta_subheading": "Hubungi tim teknis kami hari ini untuk konsultasi awal, penawaran harga, dan pembahasan teknis lebih lanjut.",
-    "cta_button": "Konsultasi Gratis Sekarang",
+    "cta_heading": "Temukan Solusi yang Sesuai dengan Proyek Anda",
+    "cta_subheading": "Sampaikan kebutuhan, lokasi proyek, jenis komoditas, serta target pekerjaan kepada tim kami untuk memperoleh rekomendasi ruang lingkup layanan yang sesuai.",
+    "cta_button": "Diskusikan Ruang Lingkup Pekerjaan",
     "related_portfolio": "PORTOFOLIO TERKAIT",
     "case_studies": "Studi Kasus & Proyek",
+    "page_hero_heading": "Layanan Konsultan Pertambangan",
+    "page_hero_desc": "PT Lugas Inti Semesta menyediakan layanan konsultasi teknis untuk industri mineral dan batubara, mencakup geologi dan eksplorasi, geoteknik, hidrologi dan hidrogeologi, konsultasi pertambangan, serta lingkungan dan sosial. Setiap layanan disesuaikan dengan kondisi proyek, kebutuhan teknis, dan tujuan operasional perusahaan.",
+    "page_hero_tagline": "Dari investigasi lapangan hingga penyusunan kajian dan rekomendasi teknis.",
+    "page_cta_heading": "Diskusikan Kebutuhan Proyek Anda",
+    "page_cta_desc": "Sampaikan lokasi proyek, komoditas, kebutuhan teknis, atau ruang lingkup pekerjaan kepada tim PT Lugas Inti Semesta untuk mendapatkan arahan layanan yang sesuai.",
+    "page_cta_primary": "Konsultasi Sekarang",
+    "page_cta_secondary": "Lihat Proyek Kami",
+    "trust_heading": "Mengapa PT Lugas Inti Semesta",
+    "trust_subheading": "Pengalaman lapangan, legalitas usaha, dan kompetensi multidisiplin menjadi dasar PT Lugas Inti Semesta dalam memberikan layanan teknis bagi industri pertambangan.",
+    "trust_1_title": "Berpengalaman Sejak 2014",
+    "trust_1_desc": "Berpengalaman mendukung berbagai kegiatan pertambangan mineral dan batubara di berbagai wilayah Indonesia.",
+    "trust_2_title": "Berizin IUJP",
+    "trust_2_desc": "Memiliki Izin Usaha Jasa Pertambangan No. 738/1/IUJP/PMDN/2021 sebagai dasar legalitas pelayanan jasa pertambangan.",
+    "trust_3_title": "Tim Ahli Multidisiplin",
+    "trust_3_desc": "Didukung tenaga ahli Competent Person Indonesia (CPI), geologi, pertambangan, serta bidang teknis terkait.",
+    "approach_heading": "Pendekatan Kami",
+    "approach_p1": "Setiap proyek pertambangan memiliki kondisi geologi, kebutuhan teknis, target operasional, dan tantangan yang berbeda. PT Lugas Inti Semesta memulai setiap pekerjaan melalui pemahaman terhadap kebutuhan klien, evaluasi data awal, serta penentuan ruang lingkup pekerjaan yang sesuai dengan kondisi proyek.",
+    "approach_p2": "Dalam kegiatan eksplorasi dan geologi, pendekatan tersebut dapat mencakup pemetaan, pemboran, pengawasan lapangan, pengumpulan data, hingga interpretasi dan evaluasi sumber daya. Pada kebutuhan geoteknik dan hidrogeologi, investigasi dilakukan untuk memperoleh parameter teknis yang mendukung perencanaan dan pengelolaan risiko proyek.",
+    "approach_p3": "PT Lugas Inti Semesta juga mendukung perusahaan dalam kebutuhan konsultasi pertambangan seperti studi kelayakan, RKAB, E-RKAB, manajemen tambang, serta kebutuhan lingkungan dan sosial termasuk AMDAL, reklamasi, pascatambang, dan pengembangan masyarakat. Hasil pekerjaan disusun untuk memberikan data, kajian, serta rekomendasi teknis yang dapat digunakan sebagai dasar pengambilan keputusan perusahaan.",
+    "related_services": "Layanan Terkait",
+    "deliverables_heading": "Hasil Pekerjaan (Deliverables)",
+    "cta_label_geologi": "Pelajari Konsultasi Geologi",
+    "cta_label_geoteknik": "Pelajari Geoteknik & Hidrogeologi",
+    "cta_label_pertambangan": "Pelajari Konsultasi Pertambangan",
+    "cta_label_lingkungan": "Pelajari Lingkungan & Sosial",
     "items": [
-      { "title": "Konsultasi Geologi", "description": "Perencanaan eksplorasi, pemetaan geologi, topografi, geofisika, hingga estimasi & audit sumber daya standar KCMI/JORC.", "icon": "Mountain" },
-      { "title": "Konsultasi Geoteknik, Hidrologi & Hidrogeologi", "description": "Pengawasan pengeboran geoteknik, pumping test, slug test, hingga pengukuran debit sungai dan mata air.", "icon": "Droplets" },
-      { "title": "Konsultasi Lingkungan & Sosial", "description": "Penyusunan RIPPM, Rencana Reklamasi, Rencana Pascatambang, AMDAL, RKL, dan RPL.", "icon": "Leaf" },
-      { "title": "Konsultasi & Kontraktor Pertambangan", "description": "Studi kelayakan (FS), RKAB, manajemen tambang, pemasangan tanda batas WIUP, hingga jasa kontraktor pertambangan.", "icon": "Pickaxe" }
-    ]
+      {
+        "title": "Konsultasi Geologi",
+        "description": "Perencanaan eksplorasi, pemetaan geologi, topografi, geofisika, hingga estimasi & audit sumber daya standar KCMI/JORC.",
+        "icon": "Mountain"
+      },
+      {
+        "title": "Konsultasi Geoteknik, Hidrologi & Hidrogeologi",
+        "description": "Pengawasan pengeboran geoteknik, pumping test, slug test, hingga pengukuran debit sungai dan mata air.",
+        "icon": "Droplets"
+      },
+      {
+        "title": "Konsultasi Lingkungan & Sosial",
+        "description": "Penyusunan RIPPM, Rencana Reklamasi, Rencana Pascatambang, AMDAL, RKL, dan RPL.",
+        "icon": "Leaf"
+      },
+      {
+        "title": "Konsultasi & Kontraktor Pertambangan",
+        "description": "Studi kelayakan (FS), RKAB, manajemen tambang, pemasangan tanda batas WIUP, hingga jasa kontraktor pertambangan.",
+        "icon": "Pickaxe"
+      }
+    ],
+    "seo_title": "Jasa Konsultan Pertambangan Mineral dan Batubara | PT LIS",
+    "meta_desc": "Layanan konsultasi geologi, eksplorasi, geoteknik, hidrogeologi, studi kelayakan, RKAB, lingkungan, dan manajemen tambang."
   },
   "featured_projects": {
     "heading": "Proyek Unggulan",
@@ -105,10 +170,22 @@
     "eyebrow": "MENGAPA MEMILIH KAMI",
     "heading": "Keunggulan Kompetitif Kami",
     "items": [
-      { "title": "Tenaga Ahli Berpengalaman", "description": "Lebih dari 15 tahun pengalaman solid di industri pertambangan Indonesia dengan sertifikasi resmi CPI." },
-      { "title": "Keselamatan & K3 Utama", "description": "Komitmen tanpa kompromi terhadap keselamatan kerja (Zero Accident) dan perlindungan lingkungan hidup." },
-      { "title": "Teknologi Eksplorasi Modern", "description": "Mengoperasikan perangkat lunak pemetaan geologi dan instrumen geoteknik berstandar internasional terkini." },
-      { "title": "Praktik Berkelanjutan", "description": "Berkomitmen penuh pada kaidah penambangan yang baik (Good Mining Practice) dan ramah lingkungan." }
+      {
+        "title": "Tenaga Ahli Berpengalaman",
+        "description": "Lebih dari 15 tahun pengalaman solid di industri pertambangan Indonesia dengan sertifikasi resmi CPI."
+      },
+      {
+        "title": "Keselamatan & K3 Utama",
+        "description": "Komitmen tanpa kompromi terhadap keselamatan kerja (Zero Accident) dan perlindungan lingkungan hidup."
+      },
+      {
+        "title": "Teknologi Eksplorasi Modern",
+        "description": "Mengoperasikan perangkat lunak pemetaan geologi dan instrumen geoteknik berstandar internasional terkini."
+      },
+      {
+        "title": "Praktik Berkelanjutan",
+        "description": "Berkomitmen penuh pada kaidah penambangan yang baik (Good Mining Practice) dan ramah lingkungan."
+      }
     ]
   },
   "stats_bar": {
@@ -162,16 +239,42 @@
     "background_heading": "Latar Belakang",
     "background_text": "PT Lugas Inti Semesta didirikan untuk menyediakan jasa pelayanan di bidang geologi, eksplorasi, pendampingan manajemen tambang, jasa kontraktor pertambangan, geoteknik, hidrologi dan hidrogeologi, serta keahlian lingkungan dan sosial termasuk pemetaan sosial, penyusunan dokumen, dan dukungan konsultasi publik.",
     "vision_heading": "Visi",
-    "vision_text": "Menjadi mitra terpercaya, memberi solusi tepat dan efektif dalam industri pertambangan.",
+    "vision_text": "Menjadi mitra terpercaya yang memberikan solusi tepat dan efektif bagi industri pertambangan.",
     "mission_heading": "Misi",
-    "mission_text": "Memberikan pelayanan profesional terbaik kepada perusahaan tambang dalam berbagai aspek operasional.",
+    "mission_text": "Memberikan pelayanan profesional kepada perusahaan tambang dalam berbagai aspek teknis dan operasional melalui tenaga ahli yang kompeten, pelaksanaan pekerjaan yang terstruktur, serta hasil yang dapat dipertanggungjawabkan.",
     "legality_heading": "Legalitas Perusahaan",
     "legality_iujp": "IUJP No. 738/1/IUJP/PMDN/2021",
     "legality_class": "Klasifikasi Konsultan Teknis dan Manajemen Industri Pertambangan Batubara dan Mineral",
     "legality_founded": "Berdiri sejak 2014 di Bekasi",
     "legality_cpi": "Tenaga ahli bersertifikat Competent Person Indonesia (CPI)",
     "team_heading": "Tim Ahli Kami",
-    "team_placeholder": "Data tim ahli akan segera ditampilkan."
+    "team_placeholder": "Data tim ahli akan segera ditampilkan.",
+    "seo_title": "PT Lugas Inti Semesta | Konsultan Pertambangan Indonesia",
+    "meta_desc": "PT Lugas Inti Semesta merupakan perusahaan konsultan pertambangan untuk eksplorasi, geologi, geoteknik, hidrogeologi, lingkungan, dan manajemen tambang.",
+    "h1": "Mitra Teknis untuk Setiap Tahapan Proyek Pertambangan",
+    "intro_p1": "PT Lugas Inti Semesta merupakan perusahaan konsultan pertambangan yang memberikan layanan teknis dan manajemen untuk industri mineral dan batubara.",
+    "intro_p2": "Berdiri sejak tahun 2014 di Bekasi, Jawa Barat, perusahaan kami memiliki Izin Usaha Jasa Pertambangan Nomor 738/1/IUJP/PMDN/2021 dan didukung oleh tenaga ahli Competent Person Indonesia, geolog, serta profesional pertambangan yang berpengalaman dalam berbagai tahapan proyek.",
+    "intro_p3": "Kami membantu perusahaan tambang memperoleh data, kajian, dan rekomendasi teknis yang dapat digunakan sebagai dasar perencanaan, pengambilan keputusan, pemenuhan kebutuhan operasional, serta penyusunan dokumen pertambangan.",
+    "pengalaman_heading": "Pengalaman Lapangan dan Keahlian Multidisiplin",
+    "pengalaman_p1": "Ruang lingkup layanan PT Lugas Inti Semesta mencakup konsultasi geologi dan eksplorasi, geoteknik, hidrologi, hidrogeologi, konsultasi pertambangan, serta konsultasi lingkungan dan sosial.",
+    "pengalaman_p2": "Pengalaman tersebut meliputi kegiatan pemetaan geologi, pemetaan topografi UAV, pemboran eksplorasi dan geoteknik, geophysical logging, wellsite geology, pengujian slug test dan pumping test, estimasi sumber daya dan cadangan, penyusunan RKAB, studi kelayakan, manajemen tambang, hingga penyusunan dokumen lingkungan dan sosial.",
+    "pengalaman_p3": "Kami telah terlibat dalam proyek batubara dan berbagai komoditas mineral di sejumlah wilayah Indonesia, termasuk Sumatera, Kalimantan, Sulawesi, Nusa Tenggara, dan wilayah lainnya.",
+    "legalitas_heading": "Legalitas dan Profesionalisme",
+    "legalitas_intro": "Sebagai perusahaan jasa pertambangan berizin IUJP, PT Lugas Inti Semesta menjalankan pekerjaan dengan mengutamakan:",
+    "legalitas_items": [
+      "Ketepatan dan integritas data teknis.",
+      "Keselamatan dalam kegiatan lapangan.",
+      "Kepatuhan terhadap ruang lingkup pekerjaan.",
+      "Komunikasi yang transparan dengan klien.",
+      "Rekomendasi yang dapat diterapkan.",
+      "Keberlanjutan kerja sama jangka panjang."
+    ],
+    "legalitas_outro": "Setiap proyek ditangani melalui koordinasi antara tenaga ahli, tim lapangan, dan perwakilan klien agar hasil pekerjaan sesuai dengan kondisi aktual serta kebutuhan proyek.",
+    "expertise_heading": "Keahlian Utama Kami",
+    "cta_heading": "Konsultasikan Kebutuhan Proyek Anda",
+    "cta_subheading": "Diskusikan kondisi proyek, ruang lingkup pekerjaan, dan target yang ingin dicapai bersama tim PT Lugas Inti Semesta.",
+    "cta_primary": "Konsultasikan Proyek",
+    "cta_secondary": "Lihat Pengalaman Proyek"
   },
   "contact": {
     "page_title": "Hubungi Kami",
@@ -199,7 +302,7 @@
   },
   "insight": {
     "page_title": "Insight",
-    "subheading": "Artikel dan wawasan seputar industri pertambangan Indonesia.",
+    "subheading": "Artikel dan wawasan seputar eksplorasi, regulasi, standar teknis, serta pengelolaan lingkungan industri pertambangan Indonesia.",
     "categories": "Kategori",
     "popular": "Artikel Populer",
     "read_more": "Baca Selengkapnya",
@@ -207,7 +310,19 @@
     "artikel": "Artikel",
     "regulasi": "Regulasi",
     "company_update": "Company Update",
-    "mining_knowledge": "Mining Knowledge"
+    "mining_knowledge": "Mining Knowledge",
+    "geologi": "Geologi",
+    "wawasan_pertambangan": "Wawasan Pertambangan",
+    "hidrologi_dan_hidrogeologi": "Hidrologi dan Hidrogeologi",
+    "all_filter": "Semua",
+    "all_topics": "Semua Topik",
+    "filter_by_topic": "Filter berdasarkan topik:",
+    "no_articles": "Belum ada artikel di kategori ini.",
+    "back_to_insight": "Kembali ke Insight",
+    "date": "Tanggal",
+    "author": "Penulis",
+    "share_article": "Bagikan Artikel:",
+    "consult": "Konsultasi Proyek"
   },
   "footer": {
     "description": "Konsultan Eksplorasi & Manajemen Pertambangan. Mitra terpercaya untuk solusi pertambangan di Indonesia sejak 2014.",
@@ -226,5 +341,51 @@
     "interactive_map": "Interactive Map",
     "studi_kasus": "Studi Kasus",
     "dokumentasi": "Dokumentasi"
+  },
+  "company_legality": {
+    "heading": "Legalitas Perusahaan",
+    "description": "PT Lugas Inti Semesta menjalankan kegiatan jasa pertambangan dengan didukung legalitas usaha dan perizinan yang sesuai dengan bidang kegiatan perusahaan.",
+    "trust_statement": "Legalitas dan perizinan menjadi bagian dari komitmen PT Lugas Inti Semesta dalam menjalankan layanan jasa pertambangan secara profesional dan bertanggung jawab. Untuk kebutuhan verifikasi perusahaan atau dokumen legalitas lainnya, silakan hubungi tim kami.",
+    "view_document": "Lihat Dokumen",
+    "modal_title": "Dokumen Legalitas",
+    "modal_close": "Tutup",
+    "modal_preview_unavailable": "Pratinjau Dokumen Belum Tersedia",
+    "modal_preview_desc": "Dokumen publik sedang disiapkan atau ditinjau untuk memastikan keamanan data administratif perusahaan.",
+    "nib_title": "Nomor Induk Berusaha",
+    "nib_desc": "Identitas resmi badan usaha PT Lugas Inti Semesta dalam sistem perizinan berusaha.",
+    "iujp_title": "Izin Usaha Jasa Pertambangan",
+    "iujp_desc": "Izin usaha jasa pertambangan yang mendukung kegiatan konsultasi teknis dan manajemen PT Lugas Inti Semesta pada industri mineral dan batubara."
+  },
+  "documentation": {
+    "title": "Galeri Dokumentasi",
+    "description": "Dokumentasi kegiatan eksplorasi dan operasional kami di lapangan.",
+    "case_study_wip": "Konten studi kasus sedang dalam pengembangan.",
+    "categories": {
+      "DRILLING ACTIVITY": "DRILLING ACTIVITY",
+      "Instalasi Slug Test": "Instalasi Slug Test",
+      "Pengukuran Slug Test": "Pengukuran Slug Test",
+      "PENGUKURAN SINGKAPAN": "PENGUKURAN SINGKAPAN",
+      "WELLSITE ACTIVITY": "WELLSITE ACTIVITY",
+      "FOTO PERALATAN": "FOTO PERALATAN",
+      "Photo Kegiatan PT Arsy Nusantara": "Photo Kegiatan PT Arsy Nusantara",
+      "Umum": "Umum"
+    },
+    "images": {
+      "instal pipa screen slug test 1": "instal pipa screen slug test 1",
+      "instal pipa screen slug test": "instal pipa screen slug test",
+      "Camera Pocket": "Camera Pocket",
+      "GPS (Global Positioning System)": "GPS (Global Positioning System)",
+      "Laptop": "Laptop",
+      "palu geologi": "palu geologi",
+      "Pompa Submersible": "Pompa Submersible",
+      "Pressure Probe": "Pressure Probe",
+      "RIG CSD 1300L": "RIG CSD 1300L",
+      "RIG Jacro 175": "RIG Jacro 175",
+      "RIG Jacro 200": "RIG Jacro 200",
+      "RIG Jacro 400": "RIG Jacro 400",
+      "RTK": "RTK",
+      "TDS Meter": "TDS Meter",
+      "Water Level": "Water Level"
+    }
   }
 }

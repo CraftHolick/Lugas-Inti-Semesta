@@ -12,7 +12,11 @@ interface InsightArticle {
   id: string;
   slug: string;
   title: string;
+  titleEn?: string;
+  titleZh?: string;
   excerpt: string;
+  excerptEn?: string;
+  excerptZh?: string;
   type: string;
   typeSlug: string;
   topic: string | null;
@@ -37,16 +41,26 @@ export default function InsightPageClient({
   initialTypes: Category[],
   initialTopics: Category[] 
 }) {
-  const { t } = useTranslation();
+  const { t, locale } = useTranslation();
   const [activeType, setActiveType] = useState<string>('all');
   const [activeTopic, setActiveTopic] = useState<string>('all');
 
+  // Normalize slug: hyphens → underscores so 'mining-knowledge' → insight.mining_knowledge
+  const tSlug = (slug: string) => {
+    const key = `insight.${slug.replace(/-/g, '_').toLowerCase()}`;
+    const result = t(key);
+    return result.startsWith('insight.') ? null : result;
+  };
+
   const types = useMemo(() => {
     return [
-      { label: 'Semua', value: 'all' },
-      ...initialTypes.map(c => ({ label: c.name, value: c.slug }))
+      { label: t('insight.all_filter') || 'Semua', value: 'all' },
+      ...initialTypes.map(c => ({ 
+        label: tSlug(c.slug) ?? c.name, 
+        value: c.slug 
+      }))
     ];
-  }, [initialTypes]);
+  }, [initialTypes, t, locale]);
 
   const searchParams = useSearchParams();
 
@@ -75,10 +89,13 @@ export default function InsightPageClient({
     const usedTopics = initialTopics.filter(t => usedTopicSlugs.has(t.slug));
     
     return [
-      { label: 'Semua Topik', value: 'all' },
-      ...usedTopics.map(t => ({ label: t.name, value: t.slug }))
+      { label: t('insight.all_topics') || 'Semua Topik', value: 'all' },
+      ...usedTopics.map(topic => ({ 
+        label: tSlug(topic.slug) ?? topic.name, 
+        value: topic.slug 
+      }))
     ];
-  }, [activeType, initialArticles, initialTopics]);
+  }, [activeType, initialArticles, initialTopics, t, locale]);
 
   const filteredInsights = useMemo(() => {
     let result = initialArticles;
@@ -94,13 +111,25 @@ export default function InsightPageClient({
   return (
     <main className="min-h-screen bg-bg-light pb-24 text-text-dark">
       {/* Hero */}
-      <section className="bg-navy-900 pt-48 sm:pt-56 md:pt-64 lg:pt-72 pb-20 md:pb-28 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-navy-800 via-navy-900 to-navy-950 opacity-80" />
-        <div className="container-custom relative z-10 text-center max-w-3xl mx-auto">
+      <section className="bg-navy-900 pt-0 min-h-[50vh] md:min-h-[56vh] relative overflow-hidden flex items-end">
+        {/* Full-bleed background image */}
+        <Image
+          src="/services-hero-bg.png"
+          alt="Kegiatan eksplorasi pertambangan batubara PT Lugas Inti Semesta"
+          fill
+          className="object-cover object-center"
+          priority
+          sizes="100vw"
+        />
+        {/* Gradient overlays for legibility */}
+        <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/55 to-navy-900/50" />
+        <div className="absolute inset-0 bg-gradient-to-b from-navy-950/60 via-transparent to-transparent" />
+
+        <div className="container-custom relative z-10 text-center max-w-3xl mx-auto w-full pb-16 md:pb-20 pt-40 sm:pt-48 md:pt-56 lg:pt-64">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-heading text-white font-bold mb-4"
+            className="text-4xl md:text-5xl lg:text-6xl font-heading text-white font-bold mb-4 drop-shadow-lg"
           >
             {t('insight.page_title') || 'Insight & Artikel Pertambangan'}
           </motion.h1>
@@ -108,7 +137,7 @@ export default function InsightPageClient({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-light opacity-80 text-base md:text-lg"
+            className="text-light opacity-80 text-base md:text-lg drop-shadow"
           >
             {t('insight.subheading') || 'Artikel dan wawasan seputar eksplorasi, regulasi, standar teknis, serta pengelolaan lingkungan industri pertambangan Indonesia.'}
           </motion.p>
@@ -141,7 +170,7 @@ export default function InsightPageClient({
             {availableTopics.length > 2 && (
               <div className="mt-5 flex flex-col items-center animate-in fade-in slide-in-from-top-2 duration-300">
                 <span className="text-[11px] font-medium text-gray-400 uppercase tracking-wider mb-2">
-                  Filter berdasarkan topik:
+                  {t('insight.filter_by_topic') || 'Filter berdasarkan topik:'}
                 </span>
                 <div className="flex flex-wrap items-center justify-center gap-2">
                   {availableTopics.map((topic) => (
@@ -166,7 +195,7 @@ export default function InsightPageClient({
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredInsights.length === 0 && (
               <div className="col-span-full text-center py-12 text-text-muted">
-                Belum ada artikel di kategori ini.
+                {t('insight.no_articles') || 'Belum ada artikel di kategori ini.'}
               </div>
             )}
             {filteredInsights.map((article, idx) => (
@@ -189,18 +218,26 @@ export default function InsightPageClient({
                   <div>
                     <div className="flex items-center justify-between text-xs font-semibold mb-3">
                       <div className="flex flex-col">
-                        <span className="text-accent uppercase tracking-wider font-bold">{article.type}</span>
-                        {article.topic && <span className="text-gray-500 font-medium text-[10px] uppercase tracking-wider">{article.topic}</span>}
+                        <span className="text-accent uppercase tracking-wider font-bold">{t(`insight.${article.typeSlug}`).startsWith('insight.') ? article.type : t(`insight.${article.typeSlug}`)}</span>
+                        {article.topic && <span className="text-gray-500 font-medium text-[10px] uppercase tracking-wider">{t(`insight.${article.topicSlug}`).startsWith('insight.') ? article.topic : t(`insight.${article.topicSlug}`)}</span>}
                       </div>
                       <span className="text-text-muted">{article.date}</span>
                     </div>
                     <Link href={`/insight/${article.slug}`}>
                       <h3 className="font-heading font-bold text-xl text-text-dark mb-3 line-clamp-2 group-hover:text-accent transition-colors">
-                        {article.title}
+                        {locale === 'zh' && article.titleZh
+                          ? article.titleZh
+                          : locale === 'en' && article.titleEn
+                          ? article.titleEn
+                          : article.title}
                       </h3>
                     </Link>
                     <p className="text-text-body text-sm mb-6 line-clamp-3 leading-relaxed">
-                      {article.excerpt}
+                      {locale === 'zh' && article.excerptZh
+                        ? article.excerptZh
+                        : locale === 'en' && article.excerptEn
+                        ? article.excerptEn
+                        : article.excerpt}
                     </p>
                   </div>
                   <Link 

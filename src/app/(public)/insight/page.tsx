@@ -1,24 +1,43 @@
 import type { Metadata } from 'next';
-import InsightPageClient from './InsightPageClient';
 import { Suspense } from 'react';
-import { createClient } from '@/lib/supabase/server';
-import { getPublicArticles, getLegacyTypes } from '@/lib/legacy-bridge';
-
-export const dynamic = 'force-dynamic';
+import InsightPageClient from './InsightPageClient';
+import { getPublicArticlesBuildTime, getLegacyTypesBuildTime } from '@/lib/legacy-bridge-buildtime';
+import {
+  fetchArticleTypesBuildTime,
+  fetchArticleCategoriesBuildTime,
+} from '@/lib/supabase/article-queries-buildtime';
 
 export const metadata: Metadata = {
   title: 'Insight | LUISE',
 };
 
+/**
+ * InsightPage — server component, renders at BUILD TIME.
+ *
+ * All article data (articles, types, categories/topics) is fetched from
+ * Supabase at build time using the build-time client (no cookies).
+ * The pre-rendered HTML contains the full article list.
+ *
+ * InsightPageClient receives the data as props and handles client-side
+ * interactivity (type filters, topic filters, locale switching) after
+ * hydration.
+ *
+ * New articles published after this build will appear in the list only
+ * after the next automated rebuild. See CI/CD automation documentation.
+ */
 export default async function InsightPage() {
-  // Legacy migration bridge — fetches CMS + legacy, deduplicates, sorts
-  const articles = await getPublicArticles();
+  // Fetch all published articles at build time (CMS + legacy, merged)
+  const allArticles = await getPublicArticlesBuildTime();
 
-  const mappedArticles = articles.map((a) => ({
+  const mappedArticles = allArticles.map((a) => ({
     id: a.id,
     slug: a.slug,
     title: a.title,
+    titleEn: a.titleEn,
+    titleZh: a.titleZh,
     excerpt: a.excerpt,
+    excerptEn: a.excerptEn,
+    excerptZh: a.excerptZh,
     type: a.type,
     typeSlug: a.typeSlug,
     topic: a.topic,
@@ -29,36 +48,26 @@ export default async function InsightPage() {
     source: a.source,
   }));
 
-  const supabase = await createClient();
+  // Fetch CMS types at build time
+  const cmsTypes = await fetchArticleTypesBuildTime();
 
-  // Fetch CMS types
-  const { data: cmsTypes } = await supabase
-    .from('article_types')
-    .select('name, slug')
-    .order('sort_order', { ascending: true });
-
-  // Union CMS + legacy types
-  const legacyTypes = getLegacyTypes();
-  const seenTypeSlugs = new Set((cmsTypes ?? []).map((t) => t.slug));
+  // Union CMS + legacy types (CMS takes priority for deduplication)
+  const legacyTypes = getLegacyTypesBuildTime();
+  const seenTypeSlugs = new Set(cmsTypes.map((t) => t.slug));
   const mergedTypes = [
-    ...(cmsTypes ?? []),
+    ...cmsTypes,
     ...legacyTypes.filter((t) => !seenTypeSlugs.has(t.slug)),
   ];
 
-  // Fetch CMS categories (Topics)
-  const { data: cmsCategories } = await supabase
-    .from('article_categories')
-    .select('name, slug')
-    .order('sort_order', { ascending: true });
-
-  const topics = cmsCategories ?? [];
+  // Fetch CMS categories (topics) at build time
+  const topics = await fetchArticleCategoriesBuildTime();
 
   return (
     <Suspense fallback={<div className="min-h-screen bg-bg-light" />}>
-      <InsightPageClient 
-        initialArticles={mappedArticles} 
+      <InsightPageClient
+        initialArticles={mappedArticles}
         initialTypes={mergedTypes}
-        initialTopics={topics} 
+        initialTopics={topics}
       />
     </Suspense>
   );

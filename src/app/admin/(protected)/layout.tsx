@@ -1,30 +1,64 @@
-import { redirect } from 'next/navigation'
-import { createClient } from '@/lib/supabase/server'
-import AdminSidebar from '@/components/admin/layout/AdminSidebar'
-import AdminHeader from '@/components/admin/layout/AdminHeader'
+'use client';
 
-export default async function AdminProtectedLayout({
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { createClient } from '@/lib/supabase/client';
+import AdminSidebar from '@/components/admin/layout/AdminSidebar';
+import AdminHeader from '@/components/admin/layout/AdminHeader';
+
+export default function AdminProtectedLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
-  const supabase = await createClient()
-  const {
-    data: { user },
-  } = await supabase.auth.getUser()
+  const router = useRouter();
+  const [user, setUser] = useState<any>(null);
+  const [role, setRole] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
 
-  if (!user) {
-    redirect('/admin/login')
+  useEffect(() => {
+    async function checkAuth() {
+      try {
+        const supabase = createClient();
+        const {
+          data: { user: currentUser },
+        } = await supabase.auth.getUser();
+
+        if (!currentUser) {
+          router.replace('/admin/login');
+          return;
+        }
+
+        // Perform deep role validation via database query
+        const { data: userRole, error } = await supabase.rpc('get_user_role').single();
+
+        if (error || !userRole || (userRole !== 'admin' && userRole !== 'editor')) {
+          router.replace('/admin/login?error=UnauthorizedAccess');
+          return;
+        }
+
+        setUser(currentUser);
+        setRole(userRole);
+      } catch (err) {
+        router.replace('/admin/login');
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    checkAuth();
+  }, [router]);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-gray-500 text-sm">Memuat...</div>
+      </div>
+    );
   }
 
-  // Perform deep role validation via database query using authenticated client
-  // The RPC get_user_role() is defined in the RLS migration
-  const { data: role, error } = await supabase.rpc('get_user_role').single()
-
-  if (error || !role || (role !== 'admin' && role !== 'editor')) {
-    // User exists but has no valid role or failed to fetch role
-    // This serves as an absolute guard
-    redirect('/admin/login?error=UnauthorizedAccess')
+  if (!user || !role) {
+    return null;
   }
 
   return (
@@ -37,5 +71,5 @@ export default async function AdminProtectedLayout({
         </main>
       </div>
     </div>
-  )
+  );
 }

@@ -55,7 +55,7 @@ export default function LoginForm({ redirectedFrom = '/admin/articles', error: u
 
       <form onSubmit={handleLogin} className="space-y-5">
         <div className="space-y-1">
-          <label className="text-sm font-medium text-navy-900" htmlFor="email">Email</label>
+          <label className="text-sm font-medium text-white" htmlFor="email">Email</label>
           <div className="relative">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
               <Mail className="h-5 w-5 text-gray-400" />
@@ -65,7 +65,7 @@ export default function LoginForm({ redirectedFrom = '/admin/articles', error: u
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="block w-full pl-10 pr-3 py-2.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-accent focus:border-accent sm:text-sm bg-gray-50 text-gray-900 outline-none transition-colors"
+              className="block w-full pl-10 pr-3 py-2.5 border border-navy-800 rounded-xl focus:ring-2 focus:ring-accent focus:border-accent sm:text-sm bg-navy-950 text-white placeholder-gray-500 outline-none transition-colors"
               placeholder="admin@luise.co.id"
               required
               disabled={isLoading}
@@ -74,7 +74,7 @@ export default function LoginForm({ redirectedFrom = '/admin/articles', error: u
         </div>
 
         <div className="space-y-1">
-          <label className="text-sm font-medium text-navy-900" htmlFor="password">Password</label>
+          <label className="text-sm font-medium text-white" htmlFor="password">Password</label>
           <div className="relative">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
               <Lock className="h-5 w-5 text-gray-400" />
@@ -84,7 +84,7 @@ export default function LoginForm({ redirectedFrom = '/admin/articles', error: u
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="block w-full pl-10 pr-3 py-2.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-accent focus:border-accent sm:text-sm bg-gray-50 text-gray-900 outline-none transition-colors"
+              className="block w-full pl-10 pr-3 py-2.5 border border-navy-800 rounded-xl focus:ring-2 focus:ring-accent focus:border-accent sm:text-sm bg-navy-950 text-white placeholder-gray-500 outline-none transition-colors"
               placeholder="••••••••"
               required
               disabled={isLoading}
@@ -95,7 +95,7 @@ export default function LoginForm({ redirectedFrom = '/admin/articles', error: u
         <Button
           type="submit"
           disabled={isLoading}
-          className="w-full h-11 text-base font-semibold"
+          className="w-full h-11 text-base font-semibold bg-accent hover:bg-accent/90 text-white border-0"
         >
           {isLoading ? (
             <>

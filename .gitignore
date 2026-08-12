@@ -23,6 +23,7 @@
 # misc
 .DS_Store
 *.pem
+*.key
 
 # debug
 npm-debug.log*
@@ -32,6 +33,10 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.example
+
+# build artifacts that should not be committed
+out.zip
 
 # vercel
 .vercel
@@ -39,3 +44,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# scratch / one-off scripts (not part of the project source)
+extract.js
+fetch-unsplash.js
+replace_urls.js
+
+# local development docs (not for repository)
+docs/

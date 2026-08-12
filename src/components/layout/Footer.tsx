@@ -32,11 +32,11 @@ export function Footer() {
             <p className="text-gray-300 text-xs sm:text-sm leading-relaxed font-sans">
               {t("footer.description") || "PT Lugas Inti Semesta adalah perusahaan konsultan geologi dan layanan pertambangan batubara yang berkantor pusat di Jakarta/Bekasi dengan operasi lapangan di seluruh Kalimantan."}
             </p>
-            <div className="pt-2">
-              <Link href="/sitemap" className="text-xs font-semibold text-accent hover:underline inline-flex items-center gap-1.5">
-                <span>&bull;</span>
-                <span>{t("footer.sitemap") || "Peta Situs (Sitemap Lengkap)"}</span>
-              </Link>
+            <div className="mt-2 text-gray-400 text-xs flex flex-col gap-1 border-l-2 border-accent/50 pl-3">
+              <span className="font-semibold text-gray-300">PT Lugas Inti Semesta</span>
+              <span>Konsultan Pertambangan</span>
+              <span>IUJP No. 738/1/IUJP/PMDN/2021</span>
+              <span>NIB: 0409210000891</span>
             </div>
           </div>
 
@@ -148,7 +148,6 @@ export function Footer() {
                 <li><Link href="/" className="text-gray-300 hover:text-accent font-medium transition-colors">{t("nav.home") || "Beranda"}</Link></li>
                 <li><Link href="/about" className="text-gray-300 hover:text-accent font-medium transition-colors">{t("nav.about") || "Tentang Kami"}</Link></li>
                 <li><Link href="/contact" className="text-gray-300 hover:text-accent font-medium transition-colors">{t("nav.contact") || "Kontak"}</Link></li>
-                <li><Link href="/careers" className="text-gray-300 hover:text-accent font-medium transition-colors">{t("nav.careers") || "Karir"}</Link></li>
               </ul>
             </div>
 

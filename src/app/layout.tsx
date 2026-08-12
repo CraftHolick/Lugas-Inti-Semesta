@@ -16,6 +16,7 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
   title: {
     default: "PT Lugas Inti Semesta | Exploration & Mine Management Consultant",
     template: "%s | PT Lugas Inti Semesta",

@@ -38,17 +38,6 @@ export default function Hero() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_15%,_var(--tw-gradient-stops))] from-transparent via-navy-950/60 to-navy-950" />
       </div>
 
-      {/* LAYER 2 (z-10): GIANT WATERMARK STENCIL TEXT BEHIND THE SUBJECT (ZORION STYLE) */}
-      <div className="absolute top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center pointer-events-none z-10 px-4">
-        <motion.h1
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1 }}
-          className="text-[11vw] sm:text-[10.5vw] lg:text-[10vw] font-heading font-black tracking-tighter uppercase text-white/[0.14] leading-none whitespace-nowrap select-none drop-shadow-2xl"
-        >
-          LUGAS INTI SEMESTA
-        </motion.h1>
-      </div>
 
       {/* LAYER 3 (z-20): HERO SUBJECT */}
       <div className="absolute inset-0 z-20 pointer-events-none">
@@ -58,13 +47,12 @@ export default function Hero() {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="
     absolute
-    -bottom-33
-    left-[42%]
+    -bottom-[15vh]
+    md:-bottom-[20vh]
+    lg:-bottom-[25vh]
+    xl:-bottom-[28vh]
+    left-1/2
     -translate-x-1/2
-    md:left-[45%]
-    lg:left-[50%]
-    xl:left-[50%]
-    2xl:left-[72%]
   "
         >
           <Image
@@ -121,22 +109,22 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="flex items-center gap-4 w-full sm:w-auto lg:ml-auto justify-between sm:justify-start drop-shadow-lg"
           >
-            {/* 3 Overlapping Client / Expert Profile Avatars */}
-            <div className="flex -space-x-3 overflow-hidden shrink-0">
+            {/* 3 Client Logos */}
+            <div className="flex items-center gap-3 shrink-0">
               <img
-                className="inline-block h-12 w-12 sm:h-14 sm:w-14 rounded-full ring-2 ring-white shadow-xl object-cover"
-                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80"
-                alt="Expert Profile 1"
+                className="inline-block h-10 sm:h-12 w-auto object-contain drop-shadow-md"
+                src="/logos/jhonlin-baratama.png"
+                alt="Jhonlin Baratama"
               />
               <img
-                className="inline-block h-12 w-12 sm:h-14 sm:w-14 rounded-full ring-2 ring-white shadow-xl object-cover"
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80"
-                alt="Expert Profile 2"
+                className="inline-block h-10 sm:h-12 w-auto object-contain drop-shadow-md"
+                src="/logos/murung-raya-coal.png"
+                alt="Murung Raya Coal"
               />
               <img
-                className="inline-block h-12 w-12 sm:h-14 sm:w-14 rounded-full ring-2 ring-white shadow-xl object-cover"
-                src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80"
-                alt="Expert Profile 3"
+                className="inline-block h-10 sm:h-12 w-auto object-contain drop-shadow-md"
+                src="/logos/satui-bina-usaha.png"
+                alt="Satui Bina Usaha"
               />
             </div>
             <div className="text-left pr-2">

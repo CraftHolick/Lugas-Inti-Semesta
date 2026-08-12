@@ -1,0 +1,145 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# LUISE Static Site — Build & Deploy to Hostinger Premium
+# ─────────────────────────────────────────────────────────────────────────────
+#
+# Triggers:
+#   • workflow_dispatch  — manual trigger from GitHub Actions UI
+#   • repository_dispatch (type: "site-rebuild") — triggered from the
+#     Supabase Edge Function "trigger-site-rebuild" on article publish/update
+#
+# Concurrency:
+#   Only one deploy runs at a time. If a second run starts while one is in
+#   progress, the in-progress run is cancelled so the newest content wins.
+#
+# Required GitHub Secrets (Settings → Secrets → Actions):
+#   NEXT_PUBLIC_SUPABASE_URL          — Supabase project URL
+#   NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY — Supabase anon/publishable key
+#   NEXT_PUBLIC_SITE_URL              — e.g. https://lugasintisemesta.co.id
+#   HOSTINGER_HOST                    — SSH hostname (e.g. srv123.hostinger.com)
+#   HOSTINGER_USER                    — SSH username (from Hostinger hPanel)
+#   HOSTINGER_PASSWORD                — SSH password (from Hostinger hPanel)
+#   HOSTINGER_PORT                    — SSH port (usually 65002 on Hostinger)
+#   HOSTINGER_REMOTE_PATH             — Remote path (e.g. /home/u123/public_html)
+# ─────────────────────────────────────────────────────────────────────────────
+
+name: Build & Deploy Static Site
+
+on:
+  # Manual trigger from GitHub Actions UI
+  workflow_dispatch:
+
+  # Triggered by the Supabase Edge Function on article publish/update/delete
+  repository_dispatch:
+    types:
+      - site-rebuild
+
+# ─── Concurrency: newest build wins ──────────────────────────────────────────
+concurrency:
+  group: production-static-deploy
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    name: Build → Verify → Deploy
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      # ── 1. Checkout ─────────────────────────────────────────────────────────
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # ── 2. Node.js setup ─────────────────────────────────────────────────────
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      # ── 3. Install dependencies ──────────────────────────────────────────────
+      - name: Install dependencies
+        run: npm ci
+
+      # ── 4. Build static export ───────────────────────────────────────────────
+      - name: Build
+        run: npm run build
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY }}
+          NEXT_PUBLIC_SITE_URL: ${{ secrets.NEXT_PUBLIC_SITE_URL }}
+          # Never expose SUPABASE_SERVICE_ROLE_KEY — public build uses anon key only
+
+      # ── 5. Verify output ─────────────────────────────────────────────────────
+      - name: Verify out/index.html exists
+        run: |
+          if [ ! -f out/index.html ]; then
+            echo "❌ Build failed: out/index.html not found"
+            exit 1
+          fi
+          echo "✅ out/index.html confirmed"
+          echo "Build output summary:"
+          find out -maxdepth 2 -type d | sort
+
+      # ── 6. Install sshpass for password-based SSH ────────────────────────────
+      - name: Install sshpass
+        run: sudo apt-get install -y sshpass
+
+      # ── 7. Register Hostinger SSH host key securely ──────────────────────────
+      #
+      # Uses ssh-keyscan to retrieve the server's public host key and adds it
+      # to known_hosts BEFORE rsync connects. This avoids both:
+      #   • The interactive "Are you sure?" prompt (would block CI)
+      #   • StrictHostKeyChecking=no (which disables MITM protection)
+      #
+      # The host key is fetched at runtime from the server; it changes only if
+      # Hostinger rotates their SSH host key, which is rare.
+      # ─────────────────────────────────────────────────────────────────────────
+      - name: Register Hostinger SSH host key
+        run: |
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+          ssh-keyscan -p ${{ secrets.HOSTINGER_PORT }} -H ${{ secrets.HOSTINGER_HOST }} >> ~/.ssh/known_hosts 2>/dev/null
+          chmod 600 ~/.ssh/known_hosts
+          echo "✅ Host key registered for ${{ secrets.HOSTINGER_HOST }}"
+
+      # ── 8. Deploy via rsync over SSH ─────────────────────────────────────────
+      #
+      # rsync flags:
+      #   -a      archive mode (preserves permissions, timestamps, etc.)
+      #   -z      compress during transfer
+      #   --delete  remove files on server that no longer exist in out/
+      #             (critical for deleted article slug directories)
+      #
+      # Excluded from deletion/sync to protect Hostinger-managed files:
+      #   .well-known/   — used by Let's Encrypt SSL and other services
+      #   .htaccess      — may be managed by Hostinger for redirects/rewrites
+      #   cgi-bin/       — Hostinger default directory
+      #
+      # IMPORTANT: The trailing slash on out/ means rsync syncs the CONTENTS
+      # of out/, not the directory itself. This ensures:
+      #   out/index.html  →  REMOTE_PATH/index.html
+      #   out/insight/x/  →  REMOTE_PATH/insight/x/
+      # ─────────────────────────────────────────────────────────────────────────
+      - name: Deploy to Hostinger via rsync over SSH
+        env:
+          SSHPASS: ${{ secrets.HOSTINGER_PASSWORD }}
+        run: |
+          sshpass -e rsync \
+            -az \
+            --delete \
+            --exclude='.well-known/' \
+            --exclude='.htaccess' \
+            --exclude='cgi-bin/' \
+            -e "ssh -p ${{ secrets.HOSTINGER_PORT }}" \
+            out/ \
+            ${{ secrets.HOSTINGER_USER }}@${{ secrets.HOSTINGER_HOST }}:${{ secrets.HOSTINGER_REMOTE_PATH }}/
+
+      # ── 9. Confirm deployment ────────────────────────────────────────────────
+      - name: Deployment complete
+        run: |
+          echo "✅ Deployment complete"
+          echo "Site: ${{ secrets.NEXT_PUBLIC_SITE_URL }}"
+          echo "Triggered by: ${{ github.event_name }}"
+          if [ "${{ github.event_name }}" = "repository_dispatch" ]; then
+            echo "Dispatch payload: ${{ toJson(github.event.client_payload) }}"
+          fi

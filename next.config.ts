@@ -14,21 +14,27 @@ const remotePatterns = [
 ];
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+
 if (supabaseUrl) {
   try {
     const parsedUrl = new URL(supabaseUrl);
+
     remotePatterns.push({
       protocol: "https",
       hostname: parsedUrl.hostname,
       pathname: "/storage/v1/object/public/article-images/**",
     });
-  } catch (error) {
+  } catch {
     // Ignore invalid URL parsing during tooling
   }
 }
 
 const nextConfig: NextConfig = {
+  output: "export",
+  trailingSlash: true,
+
   images: {
+    unoptimized: true,
     remotePatterns,
   },
 };

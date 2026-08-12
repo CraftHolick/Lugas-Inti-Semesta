@@ -9,20 +9,37 @@ import { useTranslation } from '@/lib/i18n';
 export function ProjectDetailPageClient({ project }: { project: any }) {
   const { t, locale } = useTranslation();
 
-  const desc = locale === 'zh' && project.scopeZh ? project.scopeZh :
-               locale === 'en' && project.scopeEn ? project.scopeEn :
-               (project.description || project.scopeId || project.scopeEn);
+  const isVerified = project.verified !== false;
 
-  const loc = locale === 'zh' && project.locationZh ? project.locationZh :
-              locale === 'en' && project.locationEn ? project.locationEn :
-              project.location;
+  // For unverified projects, show a neutral title format
+  const pageTitle = isVerified
+    ? (project.title || project.client)
+    : `Pendampingan Teknis untuk ${project.client}`;
 
-  const prov = locale === 'zh' && project.provinceZh ? project.provinceZh :
-               locale === 'en' && project.provinceEn ? project.provinceEn :
-               project.province;
+  const desc = isVerified
+    ? (locale === 'zh' && project.scopeZh ? project.scopeZh :
+       locale === 'en' && project.scopeEn ? project.scopeEn :
+       (project.description || project.scopeId || project.scopeEn))
+    : (locale === 'zh' && project.scopeZh ? project.scopeZh :
+       locale === 'en' && project.scopeEn ? project.scopeEn :
+       project.scopeId);
 
-  const scopes = Array.isArray(project.scope) 
-    ? project.scope 
+  const loc = isVerified
+    ? (locale === 'zh' && project.locationZh ? project.locationZh :
+       locale === 'en' && project.locationEn ? project.locationEn :
+       project.location)
+    : undefined;
+
+  const prov = isVerified
+    ? (locale === 'zh' && project.provinceZh ? project.provinceZh :
+       locale === 'en' && project.provinceEn ? project.provinceEn :
+       project.province)
+    : undefined;
+
+  const scopes = isVerified
+    ? (Array.isArray(project.scope) 
+        ? project.scope 
+        : [desc].filter(Boolean))
     : [desc].filter(Boolean);
 
   return (
@@ -31,7 +48,7 @@ export function ProjectDetailPageClient({ project }: { project: any }) {
       <div className="relative h-[65vh] min-h-[540px]">
         <Image 
           src={project.image || "https://images.unsplash.com/photo-1578507065211-1c4e99a5fd24?auto=format&fit=crop&q=80&w=1200"} 
-          alt={project.title} 
+          alt={pageTitle} 
           fill 
           className="object-cover" 
           priority 
@@ -54,21 +71,27 @@ export function ProjectDetailPageClient({ project }: { project: any }) {
             animate={{ opacity: 1, y: 0 }}
             className="max-w-4xl"
           >
-            <span className="inline-block px-3 py-1 bg-accent text-white font-semibold text-xs uppercase tracking-wider rounded-full mb-3">
-              {project.category?.replace('-', ' ') || 'Proyek Konsultasi'}
-            </span>
+            {isVerified && (
+              <span className="inline-block px-3 py-1 bg-accent text-white font-semibold text-xs uppercase tracking-wider rounded-full mb-3">
+                {project.category?.replace('-', ' ') || 'Proyek Konsultasi'}
+              </span>
+            )}
             <h1 className="font-heading font-bold text-4xl md:text-6xl text-white mb-4 leading-tight">
-              {project.title || project.client}
+              {pageTitle}
             </h1>
             <div className="flex flex-wrap items-center gap-6 text-light opacity-90 text-sm">
-              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-lg border border-white/10">
-                <MapPin className="w-4 h-4 text-accent" />
-                <span>{loc}, {prov}</span>
-              </div>
-              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-lg border border-white/10">
-                <Calendar className="w-4 h-4 text-accent" />
-                <span>{project.year}</span>
-              </div>
+              {loc && prov && (
+                <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-lg border border-white/10">
+                  <MapPin className="w-4 h-4 text-accent" />
+                  <span>{loc}, {prov}</span>
+                </div>
+              )}
+              {isVerified && project.year && (
+                <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-lg border border-white/10">
+                  <Calendar className="w-4 h-4 text-accent" />
+                  <span>{project.year}</span>
+                </div>
+              )}
               {project.client && (
                 <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-lg border border-white/10">
                   <User className="w-4 h-4 text-accent" />
@@ -92,7 +115,7 @@ export function ProjectDetailPageClient({ project }: { project: any }) {
               </p>
             </div>
             
-            {project.gallery && project.gallery.length > 0 && (
+            {isVerified && project.gallery && project.gallery.length > 0 && (
               <div className="bg-white p-8 rounded-2xl shadow-sm border border-border-light">
                 <h2 className="font-heading font-bold text-2xl text-text-dark mb-6 pb-3 border-b border-border-light">
                   {t('project_detail.gallery') || "Galeri Proyek"}
@@ -114,20 +137,22 @@ export function ProjectDetailPageClient({ project }: { project: any }) {
           </div>
           
           <div className="space-y-6">
-            <div className="bg-white border border-border-light shadow-sm p-6 rounded-2xl">
-              <h3 className="font-heading font-bold text-xl text-text-dark mb-6 pb-3 border-b border-border-light flex items-center gap-2">
-                <CheckCircle2 className="w-5 h-5 text-accent" />
-                {t('project_detail.scope') || "Cakupan Kerja (Scope of Work)"}
-              </h3>
-              <ul className="space-y-4">
-                {scopes.map((item: string, i: number) => (
-                  <li key={i} className="flex items-start gap-3 text-text-body text-sm leading-relaxed">
-                    <div className="w-2 h-2 rounded-full bg-accent mt-1.5 shrink-0" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            {isVerified && (
+              <div className="bg-white border border-border-light shadow-sm p-6 rounded-2xl">
+                <h3 className="font-heading font-bold text-xl text-text-dark mb-6 pb-3 border-b border-border-light flex items-center gap-2">
+                  <CheckCircle2 className="w-5 h-5 text-accent" />
+                  {t('project_detail.scope') || "Cakupan Kerja (Scope of Work)"}
+                </h3>
+                <ul className="space-y-4">
+                  {scopes.map((item: string, i: number) => (
+                    <li key={i} className="flex items-start gap-3 text-text-body text-sm leading-relaxed">
+                      <div className="w-2 h-2 rounded-full bg-accent mt-1.5 shrink-0" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
 
             <div className="bg-navy-900 text-white p-6 rounded-2xl shadow-md relative overflow-hidden">
               <div className="relative z-10">

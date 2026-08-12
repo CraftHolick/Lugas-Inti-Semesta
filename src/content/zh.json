@@ -1,6 +1,16 @@
 {
   "_note": "Chinese translations need native review before launch",
-  "nav": { "home": "首页", "about": "关于我们", "services": "服务", "projects": "项目", "insight": "洞察", "contact": "联系我们", "careers": "招聘", "cta": "立即咨询", "search": "搜索..." },
+  "nav": {
+    "home": "首页",
+    "about": "关于我们",
+    "services": "服务",
+    "projects": "项目",
+    "insight": "洞察",
+    "contact": "联系我们",
+    "careers": "招聘",
+    "cta": "立即咨询",
+    "search": "搜索..."
+  },
   "hero": {
     "headline": "印度尼西亚值得信赖的采矿勘探与矿山管理顾问",
     "subheadline": "正式成立于2014年 · 拥有IUJP许可号 738/1/IUJP/PMDN/2021 · 由认证的印尼合资格人士（CPI）专家支持",
@@ -11,10 +21,22 @@
     "completed_projects": "已完成勘探与管理项目"
   },
   "trust_bar": [
-    { "value": "2014", "label": "成立年份" },
-    { "value": "70+", "label": "完成项目" },
-    { "value": "8", "label": "覆盖省份" },
-    { "value": "IUJP 738/1", "label": "官方合法地位" }
+    {
+      "value": "2014",
+      "label": "成立年份"
+    },
+    {
+      "value": "70+",
+      "label": "完成项目"
+    },
+    {
+      "value": "8",
+      "label": "覆盖省份"
+    },
+    {
+      "value": "IUJP 738/1",
+      "label": "官方合法地位"
+    }
   ],
   "services": {
     "heading": "采矿与地质咨询服务",
@@ -27,12 +49,55 @@
     "cta_button": "立即免费咨询",
     "related_portfolio": "相关案例",
     "case_studies": "案例研究与项目",
+    "page_hero_heading": "采矿顾问服务",
+    "page_hero_desc": "PT Lugas Inti Semesta为矿产和煤炭行业提供技术咨询服务，涵盖地质与勘探、岩土工程、水文学与水文地质、采矿咨询，以及环境与社会。每项服务均根据项目条件、技术要求和运营目标量身定制。",
+    "page_hero_tagline": "从现场调查到技术研究编制与建议。",
+    "page_cta_heading": "讨论您的项目需求",
+    "page_cta_desc": "向PT Lugas Inti Semesta团队说明您的项目位置、商品、技术要求或工作范围，以获取合适的服务指导。",
+    "page_cta_primary": "立即咨询",
+    "page_cta_secondary": "查看我们的项目",
+    "trust_heading": "为何选择PT Lugas Inti Semesta",
+    "trust_subheading": "现场经验、合法经营以及多学科专业能力是PT Lugas Inti Semesta为采矿行业提供技术服务的基础。",
+    "trust_1_title": "自2014年起积累经验",
+    "trust_1_desc": "在印度尼西亚各地支持各类矿产和煤炭采矿活动方面积累了丰富经验。",
+    "trust_2_title": "持有IUJP许可证",
+    "trust_2_desc": "持有采矿服务业务许可证编号738/1/IUJP/PMDN/2021，作为提供采矿服务的合法依据。",
+    "trust_3_title": "多学科专家团队",
+    "trust_3_desc": "由印度尼西亚合资格人士（CPI）专家、地质学家、采矿工程师及相关技术领域专业人员支持。",
+    "approach_heading": "我们的方法",
+    "approach_p1": "每个采矿项目都有不同的地质条件、技术要求、运营目标和挑战。PT Lugas Inti Semesta通过了解客户需求、评估初始数据以及确定适合项目条件的工作范围来开展每项工作。",
+    "approach_p2": "在勘探和地质活动中，该方法可能包括测绘、钻探、现场监督、数据收集、资源解释和评估。对于岩土工程和水文地质需求，开展调查以获取支持项目规划和风险管理的技术参数。",
+    "approach_p3": "PT Lugas Inti Semesta还支持企业满足采矿咨询需求，如可行性研究、RKAB、E-RKAB、矿山管理，以及环境和社会需求，包括环境影响评估、复垦、矿山关闭和社区发展。工作成果旨在提供数据、研究和技术建议，可作为公司决策的依据。",
+    "related_services": "相关服务",
+    "deliverables_heading": "交付成果",
+    "cta_label_geologi": "了解地质咨询",
+    "cta_label_geoteknik": "了解岩土工程与水文地质",
+    "cta_label_pertambangan": "了解采矿咨询",
+    "cta_label_lingkungan": "了解环境与社会",
     "items": [
-      { "title": "地质咨询", "description": "勘探规划、地质测绘、地形、地球物理，直至符合KCMI/JORC标准的资源估算和审计。", "icon": "Mountain" },
-      { "title": "岩土工程、水文学和水文地质学", "description": "岩土钻探监督、抽水试验、微水试验，直至河流和泉水流量测量。", "icon": "Droplets" },
-      { "title": "环境与社会咨询", "description": "编制RIPPM、复垦计划、矿山闭坑计划、AMDAL、RKL和RPL。", "icon": "Leaf" },
-      { "title": "采矿咨询与承包", "description": "可行性研究（FS）、RKAB、矿山管理、WIUP边界标志安装，直至采矿承包商服务。", "icon": "Pickaxe" }
-    ]
+      {
+        "title": "地质咨询",
+        "description": "勘探规划、地质测绘、地形、地球物理，直至符合KCMI/JORC标准的资源估算和审计。",
+        "icon": "Mountain"
+      },
+      {
+        "title": "岩土工程、水文学和水文地质学",
+        "description": "岩土钻探监督、抽水试验、微水试验，直至河流和泉水流量测量。",
+        "icon": "Droplets"
+      },
+      {
+        "title": "环境与社会咨询",
+        "description": "编制RIPPM、复垦计划、矿山闭坑计划、AMDAL、RKL和RPL。",
+        "icon": "Leaf"
+      },
+      {
+        "title": "采矿咨询与承包",
+        "description": "可行性研究（FS）、RKAB、矿山管理、WIUP边界标志安装，直至采矿承包商服务。",
+        "icon": "Pickaxe"
+      }
+    ],
+    "seo_title": "采矿与地质咨询服务",
+    "meta_desc": "提供从前期勘探、技术可行性研究、许可审批到矿山营运管理的全面采矿解决方案。"
   },
   "featured_projects": {
     "heading": "特色项目",
@@ -106,10 +171,22 @@
     "eyebrow": "为什么选择我们",
     "heading": "我们的核心竞争优势",
     "items": [
-      { "title": "资深行业专家", "description": "在印尼采矿界拥有超过15年的深厚经验，拥有官方认证的印尼合格人员 (CPI) 团队。" },
-      { "title": "安全第一承诺", "description": "对职业健康安全（零事故）和环境保护实施零妥协的高标准管理。" },
-      { "title": "现代勘探技术", "description": "采用最新国际标准的专业地质测绘软件和高精度岩土工程仪器。" },
-      { "title": "可持续发展实践", "description": "全面致力于优良采矿规范 (Good Mining Practice) 和环保的矿山营运。" }
+      {
+        "title": "资深行业专家",
+        "description": "在印尼采矿界拥有超过15年的深厚经验，拥有官方认证的印尼合格人员 (CPI) 团队。"
+      },
+      {
+        "title": "安全第一承诺",
+        "description": "对职业健康安全（零事故）和环境保护实施零妥协的高标准管理。"
+      },
+      {
+        "title": "现代勘探技术",
+        "description": "采用最新国际标准的专业地质测绘软件和高精度岩土工程仪器。"
+      },
+      {
+        "title": "可持续发展实践",
+        "description": "全面致力于优良采矿规范 (Good Mining Practice) 和环保的矿山营运。"
+      }
     ]
   },
   "stats_bar": {
@@ -172,7 +249,31 @@
     "legality_founded": "2014年成立于勿加泗",
     "legality_cpi": "由认证的印尼合资格人士（CPI）专家支持",
     "team_heading": "我们的专家团队",
-    "team_placeholder": "专家团队数据即将显示。"
+    "team_placeholder": "专家团队数据即将显示。",
+    "seo_title": "关于 PT Lugas Inti Semesta",
+    "meta_desc": "自2014年以来，PT Lugas Inti Semesta 一直致力于提供地质、岩土工程以及煤炭和矿物开采管理咨询服务。",
+    "h1": "您值得信赖的采矿解决方案合作伙伴",
+    "intro_p1": "自2014年以来，PT Lugas Inti Semesta 一直致力于提供地质、岩土工程以及煤炭和矿物开采管理咨询服务。",
+    "intro_p2": "在认证的印尼合资格人士（CPI）专家和官方 IUJP 许可证 738/1/IUJP/PMDN/2021 的支持下，我们为您提供最佳解决方案。",
+    "intro_p3": "",
+    "pengalaman_heading": "",
+    "pengalaman_p1": "",
+    "pengalaman_p2": "",
+    "pengalaman_p3": "",
+    "legalitas_heading": "公司合法性",
+    "legalitas_intro": "",
+    "legalitas_items": [
+      "IUJP 编号 738/1/IUJP/PMDN/2021",
+      "煤炭和矿物开采业的技术和管理咨询分类",
+      "2014年成立于勿加泗",
+      "由认证的印尼合资格人士（CPI）专家支持"
+    ],
+    "legalitas_outro": "",
+    "expertise_heading": "采矿与地质咨询服务",
+    "cta_heading": "",
+    "cta_subheading": "",
+    "cta_primary": "",
+    "cta_secondary": ""
   },
   "contact": {
     "page_title": "联系我们",
@@ -200,7 +301,7 @@
   },
   "insight": {
     "page_title": "洞察",
-    "subheading": "关于印度尼西亚采矿业的文章和见解。",
+    "subheading": "关于印度尼西亚采矿业勘探、法规、技术标准及环境管理的文章与见解。",
     "categories": "分类",
     "popular": "热门文章",
     "read_more": "阅读更多",
@@ -208,7 +309,20 @@
     "artikel": "文章",
     "regulasi": "法规",
     "company_update": "公司动态",
-    "mining_knowledge": "采矿知识"
+    "mining_knowledge": "采矿知识",
+    "hidrologi_dan_hidrogeologi": "水文学与水文地质学",
+    "wawasan_pertambangan": "采矿见解",
+    "geologi": "地质学",
+    "geoteknik": "岩土工程",
+    "all_filter": "全部",
+    "all_topics": "所有主题",
+    "filter_by_topic": "按主题筛选：",
+    "no_articles": "此分类暂无文章。",
+    "back_to_insight": "返回洞察",
+    "date": "日期",
+    "author": "作者",
+    "share_article": "分享文章：",
+    "consult": "咨询项目"
   },
   "footer": {
     "description": "勘探与矿山管理顾问。自2014年以来，印尼采矿解决方案值得信赖的合作伙伴。",
@@ -227,5 +341,51 @@
     "interactive_map": "交互式地图",
     "studi_kasus": "案例研究",
     "dokumentasi": "文档"
+  },
+  "company_legality": {
+    "heading": "公司合法性",
+    "description": "PT Lugas Inti Semesta 的采矿服务业务受到符合公司业务范围的营业执照和许可证支持。",
+    "trust_statement": "合法性和许可证是PT Lugas Inti Semesta以专业和负责任方式开展采矿服务的承诺的一部分。如需公司核实或其他法律文件，请联系我们的团队。",
+    "view_document": "查看文件",
+    "modal_title": "合法性文件",
+    "modal_close": "关闭",
+    "modal_preview_unavailable": "文件预览不可用",
+    "modal_preview_desc": "公开文件正在准备或审核中，以确保公司行政数据的安全。",
+    "nib_title": "营业执照号码",
+    "nib_desc": "PT Lugas Inti Semesta 在营业许可系统中的官方企业身份。",
+    "iujp_title": "采矿服务营业执照",
+    "iujp_desc": "支持PT Lugas Inti Semesta在矿产和煤炭行业技术咨询和管理活动的采矿服务营业执照。"
+  },
+  "documentation": {
+    "title": "文档画廊",
+    "description": "我们在现场勘探和运营活动的文档记录。",
+    "case_study_wip": "案例研究内容正在开发中。",
+    "categories": {
+      "DRILLING ACTIVITY": "钻探活动",
+      "Instalasi Slug Test": "微水试验安装",
+      "Pengukuran Slug Test": "微水试验测量",
+      "PENGUKURAN SINGKAPAN": "露头测量",
+      "WELLSITE ACTIVITY": "井场活动",
+      "FOTO PERALATAN": "设备照片",
+      "Photo Kegiatan PT Arsy Nusantara": "PT Arsy Nusantara 活动照片",
+      "Umum": "通用"
+    },
+    "images": {
+      "instal pipa screen slug test 1": "微水试验滤网管安装 1",
+      "instal pipa screen slug test": "微水试验滤网管安装",
+      "Camera Pocket": "便携相机",
+      "GPS (Global Positioning System)": "GPS（全球定位系统）",
+      "Laptop": "笔记本电脑",
+      "palu geologi": "地质锤",
+      "Pompa Submersible": "潜水泵",
+      "Pressure Probe": "压力探头",
+      "RIG CSD 1300L": "RIG CSD 1300L",
+      "RIG Jacro 175": "RIG Jacro 175",
+      "RIG Jacro 200": "RIG Jacro 200",
+      "RIG Jacro 400": "RIG Jacro 400",
+      "RTK": "RTK",
+      "TDS Meter": "TDS 计",
+      "Water Level": "水位计"
+    }
   }
 }

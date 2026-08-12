@@ -32,9 +32,11 @@ export default function RecentProjects() {
                               locale === 'en' && project.scopeEn ? project.scopeEn :
                               (project.scopeId || project.scope);
 
-            const locText = locale === 'zh' && project.locationZh ? project.locationZh :
-                            locale === 'en' && project.locationEn ? project.locationEn :
-                            project.location;
+            const locText = project.verified !== false
+                            ? (locale === 'zh' && project.locationZh ? project.locationZh :
+                               locale === 'en' && project.locationEn ? project.locationEn :
+                               project.location)
+                            : undefined;
 
             return (
               <motion.div
@@ -63,8 +65,8 @@ export default function RecentProjects() {
                       {project.client}
                     </h3>
                     <div className="text-sm text-muted flex items-center justify-between mt-4 pt-4 border-t border-border-light">
-                      <span>{locText}</span>
-                      <span className="font-medium">{project.year}</span>
+                      {locText && <span>{locText}</span>}
+                      {project.verified !== false && project.year && <span className="font-medium">{project.year}</span>}
                     </div>
                   </div>
                 </Link>

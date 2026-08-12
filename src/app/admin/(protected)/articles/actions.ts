@@ -1,7 +1,4 @@
-'use server';
-
-import { createClient } from '@/lib/supabase/server';
-import { revalidatePath } from 'next/cache';
+import { createClient } from '@/lib/supabase/client';
 import { z } from 'zod';
 
 const storagePathRegex = /^articles\/[0-9a-fA-F-]{36}\/(thumbnail|content)\/[a-zA-Z0-9-]+\.(jpg|jpeg|png|webp)$/;
@@ -57,7 +54,7 @@ const articleSchema = z.object({
 });
 
 async function verifyAdminOrEditor() {
-  const supabase = await createClient();
+  const supabase = createClient();
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) throw new Error('Unauthorized');
   
@@ -165,8 +162,6 @@ export async function createArticle(formData: FormData) {
       return { success: false, message: 'Gagal membuat konten artikel: ' + translationError.message };
     }
 
-    revalidatePath('/admin/articles');
-    revalidatePath('/insight');
     return { success: true, articleId: article.id };
 
   } catch (error: any) {
@@ -281,8 +276,6 @@ export async function updateArticle(id: string, formData: FormData) {
       }
     }
 
-    revalidatePath('/admin/articles');
-    revalidatePath('/insight');
     return { success: true };
 
   } catch (error: any) {
@@ -293,9 +286,6 @@ export async function updateArticle(id: string, formData: FormData) {
 export async function publishArticle(id: string) {
   try {
     const { supabase } = await verifyAdminOrEditor();
-    
-    const { data: translation } = await supabase.from('article_translations').select('slug').eq('article_id', id).eq('locale', 'id').single();
-    const slug = translation?.slug;
 
     const { error } = await supabase
       .from('articles')
@@ -303,11 +293,6 @@ export async function publishArticle(id: string) {
       .eq('id', id);
 
     if (error) return { success: false, message: 'Gagal mempublikasikan: ' + error.message };
-    
-    revalidatePath('/admin');
-    revalidatePath('/admin/articles');
-    revalidatePath('/insight');
-    if (slug) revalidatePath(`/insight/${slug}`);
     
     return { success: true };
   } catch (error: any) {
@@ -318,9 +303,6 @@ export async function publishArticle(id: string) {
 export async function moveArticleToDraft(id: string) {
   try {
     const { supabase } = await verifyAdminOrEditor();
-    
-    const { data: translation } = await supabase.from('article_translations').select('slug').eq('article_id', id).eq('locale', 'id').single();
-    const slug = translation?.slug;
 
     const { error } = await supabase
       .from('articles')
@@ -328,11 +310,6 @@ export async function moveArticleToDraft(id: string) {
       .eq('id', id);
 
     if (error) return { error: 'Gagal mengubah ke draf: ' + error.message };
-    
-    revalidatePath('/admin');
-    revalidatePath('/admin/articles');
-    revalidatePath('/insight');
-    if (slug) revalidatePath(`/insight/${slug}`);
     
     return { success: true };
   } catch (error: any) {
@@ -348,10 +325,8 @@ export async function deleteArticle(id: string) {
       return { error: 'Hanya Admin yang dapat menghapus artikel permanen.' };
     }
 
-    // Get the article to check for thumbnail and get slug
+    // Get the article to check for thumbnail
     const { data: article } = await supabase.from('articles').select('thumbnail_url').eq('id', id).single();
-    const { data: translation } = await supabase.from('article_translations').select('slug').eq('article_id', id).eq('locale', 'id').single();
-    const slug = translation?.slug;
 
     // Translations are ON DELETE CASCADE
     const { error } = await supabase
@@ -376,15 +351,8 @@ export async function deleteArticle(id: string) {
       }
     }
 
-    revalidatePath('/admin');
-    revalidatePath('/admin/articles');
-    revalidatePath('/insight');
-    if (slug) revalidatePath(`/insight/${slug}`);
-    
     return { success: true };
   } catch (error: any) {
     return { error: error.message || 'Error' };
   }
 }
-
-

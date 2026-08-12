@@ -17,7 +17,7 @@ const iconMap: Record<string, any> = {
 
 export default function ServiceCards() {
   const { t, locale } = useTranslation();
-  const displayServices = services.filter(s => s.slug !== 'konsultasi-kontraktor-pertambangan');
+  const displayServices = services.filter(s => !['konsultasi-kontraktor-pertambangan', 'mine-management', 'mine-contractor'].includes(s.slug));
 
   return (
     <section className="py-20 bg-white section-padding">
@@ -31,7 +31,7 @@ export default function ServiceCards() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {displayServices.map((service, index) => {
             const Icon = iconMap[service.slug] || Mountain;
             const titleText = locale === 'en' ? service.titleEn : locale === 'zh' ? service.titleZh : (service.titleId || service.title);

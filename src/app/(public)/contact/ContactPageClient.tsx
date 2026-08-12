@@ -3,18 +3,32 @@ import { useTranslation } from '@/lib/i18n';
 import { motion } from 'framer-motion';
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function ContactPageClient() {
   const { t } = useTranslation();
 
   return (
     <main className="min-h-screen">
-      <section className="bg-navy-900 pt-48 sm:pt-56 md:pt-64 lg:pt-72 pb-20 md:pb-28 relative overflow-hidden">
-        <div className="container-custom relative z-10 text-center">
+      <section className="bg-navy-900 pt-0 min-h-[44vh] md:min-h-[50vh] relative overflow-hidden flex items-end">
+        {/* Full-bleed background image */}
+        <Image
+          src="/bg-tambang.jpg"
+          alt="Operasi tambang PT Lugas Inti Semesta"
+          fill
+          className="object-cover object-center"
+          priority
+          sizes="100vw"
+        />
+        {/* Gradient overlays for legibility */}
+        <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/50 to-navy-900/60" />
+        <div className="absolute inset-0 bg-gradient-to-r from-navy-950/40 via-transparent to-transparent" />
+
+        <div className="container-custom relative z-10 text-center w-full pb-16 md:pb-20 pt-40 sm:pt-48 md:pt-56 lg:pt-64">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-5xl font-heading text-white font-bold mb-4"
+            className="text-4xl md:text-5xl lg:text-6xl font-heading text-white font-bold mb-4 drop-shadow-lg"
           >
             {t('contact.page_title')}
           </motion.h1>

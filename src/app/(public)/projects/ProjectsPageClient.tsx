@@ -4,8 +4,10 @@ import { useState, useMemo, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { useTranslation } from '@/lib/i18n';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import { projects } from '@/data/projects';
+import { documentationData } from '@/data/documentation';
 import { ProjectCard } from '@/components/cards/ProjectCard';
 import { WorldMap } from '@/components/ui/map';
 import { Globe } from 'lucide-react';
@@ -31,8 +33,10 @@ export default function ProjectsPageClient() {
   }, [searchParams]);
 
   const mapDots = useMemo(() => {
-    return projects.map(p => {
-      let label = p.location;
+    return projects
+      .filter(p => p.verified !== false && p.lat != null && p.lng != null)
+      .map(p => {
+      let label = p.location || '';
       let offset = { x: -30, y: -20 };
       if (p.province === 'Kalimantan Tengah') { label = t('project_map.kalteng_label') || 'Kalteng Hub'; offset = { x: -30, y: -20 }; }
       else if (p.province === 'Kalimantan Timur') { label = t('project_map.kaltim_label') || 'Kaltim Hub'; offset = { x: 10, y: -18 }; }
@@ -45,7 +49,7 @@ export default function ProjectsPageClient() {
 
       return {
         start: { lat: -6.2088, lng: 106.8456, label: t('project_map.hq_label') || "HQ Jakarta", labelOffset: { x: -35, y: 12 } },
-        end: { lat: p.lat, lng: p.lng, label, labelOffset: offset }
+        end: { lat: p.lat!, lng: p.lng!, label, labelOffset: offset }
       };
     });
   }, [t]);
@@ -54,7 +58,19 @@ export default function ProjectsPageClient() {
     <main className="min-h-screen bg-bg-light text-text-dark">
       {/* Hero */}
       <section className="bg-navy-900 pt-48 sm:pt-56 md:pt-64 lg:pt-72 pb-20 md:pb-28 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-navy-800 via-navy-900 to-navy-950 opacity-80" />
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <Image
+            src="/bg-tambang.jpg"
+            alt="Proyek PT Lugas Inti Semesta"
+            fill
+            className="object-cover object-center"
+            priority
+            quality={85}
+          />
+          <div className="absolute inset-0 bg-navy-950/75" />
+          <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-bg-light to-transparent" />
+        </div>
         <div className="container-custom relative z-10 text-center max-w-3xl mx-auto">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
@@ -124,17 +140,19 @@ export default function ProjectsPageClient() {
                         locale === 'en' && project.scopeEn ? project.scopeEn :
                         (project.description || project.scopeId || project.scopeEn)
                       }
-                      location={`${
+                      location={project.verified !== false ? `${
                         locale === 'zh' && project.locationZh ? project.locationZh :
                         locale === 'en' && project.locationEn ? project.locationEn :
-                        project.location
-                      }, ${
+                        (project.location || '')
+                      }${project.province ? `, ${
                         locale === 'zh' && project.provinceZh ? project.provinceZh :
                         locale === 'en' && project.provinceEn ? project.provinceEn :
                         project.province
-                      }`}
+                      }` : ''}` : undefined}
                       slug={project.slug}
-                      year={project.year}
+                      year={project.verified !== false ? project.year : undefined}
+                      verified={project.verified !== false}
+                      clientLogo={project.clientLogo}
                     />
                   </motion.div>
                 ))}
@@ -170,10 +188,6 @@ export default function ProjectsPageClient() {
               </div>
 
               <div className="relative w-full max-w-7xl mx-auto rounded-3xl bg-black/80 border border-white/15 backdrop-blur-xl p-2 sm:p-6 md:p-8 shadow-[0_25px_80px_rgba(0,0,0,0.8)] overflow-hidden">
-                {/* Top & Bottom Subtle Vignettes */}
-                <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-black via-black/40 to-transparent z-10 pointer-events-none" />
-                <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black via-black/40 to-transparent z-10 pointer-events-none" />
-
                 <WorldMap
                   dots={mapDots}
                   lineColor="#00F0FF"
@@ -213,8 +227,8 @@ export default function ProjectsPageClient() {
             className="py-20 bg-bg-light min-h-[50vh] flex items-center justify-center"
           >
             <div className="text-center">
-              <h3 className="text-2xl font-bold text-navy-900 mb-2">Studi Kasus</h3>
-              <p className="text-text-muted">Konten studi kasus sedang dalam pengembangan.</p>
+              <h3 className="text-2xl font-bold text-navy-900 mb-2">{t('projects_tab.studi_kasus') || 'Studi Kasus'}</h3>
+              <p className="text-text-muted">{t('documentation.case_study_wip') || 'Konten studi kasus sedang dalam pengembangan.'}</p>
             </div>
           </motion.section>
         )}
@@ -226,11 +240,41 @@ export default function ProjectsPageClient() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className="py-20 bg-bg-light min-h-[50vh] flex items-center justify-center"
+            className="py-12 md:py-20 bg-bg-light"
           >
-            <div className="text-center">
-              <h3 className="text-2xl font-bold text-navy-900 mb-2">Dokumentasi</h3>
-              <p className="text-text-muted">Konten dokumentasi sedang dalam pengembangan.</p>
+            <div className="container-custom">
+              <div className="text-center mb-12">
+                <h3 className="text-3xl font-heading font-bold text-navy-900 mb-4">{t('documentation.title') || 'Galeri Dokumentasi'}</h3>
+                <p className="text-text-muted max-w-2xl mx-auto">{t('documentation.description') || 'Dokumentasi kegiatan eksplorasi dan operasional kami di lapangan.'}</p>
+              </div>
+              
+              <div className="space-y-16">
+                {documentationData.map((section, idx) => (
+                  <div key={idx} className="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-border-light">
+                    <h4 className="text-2xl font-heading font-bold text-text-dark mb-6 border-b border-border-light pb-4">
+                      {t(`documentation.categories.${section.category}`).startsWith('documentation.') ? section.category : t(`documentation.categories.${section.category}`)}
+                    </h4>
+                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                      {section.images.map((img, imgIdx) => (
+                        <div key={imgIdx} className="relative aspect-square rounded-xl overflow-hidden group border border-border-light bg-gray-100">
+                          <Image
+                            src={img.src}
+                            alt={img.alt}
+                            fill
+                            className="object-cover group-hover:scale-105 transition-transform duration-500"
+                            sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
+                          />
+                          <div className="absolute inset-0 bg-navy-900/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                            <p className="text-white text-xs font-medium truncate" title={t(`documentation.images.${img.alt}`).startsWith('documentation.') ? img.alt : t(`documentation.images.${img.alt}`)}>
+                              {t(`documentation.images.${img.alt}`).startsWith('documentation.') ? img.alt : t(`documentation.images.${img.alt}`)}
+                            </p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </motion.section>
         )}
