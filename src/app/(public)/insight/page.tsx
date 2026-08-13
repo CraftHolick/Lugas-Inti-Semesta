@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Suspense } from 'react';
 import InsightPageClient from './InsightPageClient';
-import { getPublicArticlesBuildTime, getLegacyTypesBuildTime } from '@/lib/legacy-bridge-buildtime';
+import { getPublicArticlesBuildTime } from '@/lib/legacy-bridge-buildtime';
 import {
   fetchArticleTypesBuildTime,
   fetchArticleCategoriesBuildTime,
@@ -16,6 +16,7 @@ export const metadata: Metadata = {
  *
  * All article data (articles, types, categories/topics) is fetched from
  * Supabase at build time using the build-time client (no cookies).
+ * Supabase is the single source of truth — no legacy static articles merged.
  * The pre-rendered HTML contains the full article list.
  *
  * InsightPageClient receives the data as props and handles client-side
@@ -48,16 +49,8 @@ export default async function InsightPage() {
     source: a.source,
   }));
 
-  // Fetch CMS types at build time
+  // Fetch CMS types at build time (Supabase is the only type source)
   const cmsTypes = await fetchArticleTypesBuildTime();
-
-  // Union CMS + legacy types (CMS takes priority for deduplication)
-  const legacyTypes = getLegacyTypesBuildTime();
-  const seenTypeSlugs = new Set(cmsTypes.map((t) => t.slug));
-  const mergedTypes = [
-    ...cmsTypes,
-    ...legacyTypes.filter((t) => !seenTypeSlugs.has(t.slug)),
-  ];
 
   // Fetch CMS categories (topics) at build time
   const topics = await fetchArticleCategoriesBuildTime();
@@ -66,7 +59,7 @@ export default async function InsightPage() {
     <Suspense fallback={<div className="min-h-screen bg-bg-light" />}>
       <InsightPageClient
         initialArticles={mappedArticles}
-        initialTypes={mergedTypes}
+        initialTypes={cmsTypes}
         initialTopics={topics}
       />
     </Suspense>

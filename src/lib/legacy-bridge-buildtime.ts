@@ -1,8 +1,9 @@
 /**
- * Legacy migration bridge — BUILD TIME VERSION
+ * Article bridge — BUILD TIME VERSION
  *
- * Merges CMS articles (from Supabase build-time client) with legacy static
- * articles (from src/data/insights.ts) for use during `next build`.
+ * Fetches articles exclusively from Supabase (CMS) at build time.
+ * Legacy static data (src/data/insights.ts) is no longer merged into
+ * production output. Supabase is the single source of truth.
  *
  * Uses the build-time Supabase client — no cookies(), no request context.
  * Safe for use in generateStaticParams, generateMetadata, and server
@@ -15,7 +16,6 @@ import {
   fetchPublishedArticleBySlugBuildTime,
   type PublishedArticle,
 } from '@/lib/supabase/article-queries-buildtime';
-import { insights, type Insight } from '@/data/insights';
 import { getArticleImageUrl } from '@/lib/supabase/storage-url';
 
 // ──────────────────────────────────────────────
@@ -39,10 +39,6 @@ export interface UnifiedArticle {
   source: 'cms' | 'legacy';
   /** Only set for CMS articles — used by the detail page */
   contentJson?: any;
-  /** Only set for legacy articles — plain text content */
-  legacyContent?: string;
-  legacyContentEn?: string;
-  legacyContentZh?: string;
   /** Only set for CMS articles */
   authorId?: string;
   /** Thumbnail already resolved to a full URL */
@@ -104,40 +100,17 @@ function mapCmsArticle(t: PublishedArticle): UnifiedArticle {
   };
 }
 
-function mapLegacyArticle(insight: Insight): UnifiedArticle {
-  return {
-    id: insight.id,
-    slug: insight.slug,
-    title: insight.titleId || insight.title,
-    titleEn: insight.titleEn,
-    titleZh: insight.titleZh,
-    excerpt: insight.excerptId || insight.excerpt,
-    excerptEn: insight.excerptEn,
-    excerptZh: insight.excerptZh,
-    type: insight.category,
-    typeSlug: insight.category
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, '-')
-      .replace(/(^-|-$)+/g, ''),
-    topic: null,
-    topicSlug: null,
-    date: insight.date,
-    image: insight.image ?? null,
-    source: 'legacy',
-    legacyContent: insight.content,
-    legacyContentEn: insight.contentEn,
-    legacyContentZh: insight.contentZh,
-    resolvedImageUrl: insight.image ?? null,
-  };
-}
+
 
 // ──────────────────────────────────────────────
 // Public API
 // ──────────────────────────────────────────────
 
 /**
- * Get all public articles at build time: CMS + legacy, deduplicated,
- * sorted by date descending.
+ * Get all public articles at build time — Supabase (CMS) only.
+ *
+ * Legacy static articles (src/data/insights.ts) are no longer included.
+ * Supabase is the single source of truth for production Insight content.
  *
  * Throws if the Supabase query errors — the caller must NOT convert
  * query failures into 404 responses.
@@ -146,62 +119,40 @@ export async function getPublicArticlesBuildTime(): Promise<UnifiedArticle[]> {
   const cmsData = await fetchPublishedArticlesBuildTime();
   const cmsArticles = cmsData.map(mapCmsArticle);
 
-  const legacyArticles = insights.map(mapLegacyArticle);
-
-  const cmsSlugs = new Set(cmsArticles.map((a) => a.slug));
-  const uniqueLegacy = legacyArticles.filter((a) => !cmsSlugs.has(a.slug));
-
-  const merged = [...cmsArticles, ...uniqueLegacy];
-  merged.sort(
+  cmsArticles.sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
   );
 
-  return merged;
+  return cmsArticles;
 }
 
 /**
- * Get all unique types from legacy articles.
+ * Returns an empty array — legacy types are no longer included.
+ * Article types are sourced exclusively from Supabase (article_types table).
+ *
+ * @deprecated No-op kept for API compatibility during transition.
  */
 export function getLegacyTypesBuildTime(): { name: string; slug: string }[] {
-  const seen = new Set<string>();
-  const types: { name: string; slug: string }[] = [];
-
-  for (const insight of insights) {
-    const slug = insight.category
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, '-')
-      .replace(/(^-|-$)+/g, '');
-    if (!seen.has(slug)) {
-      seen.add(slug);
-      types.push({ name: insight.category, slug });
-    }
-  }
-
-  return types;
+  return [];
 }
 
 /**
- * Get a single public article by slug at build time.
+ * Get a single public article by slug at build time — Supabase (CMS) only.
  *
- * 1. Query CMS first (throws on Supabase error).
- * 2. If CMS query succeeds but no article → check legacy.
- * 3. If neither source has it → return null (caller should notFound()).
+ * 1. Query CMS (throws on Supabase error).
+ * 2. If no article found → return null (caller should notFound()).
+ *
+ * Legacy static articles are no longer checked as a fallback.
  */
 export async function getPublicArticleBySlugBuildTime(
   slug: string,
 ): Promise<UnifiedArticle | null> {
-  // 1. Try CMS (throws on Supabase error)
+  // Try CMS (throws on Supabase error)
   const cmsData = await fetchPublishedArticleBySlugBuildTime(slug);
   if (cmsData) {
     return mapCmsArticle(cmsData);
   }
 
-  // 2. Fallback to legacy
-  const legacyInsight = insights.find((i) => i.slug === slug);
-  if (legacyInsight) {
-    return mapLegacyArticle(legacyInsight);
-  }
-
-  // 3. Not found in either source
+  // Not found in Supabase
   return null;
 }

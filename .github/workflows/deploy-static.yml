@@ -3,6 +3,7 @@
 # ─────────────────────────────────────────────────────────────────────────────
 #
 # Triggers:
+#   • push to main     — automatic deploy on every code push (skips .md/docs)
 #   • workflow_dispatch  — manual trigger from GitHub Actions UI
 #   • repository_dispatch (type: "site-rebuild") — triggered from the
 #     Supabase Edge Function "trigger-site-rebuild" on article publish/update
@@ -25,6 +26,14 @@
 name: Build & Deploy Static Site
 
 on:
+  # Automatic deployment on push to main (skips doc-only changes)
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '**.md'
+      - 'docs/**'
+
   # Manual trigger from GitHub Actions UI
   workflow_dispatch:
 

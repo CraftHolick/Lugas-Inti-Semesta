@@ -1,8 +1,10 @@
 /**
- * Legacy migration bridge — BROWSER CLIENT VERSION
+ * Article bridge — BROWSER CLIENT VERSION
  *
- * Browser-safe version of legacy-bridge.ts for static export compatibility.
- * All Supabase queries use the browser client instead of server client.
+ * Browser-safe version for static export compatibility.
+ * Fetches articles exclusively from Supabase (CMS) via the browser client.
+ * Legacy static data (src/data/insights.ts) is no longer merged.
+ * Supabase is the single source of truth.
  *
  * @module legacy-bridge-browser
  */
@@ -11,7 +13,6 @@ import {
   fetchPublishedArticleBySlugBrowser,
   type PublishedArticle,
 } from '@/lib/supabase/article-queries-browser';
-import { insights, type Insight } from '@/data/insights';
 import { getArticleImageUrl } from '@/lib/supabase/storage-url';
 
 export interface UnifiedArticle {
@@ -31,9 +32,6 @@ export interface UnifiedArticle {
   image: string | null;
   source: 'cms' | 'legacy';
   contentJson?: any;
-  legacyContent?: string;
-  legacyContentEn?: string;
-  legacyContentZh?: string;
   authorId?: string;
   resolvedImageUrl: string | null;
 }
@@ -89,76 +87,37 @@ function mapCmsArticle(t: PublishedArticle): UnifiedArticle {
   };
 }
 
-function mapLegacyArticle(insight: Insight): UnifiedArticle {
-  return {
-    id: insight.id,
-    slug: insight.slug,
-    title: insight.titleId || insight.title,
-    titleEn: insight.titleEn,
-    titleZh: insight.titleZh,
-    excerpt: insight.excerptId || insight.excerpt,
-    excerptEn: insight.excerptEn,
-    excerptZh: insight.excerptZh,
-    type: insight.category,
-    typeSlug: insight.category
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, '-')
-      .replace(/(^-|-$)+/g, ''),
-    topic: null,
-    topicSlug: null,
-    date: insight.date,
-    image: insight.image ?? null,
-    source: 'legacy',
-    legacyContent: insight.content,
-    legacyContentEn: insight.contentEn,
-    legacyContentZh: insight.contentZh,
-    resolvedImageUrl: insight.image ?? null,
-  };
-}
 
 /**
- * Get all public articles from browser — CMS + legacy, deduplicated, sorted.
+ * Get all public articles from browser — Supabase (CMS) only.
+ *
+ * Legacy static articles are no longer merged into the result.
  */
 export async function getPublicArticlesBrowser(): Promise<UnifiedArticle[]> {
   const cmsData = await fetchPublishedArticlesBrowser();
   const cmsArticles = cmsData.map(mapCmsArticle);
 
-  const legacyArticles = insights.map(mapLegacyArticle);
-
-  const cmsSlugs = new Set(cmsArticles.map((a) => a.slug));
-  const uniqueLegacy = legacyArticles.filter((a) => !cmsSlugs.has(a.slug));
-
-  const merged = [...cmsArticles, ...uniqueLegacy];
-  merged.sort(
+  cmsArticles.sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
   );
 
-  return merged;
+  return cmsArticles;
 }
 
 /**
- * Get all unique types from legacy articles.
+ * Returns an empty array — legacy types are no longer included.
+ * Article types are sourced exclusively from Supabase (article_types table).
+ *
+ * @deprecated No-op kept for API compatibility during transition.
  */
 export function getLegacyTypesBrowser(): { name: string; slug: string }[] {
-  const seen = new Set<string>();
-  const types: { name: string; slug: string }[] = [];
-
-  for (const insight of insights) {
-    const slug = insight.category
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, '-')
-      .replace(/(^-|-$)+/g, '');
-    if (!seen.has(slug)) {
-      seen.add(slug);
-      types.push({ name: insight.category, slug });
-    }
-  }
-
-  return types;
+  return [];
 }
 
 /**
- * Get a single public article by slug — browser client.
+ * Get a single public article by slug — browser client, Supabase (CMS) only.
+ *
+ * Legacy static articles are no longer checked as a fallback.
  */
 export async function getPublicArticleBySlugBrowser(
   slug: string,
@@ -166,11 +125,6 @@ export async function getPublicArticleBySlugBrowser(
   const cmsData = await fetchPublishedArticleBySlugBrowser(slug);
   if (cmsData) {
     return mapCmsArticle(cmsData);
-  }
-
-  const legacyInsight = insights.find((i) => i.slug === slug);
-  if (legacyInsight) {
-    return mapLegacyArticle(legacyInsight);
   }
 
   return null;

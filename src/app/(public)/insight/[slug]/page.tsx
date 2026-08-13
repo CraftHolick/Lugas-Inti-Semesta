@@ -5,7 +5,6 @@ import {
   fetchAuthorNameBuildTime,
 } from '@/lib/supabase/article-queries-buildtime';
 import { getPublicArticleBySlugBuildTime } from '@/lib/legacy-bridge-buildtime';
-import { insights } from '@/data/insights';
 import InsightDetailClient from './InsightDetailClient';
 
 /**
@@ -13,7 +12,7 @@ import InsightDetailClient from './InsightDetailClient';
  *
  * Fetches all currently published article slugs from Supabase using the
  * build-time client (no cookies, no request context required).
- * Also includes all legacy article slugs from the static data file.
+ * Supabase is the single source of truth — no legacy slugs are added.
  *
  * Articles published AFTER this build will not have a pre-rendered HTML
  * page until the next automated build. See the CI/CD automation workflow
@@ -22,18 +21,9 @@ import InsightDetailClient from './InsightDetailClient';
  * RLS still applies: anonymous Supabase queries only see published articles.
  */
 export async function generateStaticParams() {
-  // Legacy slugs — always available (static data)
-  const legacySlugs = insights.map((i) => ({ slug: i.slug }));
-
   // CMS slugs — fetched from Supabase at build time (anon key, no cookies)
   const cmsSlugsRaw = await fetchAllPublishedSlugsBuildTime();
-  const cmsSlugs = cmsSlugsRaw.map((s) => ({ slug: s }));
-
-  // Merge: CMS slugs take priority when a slug collides with legacy
-  const cmsSlugSet = new Set(cmsSlugs.map((s) => s.slug));
-  const uniqueLegacy = legacySlugs.filter((s) => !cmsSlugSet.has(s.slug));
-
-  return [...cmsSlugs, ...uniqueLegacy];
+  return cmsSlugsRaw.map((s) => ({ slug: s }));
 }
 
 type PageProps = {

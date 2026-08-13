@@ -103,26 +103,6 @@ export const insights: Insight[] = [
     image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&q=80"
   },
   {
-    id: "insight-5",
-    slug: "kajian-hidrogeologi-tambang-bawah-tanah",
-    title: "Kenapa Kajian Hidrogeologi (Slug Test) Krusial untuk Tambang Bawah Tanah?",
-    excerpt: "Mengapa pengukuran parameter akuifer dan kajian air tanah sangat vital dalam mencegah risiko tambang bawah tanah.",
-    content: "Pada tambang bawah tanah (underground mining), risiko inrupsi air atau kebanjiran (mine inundation) merupakan salah satu bahaya terbesar. Pengujian seperti Slug Test dan Pumping Test membantu memetakan konduktivitas hidrolik akuifer sehingga sistem penirisan (dewatering) dapat dirancang dengan tepat.",
-    titleId: "Kenapa Kajian Hidrogeologi (Slug Test) Krusial untuk Tambang Bawah Tanah?",
-    titleEn: "Why is Hydrogeological Study (Slug Test) Crucial for Underground Mines?",
-    titleZh: "为什么水文地质研究（微水试验）对地下矿山至关重要？",
-    category: "Mining Knowledge",
-    date: "2026-06-30",
-    excerptId: "Mengapa pengukuran parameter akuifer dan kajian air tanah sangat vital dalam mencegah risiko tambang bawah tanah.",
-    excerptEn: "Why measuring aquifer parameters and groundwater studies are vital in preventing underground mining risks.",
-    excerptZh: "为什么含水层参数测量和地下水研究对于防止地下采矿风险至关重要。",
-    contentEn: "In underground mining, the risk of water inrush or mine inundation is one of the greatest hazards. Tests such as the Slug Test and Pumping Test help map the hydraulic conductivity of aquifers so that the dewatering system can be appropriately designed.",
-    contentZh: "在地下采矿中，突水或矿井淹没的风险是最大的危险之一。微水试验和抽水试验等测试有助于绘制含水层水力传导性图，从而合理设计排水系统。",
-    bodyPlaceholderId: "TODO: Isi artikel mengenai kajian hidrogeologi dan slug test.",
-    bodyPlaceholderEn: "TODO: Article content about hydrogeological studies and slug tests.",
-    image: defaultInsightImage
-  },
-  {
     id: "insight-6",
     slug: "luise-ekspansi-operasi-kalimantan-timur",
     title: "LUISE Memperluas Operasi Pengawasan Geoteknik & Eksplorasi di Kalimantan Timur",
