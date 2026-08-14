@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { team } from '@/data/team';
 import CompanyLegality from '@/components/sections/CompanyLegality';
+import TeamSection from '@/components/sections/TeamSection';
 
 export default function AboutPageClient() {
   const { t, locale } = useTranslation();
@@ -176,33 +177,8 @@ export default function AboutPageClient() {
         </div>
       </section>
       
-      {/* Tim Ahli (Preserving existing design as requested) */}
-      <section className="py-16 md:py-24 bg-white section-padding border-t border-border-light">
-        <div className="container-custom text-center">
-          <h2 className="text-3xl font-heading text-text-dark font-bold mb-12">{t('about.team_heading') || 'Tim Ahli Kami'}</h2>
-          <div className="grid md:grid-cols-3 gap-8">
-             {(team && team.slice(0, 3)).map((member, i) => {
-               const roleText = locale === 'en' ? member.roleEn : locale === 'zh' ? member.roleZh : member.roleId;
-               return (
-                <div key={member.id || i} className="bg-bg-light rounded-xl shadow-sm overflow-hidden text-left border border-border-light">
-                  <div className="h-64 bg-gray-200 relative flex items-center justify-center overflow-hidden">
-                    {member.avatarUrl && !member.avatarUrl.includes('placeholder') ? (
-                      <Image src={member.avatarUrl} alt={member.name} fill className="object-cover" />
-                    ) : (
-                      <User className="w-20 h-20 text-gray-400" />
-                    )}
-                  </div>
-                  <div className="p-6">
-                    <h4 className="font-bold text-xl text-text-dark mb-1">{member.name}</h4>
-                    <p className="text-accent text-sm font-medium mb-3">{roleText}</p>
-                    <p className="text-text-muted text-sm">{t('team.bio_default') || 'Tenaga ahli bersertifikat CPI.'}</p>
-                  </div>
-                </div>
-               );
-             })}
-          </div>
-        </div>
-      </section>
+      {/* Tim Ahli & Profesional */}
+      <TeamSection />
 
       {/* Bottom CTA */}
       <section className="py-20 bg-navy-900 section-padding relative overflow-hidden">

@@ -76,7 +76,7 @@
     "items": [
       {
         "title": "Konsultasi Geologi",
-        "description": "Perencanaan eksplorasi, pemetaan geologi, topografi, geofisika, hingga estimasi & audit sumber daya standar KCMI/JORC.",
+        "description": "Perencanaan eksplorasi, pemetaan geologi, topografi, geofisika, pemboran, hingga perhitungan sumber daya dan cadangan berstandar SNI dan KCMI.",
         "icon": "Mountain"
       },
       {
@@ -86,7 +86,7 @@
       },
       {
         "title": "Konsultasi Lingkungan & Sosial",
-        "description": "Penyusunan RIPPM, Rencana Reklamasi, Rencana Pascatambang, AMDAL, RKL, dan RPL.",
+        "description": "Kajian RIPPIM, Dokumen Rencana Reklamasi, Dokumen Pascatambang, AMDAL, serta RKL/RPL.",
         "icon": "Leaf"
       },
       {
