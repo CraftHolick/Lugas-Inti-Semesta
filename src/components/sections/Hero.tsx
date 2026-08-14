@@ -54,23 +54,23 @@ export default function Hero() {
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
             {/* EYEBROW */}
-            <div className="inline-flex items-center gap-2 text-accent text-xs sm:text-sm font-bold uppercase tracking-widest mb-4">
+            <div className="inline-flex items-center gap-2 text-accent text-xs sm:text-sm font-sans font-bold uppercase tracking-[0.2em] mb-4">
               <span className="w-2.5 h-2.5 rounded-full bg-accent animate-pulse shadow-[0_0_8px_#F5A623]" />
               {t("hero.badge") || "KONSULTAN PERTAMBANGAN INDONESIA"}
             </div>
 
             {/* HEADING */}
-            <h1 className="font-heading font-bold text-white uppercase leading-[1.05] tracking-tight text-[clamp(38px,5vw,72px)] mb-4 md:mb-6 drop-shadow-md">
+            <h1 className="font-sans font-extrabold text-white uppercase leading-[1.05] tracking-tight text-[clamp(38px,5vw,72px)] mb-4 md:mb-6 drop-shadow-md">
               {t("hero.headline") || "PT LUGAS INTI SEMESTA"}
             </h1>
 
             {/* DESCRIPTION */}
-            <p className="text-base md:text-lg text-gray-200 leading-relaxed font-sans max-w-[620px] mb-8 drop-shadow">
+            <p className="text-base md:text-lg text-gray-200 leading-relaxed font-sans font-medium max-w-[620px] mb-8 drop-shadow">
               {t("hero.subheadline") || "Konsultan geologi, geoteknik, dan manajemen tambang batubara berizin resmi dengan pengalaman operasional lapangan di seluruh Kalimantan."}
             </p>
 
             {/* TRUST INDICATORS */}
-            <div className="flex flex-col sm:flex-row flex-wrap items-start sm:items-center gap-4 sm:gap-6 mb-10 text-sm font-medium text-gray-300">
+            <div className="flex flex-col sm:flex-row flex-wrap items-start sm:items-center gap-4 sm:gap-6 mb-10 text-sm font-sans font-medium text-gray-300">
               <div className="flex items-center gap-2">
                 <ShieldCheck className="w-5 h-5 text-accent shrink-0" />
                 <span>Berizin Resmi</span>
@@ -91,14 +91,14 @@ export default function Hero() {
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
               <Link 
                 href="/services"
-                className="group flex items-center justify-center gap-2 bg-accent hover:bg-amber-400 text-navy-950 font-bold px-8 py-3.5 md:py-4 rounded-lg transition-all duration-300 shadow-lg hover:shadow-accent/20"
+                className="group flex items-center justify-center gap-2 bg-accent hover:bg-amber-400 text-navy-950 font-sans font-semibold px-8 py-3.5 md:py-4 rounded-lg transition-all duration-300 shadow-lg hover:shadow-accent/20"
               >
                 Lihat Layanan
                 <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
               </Link>
               <Link 
                 href="/contact"
-                className="group flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 border border-white/20 hover:border-accent text-white font-medium px-8 py-3.5 md:py-4 rounded-lg transition-all duration-300 backdrop-blur-sm"
+                className="group flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 border border-white/20 hover:border-accent text-white font-sans font-semibold px-8 py-3.5 md:py-4 rounded-lg transition-all duration-300 backdrop-blur-sm"
               >
                 <Mail className="w-5 h-5 opacity-70 group-hover:opacity-100 group-hover:text-accent transition-colors" />
                 Hubungi Kami
@@ -118,17 +118,17 @@ export default function Hero() {
             {/* Logos */}
             <div className="flex items-center gap-5 md:gap-8 shrink-0">
               <img
-                className="h-7 md:h-9 w-auto object-contain drop-shadow-md brightness-0 invert opacity-80 hover:opacity-100 transition-opacity"
+                className="h-7 md:h-9 w-auto object-contain drop-shadow-md opacity-90 hover:opacity-100 transition-opacity"
                 src="/logos/jhonlin-baratama.png"
                 alt="Jhonlin Baratama"
               />
               <img
-                className="h-7 md:h-9 w-auto object-contain drop-shadow-md brightness-0 invert opacity-80 hover:opacity-100 transition-opacity"
+                className="h-7 md:h-9 w-auto object-contain drop-shadow-md opacity-90 hover:opacity-100 transition-opacity"
                 src="/logos/murung-raya-coal.png"
                 alt="Murung Raya Coal"
               />
               <img
-                className="h-7 md:h-9 w-auto object-contain drop-shadow-md brightness-0 invert opacity-80 hover:opacity-100 transition-opacity"
+                className="h-7 md:h-9 w-auto object-contain drop-shadow-md opacity-90 hover:opacity-100 transition-opacity"
                 src="/logos/satui-bina-usaha.png"
                 alt="Satui Bina Usaha"
               />
@@ -136,7 +136,7 @@ export default function Hero() {
 
             {/* 70+ Stats */}
             <div className="flex items-center gap-3 border-l-2 border-accent/40 pl-4 md:pl-6">
-              <span className="text-2xl md:text-3xl font-heading font-black text-white drop-shadow-sm">70+</span>
+              <span className="text-2xl md:text-3xl font-sans font-black text-white drop-shadow-sm">70+</span>
               <div className="flex flex-col leading-tight">
                 <span className="text-[11px] md:text-xs text-accent font-bold tracking-wide uppercase">Klien Puas</span>
                 <span className="text-[10px] md:text-xs text-gray-300 font-medium">Proyek Eksplorasi & Manajemen Selesai</span>
