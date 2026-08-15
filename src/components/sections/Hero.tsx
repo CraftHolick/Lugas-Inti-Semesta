@@ -10,7 +10,7 @@ export default function Hero() {
 
   return (
     <section className="relative overflow-hidden bg-navy-950 text-white min-h-[max(100svh,880px)] md:min-h-[max(680px,calc(100svh-5rem))] flex flex-col justify-end lg:justify-center pb-8 md:pb-12 pt-[46vh] md:pt-32 select-none border-b border-white/10">
-      
+
       {/* BACKGROUND IMAGE */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <Image
@@ -27,7 +27,7 @@ export default function Hero() {
             lg:object-[72%_center]
           "
         />
-        
+
         {/* MOBILE GRADIENT */}
         <div className="absolute inset-0 md:hidden" style={{
           background: "linear-gradient(180deg, rgba(5, 17, 28, 0.04) 0%, rgba(5, 17, 28, 0.10) 25%, rgba(5, 17, 28, 0.55) 47%, rgba(5, 17, 28, 0.92) 63%, rgba(5, 17, 28, 1) 80%, rgba(5, 17, 28, 1) 100%)"
@@ -44,7 +44,7 @@ export default function Hero() {
 
       {/* CONTENT CONTAINER */}
       <div className="container-custom relative z-10 w-full max-w-7xl mx-auto flex flex-col justify-between h-full flex-grow px-5 md:px-6">
-        
+
         {/* MAIN HERO CONTENT */}
         <div className="flex-grow flex flex-col justify-center mt-auto md:mt-0 lg:max-w-[720px] pb-8 md:pb-0 md:pt-12 lg:pt-[10vh]">
           <motion.div
@@ -122,6 +122,39 @@ export default function Hero() {
                 <span className="text-[11px] md:text-xs text-accent font-bold tracking-wide uppercase">Klien Puas</span>
                 <span className="text-[10px] md:text-xs text-gray-300 font-medium">Proyek Eksplorasi & Manajemen Selesai</span>
               </div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* ZORION Big Orange Stats Row */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 w-full mt-8 md:mt-12 pt-8 md:pt-10 border-t border-white/10"
+        >
+          <div className="flex flex-col">
+            <div className="text-4xl sm:text-5xl lg:text-6xl font-heading font-black text-accent mb-2 tracking-tight">
+              35+
+            </div>
+            <div className="text-sm sm:text-base font-bold text-white mb-1">
+              {t("stats_bar.exp_title") || "Tahun Pengalaman Ahli"}
+            </div>
+            <div className="text-xs sm:text-sm text-gray-300 font-sans leading-relaxed">
+              {t("stats_bar.exp_desc") || "Tim tenaga ahli bersertifikat CPI dengan rekam jejak panjang di industri pertambangan Indonesia."}
+            </div>
+          </div>
+
+          <div className="flex flex-col">
+            <div className="text-4xl sm:text-5xl lg:text-6xl font-heading font-black text-accent mb-2 tracking-tight">
+              24/7
+            </div>
+            <div className="text-sm sm:text-base font-bold text-white mb-1">
+              {t("stats_bar.support_title") || "Dukungan Teknis & Pengawasan"}
+            </div>
+            <div className="text-xs sm:text-sm text-gray-300 font-sans leading-relaxed">
+              {t("stats_bar.support_desc") || "Kesiapan tim lapangan untuk pemantauan dan kontrol operasional tambang secara intensif."}
             </div>
           </div>
         </motion.div>
