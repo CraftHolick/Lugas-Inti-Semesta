@@ -103,6 +103,7 @@ jobs:
           NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
           NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY }}
           NEXT_PUBLIC_SITE_URL: ${{ secrets.NEXT_PUBLIC_SITE_URL }}
+          NEXT_PUBLIC_MAINTENANCE_MODE: 'true'
           # Never expose SUPABASE_SERVICE_ROLE_KEY — public build uses anon key only
 
       # ── 5. Verify output ─────────────────────────────────────────────────────
